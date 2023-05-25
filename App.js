@@ -1,20 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Stylesheet, Text, View } from 'react-native';
+import Home from './Views/Home/Home';
+import Component from './Views/Component/Component';
+import DottedBox from './Views/Examples/DottedBox';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>good job !!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Home></Home>
+    
+    // <DottedBox/>
   );
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
