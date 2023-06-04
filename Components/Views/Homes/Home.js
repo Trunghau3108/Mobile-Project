@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View,ScrollView, FlatList } from 'react-native'
+import { StyleSheet, Text, View,ScrollView, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
-import Post from '../Components/Posts/Post'
-import DataPost from '../Components/DataPost'
-
+import Post from '../Posts/Post'
+import DataPost from '../../VirtualData/DataPost'
+import { useNavigation } from '@react-navigation/native'
 const Home = () => {
+  const nagivation = useNavigation();
   return (
     <View style={styles.container}>
-
+      <TouchableOpacity
+        onPress={()=>{
+          nagivation.replace('Signin');
+        }}
+      >
+        <Text>Quay về </Text>
+      </TouchableOpacity>
         <FlatList
           data={DataPost}
+          horizontal={true}
           renderItem={({item}) =>
             <Post
             giamgia={item.giamgia}
@@ -35,5 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ECECEC',
+    alignItems: 'center',
+
   },
 });
