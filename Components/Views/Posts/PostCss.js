@@ -3,6 +3,13 @@ import { StyleSheet } from 'react-native'
 
 const PostCss = StyleSheet.create({
     postView: {
+        width: '92%',
+        borderRadius: 15,
+        backgroundColor: 'white',
+        marginHorizontal: '4%',
+        marginVertical: 10,
+        flex: 1,
+        padding: 20,
         width: '90%',
         borderRadius: 15,
         backgroundColor: 'white',
@@ -34,6 +41,9 @@ const PostCss = StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center',
         backgroundColor:'#146C94',
+
+        borderBottomRightRadius: 10,
+        borderTopRightRadius: 10,
     },
     distance: {
         backgroundColor:'#ECECEC',
@@ -70,6 +80,7 @@ const PostCss = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
+        // margin: ,
         margin: 5,
         flex: 1,
     },
