@@ -5,7 +5,7 @@ import React from 'react'
 // const Separator = () => <View style={styles.separator} />;
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Component from '../Component/Component';
-import DataListXe from '../Component/DataListXe';
+import DataListXe from '../../VisualData/DataListXe';
 const Home = () => {
   return (
     <SafeAreaView style = {styles.container}>
@@ -69,14 +69,14 @@ const Home = () => {
                     <View style = {styles.view5}>
                         <View style={styles.button3}>
                             <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
-                                <FontAwesome name="list-ol" size={24} color="black" />
+                                <Text style = {{color: '#fff', fontWeight:'bold'}}> Loc</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.button4}>
+                        {/* <View style={styles.button4}>
                             <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
                                 <FontAwesome name="map-o" size={24} color="black" />    
                             </TouchableOpacity>
-                    </View>
+                        </View> */}
                     </View>      
                     
                 </View>
@@ -203,8 +203,7 @@ const styles = StyleSheet.create({
         width:30,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'white'
-
+        backgroundColor:'#146C94',
     },
     button4: {
         flex:1,
