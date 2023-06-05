@@ -16,7 +16,6 @@ const Home = () => {
       </TouchableOpacity>
         <FlatList
           data={DataPost}
-          horizontal={true}
           renderItem={({item}) =>
             <Post
             giamgia={item.giamgia}
