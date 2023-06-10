@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import SigninCss from './SigninCss'
-import Account from '../../VirtualData/DataAcountUser';
+import Account from '../../VisualData/DataAcountUser';
 
 const Signin = () => {
   const [userPhone, setUserPhone] = useState('');

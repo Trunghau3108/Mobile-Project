@@ -45,6 +45,7 @@ const Post = (props) => {
             </View>
             <View style={PostCss.in4Car2}>
                 <View style={PostCss.item}>
+
                     <FontAwesome5 name="fan" size={18} color="black" />
                     <Text style={{marginLeft: 5,fontSize: 10}}>{props.tienich1}</Text>
                 </View>
@@ -57,10 +58,10 @@ const Post = (props) => {
                     <Text style={{marginLeft: 5, fontSize: 10}} lineBreakMode='auto'>{props.tienich3}</Text>
                 </View>
             </View>
-            <View style={PostCss.priceView}>
-                <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia} <Text style={{textDecorationLine:'underline'}}>đ</Text></Text>
-                <Text style={{alignSelf: 'flex-end', fontSize: 15}}>/ ngày</Text>
-            </View>
+        </View>
+        <View style={PostCss.priceView}>
+            <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia}</Text>
+            <Text style={{alignSelf: 'flex-end', fontSize: 15}}>usd/ ngày</Text>
         </View>
     </TouchableOpacity>
   )

@@ -1,16 +1,13 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
-
-import Nav from './Components/Views/Logins/Nav'
-import Home from './Components/Views/Homes/Home'
-import Signin from './Components/Views/Logins/Signin'
-import Signup from './Components/Views/Registers/Signup'
-import ForgetPass from './Components/Views/ForgetPass/ForgetPass'
 import Map from './Components/Views/Maps/Map'
+import Home from './Components/Views/Home/Home'
+import Nav from './Components/Views/Logins/Nav'
+import Navigate from './Components/Views/Navigates/Navigate'
 
 const App = () => {
   return (
-    <Map/>
+    <Navigate/>
   )
 }
+
 export default App

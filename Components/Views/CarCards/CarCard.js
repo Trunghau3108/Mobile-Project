@@ -14,7 +14,7 @@ const CarCard = (props) => {
         <Text style={CarCardCss.text}>{props.gia} đ<Text style={{color:'gray', fontSize: 15, fontWeight:'normal'}}>/ Ngày</Text></Text>
       </View>
       <TouchableOpacity style={CarCardCss.touch}>
-          <Text style={{color: 'white'}}>Chi tiết {'>'}</Text>
+          <Text style={{color: 'white', fontSize: 17}}>Chi tiết {'>'}</Text>
       </TouchableOpacity>
     </View>
   )

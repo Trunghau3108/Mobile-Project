@@ -1,19 +1,18 @@
-import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native'
 import React,{useEffect, useState} from 'react'
 import MapView, {Marker} from 'react-native-maps';
-import { Entypo, AntDesign } from '@expo/vector-icons';
+import { Entypo, AntDesign, FontAwesome  } from '@expo/vector-icons';
 import CarCard from '../CarCards/CarCard';
-import DataPost from '../../VirtualData/DataPost';
+import DataPost from '../../VisualData/DataPost';
 
 const Map = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={[styles.dropdownView,{backgroundColor:'red'}]}></View>
-      <View style={[styles.dropdownView,{flexDirection: 'row'}]}>
+      <TouchableOpacity style={[styles.dropdownView,{flexDirection: 'row'}]}>
         <Entypo name="list" size={24} color="black" />
-        <Text style={styles.textDropdown}></Text>
-        <AntDesign name="down" size={24} color="black" />
-      </View>
+        <Text style={styles.textDropdown} numberOfLines={1}>Ô tô, Tất cả kiểu xe, Tất cả hộp số, Tất cả hãng xe</Text>
+        <AntDesign name="down" size={20} color="black" />
+      </TouchableOpacity>
       <MapView style={styles.map}/>
       <View style={styles.pageView}>
         <FlatList
@@ -44,8 +43,9 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     dropdownView: {
-      height:70,
+      height:60,
       justifyContent: 'center',
+      alignItems:'center',
       marginHorizontal: '5%',
     },
     pageView: {
@@ -54,15 +54,9 @@ const styles = StyleSheet.create({
       position:'absolute',
       marginTop: 555,
     },
-    page: {
-      width:250,
-      height: 150,
-      backgroundColor: 'red',
-      borderRadius: 15,
-      marginRight: 10,
-    },
     textDropdown: {
-      height: '80%',
-      backgroundColor: 'blue',
+      width: '80%',
+      color:'gray',
+      marginHorizontal: 20,
     },
 });
