@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import MainProfile from './Profile/MainProfile'
-import UpdateUserProfile from './Profile/UpdateUserProfile'
-import CarBorrowList from './Profile/CarBorrowList'
-import UserPrivateInfo from './Profile/UserPrivateInfo'
+import MainProfile from './MainProfile'
+import UpdateUserProfile from '../UpdateUserProfile/UpdateUserProfile'
+import CarBorrowList from '../CarBorrowList/CarBorrowList'
+import UserPrivateInfo from '../UserPrivateInfo/UserPrivateInfo'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 

@@ -1,9 +1,9 @@
 import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
 import React from 'react'
-import ImageOnly from './ProfileComponent/ImageOnly'
+import ImageOnly from '../Profile/ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../VisualData/DataBorrowCar'
 // import Component from '../Component/Component'
-import OrderCarList from './ProfileComponent/OrderCarList'
+import OrderCarList from '../Profile/ProfileComponent/OrderCarList'
 const CarBorrowList = () => {
   return (
     <View style = {styles.ViewListTong}>
