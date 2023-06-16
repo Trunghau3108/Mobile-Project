@@ -2,7 +2,6 @@ import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Bu
 import React from 'react'
 import ImageOnly from './ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../VisualData/DataBorrowCar'
-// import Component from '../Component/Component'
 import OrderCarList from './ProfileComponent/OrderCarList'
 const CarBorrowList = () => {
   return (

@@ -9,104 +9,88 @@ import DataListXe from '../../VisualData/DataListXe';
 const Home = () => {
   return (
     <SafeAreaView style = {styles.container}>
-
-        {/* <View style = {styles.view1}>
-            <View style = {{flex :1, flexDirection:'row'}}>
-                <FontAwesome name="chevron-left" size={24} color="black" />
-                <Text> dau buoi Trung hau </Text>
-            </View>
-        </View> */}
         <View style = {styles.view2}>
-                <View style = {styles.view4}>
-                    <View style={styles.title}>
-                        <View style ={{flexDirection: 'row', flex:2}}>
-                            <Entypo name="location" size={24} color="black" />
-                        </View>
-                        <View style = {styles.locationtext}>
-                            <Text >
-                            Thanh pho Ho Chi Minh
-                            </Text>  
-                            <Text>
-                                14:30 24/05/2023
-                            </Text>
-                        </View>
-                    </View>          
-                    <View style={styles.fixToText}>
+            <View style = {styles.view4}>
+                <View style={styles.title}>
+                    <View style ={{flexDirection: 'row', flex:2}}>
+                        <Entypo name="location" size={24} color="black" />
+                    </View>
+                    <View style = {styles.locationtext}>
+                        <Text >
+                        Thanh pho Ho Chi Minh
+                        </Text>  
+                        <Text>
+                            14:30 24/05/2023
+                        </Text>
+                    </View>
+                </View>          
+                <View style={styles.fixToText}>
+                    <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
+                        <Text>
+                            thay doi
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View> 
+            <View style = {styles.view4}>
+                <View style={styles.view7}>
+                    <View style = {{flex:2}}>
+                        <FontAwesome name="list" size={24} color="black" />
+                        </View>  
+                            <View style = {{flex:8}}>
+                                <Text style = {{margin:10, fontSize:17}}> Oto, Kieu Xe, Hop So</Text>
+                            </View> 
+                    </View> 
+                <View style = {styles.button5}>
                         <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
-                            <Text>
-                                thay doi
-                            </Text>
+                            <FontAwesome name="chevron-down" size={24} color="black" />
+                        </TouchableOpacity>                       
+                </View>
+            </View>
+            <View style = {styles.view4}>
+                <View style = {styles.view6}>
+                        <View style = {{flex:1}}>
+                        <FontAwesome name="list" size={24} color="black" />
+                        </View>  
+                        <View style = {{flex:8}}>
+                            <Text style = {{margin:10, fontSize:17}} numberOfLines={1}> Gia tu thap den cao</Text>
+                        </View>   
+                        <View style = {{flex:1}}>
+                            <FontAwesome name="chevron-down" size={24} color="black" />
+                        </View>  
+                </View>
+                <View style = {styles.view5}>
+                    <View style={styles.button3}>
+                        <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
+                            <Text style = {{color: '#fff', fontWeight:'bold'}}> Lọc</Text>
                         </TouchableOpacity>
                     </View>
-                </View> 
-                <View style = {styles.view4}>
-                    <View style={styles.view7}>
-                        <View style = {{flex:2}}>
-                            <FontAwesome name="list" size={24} color="black" />
-                            </View>  
-                                <View style = {{flex:8}}>
-                                    <Text style = {{margin:10, fontSize:17}}> Oto, Kieu Xe, Hop So</Text>
-                                </View> 
-                        </View> 
-                    <View style = {styles.button5}>
-                            <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
-                                <FontAwesome name="chevron-down" size={24} color="black" />
-                            </TouchableOpacity>                       
-                    </View>
-                </View>
-                <View style = {styles.view4}>
-                    <View style = {styles.view6}>
-                           <View style = {{flex:1}}>
-                           <FontAwesome name="list" size={24} color="black" />
-                           </View>  
-                            <View style = {{flex:8}}>
-                                <Text style = {{margin:10, fontSize:17}}> Gia tu thap den ca...</Text>
-                            </View>   
-                            <View style = {{flex:1}}>
-                                <FontAwesome name="chevron-down" size={24} color="black" />
-                            </View>  
-                    </View>
-                    <View style = {styles.view5}>
-                        <View style={styles.button3}>
-                            <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
-                                <Text style = {{color: '#fff', fontWeight:'bold'}}> Loc</Text>
-                            </TouchableOpacity>
-                        </View>
-                        {/* <View style={styles.button4}>
-                            <TouchableOpacity onPress={() => Alert.alert('chuc mung ban da bi lua')}>
-                                <FontAwesome name="map-o" size={24} color="black" />    
-                            </TouchableOpacity>
-                        </View> */}
-                    </View>      
-                    
-                </View>
+                </View>      
                 
-
+            </View>
         </View>
         <View style = {styles.scrollview1}>
-            <ScrollView style = {styles.view3}>
-            
-                    <FlatList
-                        data = {DataListXe}
-                        renderItem={({item}) =>
-                        <Component
-                            saleoff = {item.saleoff}
-                            distance = {item.distance}
-                            carname = {item.carname}
-                            autogear = {item.autogear}
-                            gaspump = {item.gaspump}
-                            seat = {item.seat}
-                            fan = {item.fan}
-                            location = {item.location}
-                            bluetooth = {item.bluetooth}
-                            price = {item.price}
-                            image= {item.image}
-                            />
-                        }
-                    />
-            </ScrollView>
+            <View style = {styles.view3}>    
+                <FlatList
+                    data = {DataListXe}
+                    renderItem={({item}) =>
+                    <Component
+                        saleoff = {item.saleoff}
+                        distance = {item.distance}
+                        carname = {item.carname}
+                        autogear = {item.autogear}
+                        gaspump = {item.gaspump}
+                        seat = {item.seat}
+                        fan = {item.fan}
+                        location = {item.location}
+                        bluetooth = {item.bluetooth}
+                        price = {item.price}
+                        image= {item.image}
+                        />
+                    }
+                />
+            </View>
         </View>
-       
     </SafeAreaView>
   )
 }

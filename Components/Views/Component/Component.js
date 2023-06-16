@@ -1,3 +1,4 @@
+//trùng tên
 import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React from 'react'
 import { FontAwesome, FontAwesome5} from '@expo/vector-icons';

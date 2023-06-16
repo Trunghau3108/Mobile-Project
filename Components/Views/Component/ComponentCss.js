@@ -12,9 +12,9 @@ const ComponentCss = StyleSheet.create({
         width:'95%',
         alignSelf: 'center',
         borderRadius : 7,
+        marginBottom: 10,
     },
     ViewthongTin1: {
-        // flex:1,
         flex:1,
         height:140
     },

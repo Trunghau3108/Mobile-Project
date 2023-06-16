@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+// Stack Navigate Profile
 import React from 'react'
 import MainProfile from './Profile/MainProfile'
 import UpdateUserProfile from './Profile/UpdateUserProfile'
