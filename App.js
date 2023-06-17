@@ -12,13 +12,15 @@ import UserPrivateInfo from './Components/Views/UserPrivateInfo/UserPrivateInfo'
 import Nav from './Components/Views/Profile/Nav';
 import Btap from './Components/Btap';
 import CarOrderedInfo from './Components/Views/CarOrderedInfo/CarOrderedInfo';
+import CarDetails from './Components/Views/CarDetails/CarDetails';
 
+import CarListFilter from './Components/Views/CarListFilter/CarListFilter';
 import React from 'react'
 // import Signin from '../Views/Logins/Signin'
 // import Signup
 // import ForgetPass from './Views/ForgetPass/ForgetPass'
 // import Map from './Components/Views/Maps/Map';
-
+import Baitapcuathay from './Baitapcuathay';
 
 
 const KeyboardAvoidingComponent = () => {}
@@ -27,7 +29,11 @@ const App = () => {
     // <Map/>
     // <Nav/>
     // <Btap/>
-    <CarOrderedInfo/>
+    // <CarOrderedInfo/>
+    // <Home/>
+    <CarDetails/>
+    // <CarListFilter/>
+    // <Baitapcuathay/>
     
   );
 }

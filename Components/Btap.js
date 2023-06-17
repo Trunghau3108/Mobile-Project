@@ -12,6 +12,7 @@ import {
   Alert,
   SafeAreaView,
   TouchableHighlight,
+  ScrollView
 } from 'react-native';
 
 const Btap = () => {
@@ -23,12 +24,16 @@ const Btap = () => {
 
   const handleLap = () => {
     if (isTimerStart) {
-      setLapTimes((prevLapTimes) => [...prevLapTimes, currentTime]);
+      setLapTimes((prevLapTimes) => [...prevLapTimes, currentTime - initialTime]);
+      setInitialTime(currentTime);
     }
   };
 
   const handleClearLaps = () => {
+    setIsTimerStart(false);
     setLapTimes([]);
+    setInitialTime(0);
+    setCurrentTime(0);
   };
 
   useEffect(() => {
@@ -60,7 +65,7 @@ const Btap = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.timerWrapper}>
-          <Text style={styles.timer}>{formatTime(currentTime)}</Text>
+          <Text style={styles.timer}>{formatTime(currentTime - initialTime)}</Text>
         </View>
 
         <View style={styles.buttonWrapper}>
@@ -91,19 +96,19 @@ const Btap = () => {
               handleClearLaps();
             }}
           >
-            <Text>CLEAR LAP</Text>
+            <Text>CLEAR LAP & STOP CLOCK</Text>
           </TouchableHighlight>
         </View>
       </View>
 
-      <View style={styles.footer}>
+      <ScrollView style={styles.footer}>
         {lapTimes.map((lapTime, index) => (
           <View key={index} style={styles.lap}>
             <Text style={styles.lapText}>{`Lap #${index + 1}`}</Text>
             <Text style={styles.lapText}>{formatTime(lapTime)}</Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 };
