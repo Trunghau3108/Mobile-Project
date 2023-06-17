@@ -1,7 +1,7 @@
 import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
 import React from 'react'
 import UpdateUserInfoCss from './UpdateUserInfoCss'
-import UserInfo1 from './ProfileComponent/UserInfo1'
+import UserInfo1 from '../Profile/ProfileComponent/UserInfo1'
 import { FontAwesome } from '@expo/vector-icons';
 
 const UpdateUserProfile = () => {

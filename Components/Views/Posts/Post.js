@@ -118,6 +118,17 @@ const Post = (props) => {
                     </View>
                 </View>
             </View>
+<<<<<<< HEAD
+            <View style={PostCss.priceView}>
+                <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia} <Text style={{textDecorationLine:'underline'}}>đ</Text></Text>
+                <Text style={{alignSelf: 'flex-end', fontSize: 15}}>/ ngày</Text>
+            </View>
+=======
+        </View>
+        <View style={PostCss.priceView}>
+            <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia}</Text>
+            <Text style={{alignSelf: 'flex-end', fontSize: 15}}>usd/ ngày</Text>
+>>>>>>> 643e98e716ac06ec7a1708d58f4d1914dde22a7b
         </View>
         <View style={PostCss2.tag} >
             <Text>{props.giamgia}</Text>

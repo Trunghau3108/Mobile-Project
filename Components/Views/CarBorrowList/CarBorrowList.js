@@ -1,6 +1,6 @@
 import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
 import React from 'react'
-import ImageOnly from './ProfileComponent/ImageOnly'
+import ImageOnly from '../Profile/ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../VisualData/DataBorrowCar'
 import OrderCarList from './ProfileComponent/OrderCarList'
 const CarBorrowList = () => {

@@ -91,5 +91,8 @@ const Signin = () => {
     </SafeAreaView>
   )
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 643e98e716ac06ec7a1708d58f4d1914dde22a7b
 export default Signin
