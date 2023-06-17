@@ -73,7 +73,7 @@ const Signin = () => {
         </View>
         <TouchableOpacity 
           style={SigninCss.dangnhap}
-          onPress={Dangnhap}
+          onPress={() =>{nagivation.replace('Home')}}
         >
           <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Nhập</Text>
         </TouchableOpacity>

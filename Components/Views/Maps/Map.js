@@ -7,7 +7,7 @@ import DataPost from '../../VisualData/DataPost';
 
 const Map = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <TouchableOpacity style={[styles.dropdownView,{flexDirection: 'row'}]}>
         <Entypo name="list" size={24} color="black" />
         <Text style={styles.textDropdown} numberOfLines={1}>Ô tô, Tất cả kiểu xe, Tất cả hộp số, Tất cả hãng xe</Text>
@@ -28,7 +28,7 @@ const Map = () => {
           }
         />
         </View>
-    </SafeAreaView>
+    </View>
   )
 }
 

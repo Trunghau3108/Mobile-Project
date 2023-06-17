@@ -1,14 +1,20 @@
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList} from 'react-native'
 import React from 'react'
-// import { MultipleSelectList } from 'react-native-dropdown-select-list'
-// import LogoCFA from 'Mobile-Project\assets'
-// const Separator = () => <View style={styles.separator} />;
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Component from '../Component/Component';
 import DataListXe from '../../VisualData/DataListXe';
+import Post from '../Posts/Post';
+import Map from '../Maps/Map';
+import DataPost from '../../VisualData/DataPost';
+
+const Stack = createNativeStackNavigator();
+
 const Home = () => {
   return (
-    <SafeAreaView style = {styles.container}>
+    <View style = {styles.container}>
         <View style = {styles.view2}>
             <View style = {styles.view4}>
                 <View style={styles.title}>
@@ -72,26 +78,27 @@ const Home = () => {
         <View style = {styles.scrollview1}>
             <View style = {styles.view3}>    
                 <FlatList
-                    data = {DataListXe}
+                    data = {DataPost}
                     renderItem={({item}) =>
-                    <Component
-                        saleoff = {item.saleoff}
-                        distance = {item.distance}
-                        carname = {item.carname}
-                        autogear = {item.autogear}
-                        gaspump = {item.gaspump}
-                        seat = {item.seat}
-                        fan = {item.fan}
-                        location = {item.location}
-                        bluetooth = {item.bluetooth}
-                        price = {item.price}
-                        image= {item.image}
-                        />
+                    <Post
+                        giamgia={item.giamgia}
+                        khcach={item.khcach}
+                        tenxe={item.tenxe}
+                        hopso={item.hopso}
+                        nhienlieu={item.nhienlieu}
+                        kieuxe={item.kieuxe}
+                        tienich1={item.tienich1}
+                        tienich2={item.tienich2}
+                        tienich3={item.tienich3}
+                        gia={item.gia}
+                        imguri={item.uri}
+                        map="Map"
+                    />
                     }
                 />
             </View>
         </View>
-    </SafeAreaView>
+    </View>
   )
 }
 
