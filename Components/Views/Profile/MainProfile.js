@@ -32,6 +32,7 @@ const MainProfile = () => {
             <ChosenList
                 tenmuc="Đăng xuất"
                 icon1="sign-out"
+                navi="Signin"
             />
         </View>
     </View>
