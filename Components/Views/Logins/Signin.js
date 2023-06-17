@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import SigninCss from './SigninCss'
-import Account from '../../VirtualData/DataAcountUser';
+import Account from '../../VisualData/DataAcountUser';
 
 const Signin = () => {
   const [userPhone, setUserPhone] = useState('');
@@ -91,4 +91,8 @@ const Signin = () => {
     </SafeAreaView>
   )
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 643e98e716ac06ec7a1708d58f4d1914dde22a7b
 export default Signin

@@ -1,6 +1,6 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { AntDesign,Entypo,FontAwesome } from '@expo/vector-icons';
+import {Entypo,FontAwesome } from '@expo/vector-icons';
 import MainProfileCss from '../MainProfileCss';
 import { useNavigation } from '@react-navigation/native';
 

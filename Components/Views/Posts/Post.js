@@ -14,7 +14,6 @@ const Post = (props) => {
                 </View>
                 <View style={PostCss.distance}>
                     <FontAwesome5 name="map-marker-alt" size={20} color="black"  />
-                    <FontAwesome5 name="map-marker-alt" size={24} color="black"  />
                     <Text style={{marginLeft: 5}}>{props.khcach}</Text>
                 </View>
             </View>
@@ -59,10 +58,17 @@ const Post = (props) => {
                     <Text style={{marginLeft: 5, fontSize: 10}} lineBreakMode='auto'>{props.tienich3}</Text>
                 </View>
             </View>
+<<<<<<< HEAD
             <View style={PostCss.priceView}>
                 <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia} <Text style={{textDecorationLine:'underline'}}>đ</Text></Text>
                 <Text style={{alignSelf: 'flex-end', fontSize: 15}}>/ ngày</Text>
             </View>
+=======
+        </View>
+        <View style={PostCss.priceView}>
+            <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia}</Text>
+            <Text style={{alignSelf: 'flex-end', fontSize: 15}}>usd/ ngày</Text>
+>>>>>>> 643e98e716ac06ec7a1708d58f4d1914dde22a7b
         </View>
         <View style={PostCss.priceView}>
             <Text style={{fontSize: 25, fontWeight: 'bold', color:'#146C94'}}>{props.gia}</Text>

@@ -2,8 +2,7 @@ import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Bu
 import React from 'react'
 import ImageOnly from '../Profile/ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../VisualData/DataBorrowCar'
-// import Component from '../Component/Component'
-import OrderCarList from '../Profile/ProfileComponent/OrderCarList'
+import OrderCarList from './ProfileComponent/OrderCarList'
 const CarBorrowList = () => {
   return (
     <View style = {styles.ViewListTong}>
