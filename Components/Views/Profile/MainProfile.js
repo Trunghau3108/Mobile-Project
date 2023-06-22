@@ -6,7 +6,6 @@ import MainProfileCss from './MainProfileCss';
 import UserInfo1 from './ProfileComponent/UserInfo1';
 import { useNavigation } from '@react-navigation/native';
 const MainProfile = () => {
-    const navigation = useNavigation();
   return (
     <View style= {MainProfileCss.ViewProfile}>
         <UserInfo1 navig="UserPrivate"/>

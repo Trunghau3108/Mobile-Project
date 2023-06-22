@@ -7,6 +7,7 @@ import UserPrivateInfo from './Profile/UserPrivateInfo'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+
 const Stack = createNativeStackNavigator();
 
 const Nav = () => {
@@ -22,4 +23,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default Nav  
