@@ -6,24 +6,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { FontAwesome } from '@expo/vector-icons'; 
 
 //import view cho StackLogin
-import Signin from './Components/Views/Logins/Signin'
-import Signup from './Components/Views/Registers/Signup'
-import ForgetPass from './Components/Views/ForgetPass/ForgetPass'
+import Signin from './MainComponents/Views/LoginFeatures/Logins/Signin'
+import Signup from './MainComponents/Views/LoginFeatures/Registers/Signup'
+import ForgetPass from './MainComponents/Views/LoginFeatures/ForgetPass/ForgetPass'
 
 //import view cho StackLogin
-import MainProfile from './Components/Views/Profile/MainProfile'
-import UpdateUserProfile from './Components/Views/Profile/UpdateUserProfile'
-import CarBorrowList from './Components/Views/Profile/CarBorrowList'
-import UserPrivateInfo from './Components/Views/Profile/UserPrivateInfo'
+import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProfile'
+import UpdateUserProfile from './MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile'
+import CarBorrowList from './MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList'
+import UserPrivateInfo from './MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo'
 
 //import view cho TabHome
-import Home from './Components/Views/Home/Home'
-import History from './Components/Views/Historys/History'
-import Support from './Components/Views/Supports/Support'
+import Home from './MainComponents/Views/HomesFeatures/Home/Home'
+import History from './MainComponents/Views/HomesFeatures/Historys/History'
+import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 
 //import phụ
-import Post from './Components/Views/Posts/Post'
-import Map from './Components/Views/Maps/Map'
+import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
