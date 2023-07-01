@@ -5,11 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Post from '../../ItemComponent/Posts/Post';
 import DataPost from '../../../VisualData/DataPost';
+import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 
 const Home = () => {
   return (
     <View style = {styles.container}>
-        <View style = {styles.view2}>
+        {/* <View style = {styles.view2}>
             <View style = {styles.view4}>
                 <View style={styles.title}>
                     <View style ={{flexDirection: 'row', flex:2}}>
@@ -68,7 +69,8 @@ const Home = () => {
                 </View>      
                 
             </View>
-        </View>
+        </View> */}
+        <CarListFilter/>
         <View style = {styles.scrollview1}>
             <View style = {styles.view3}>    
                 <FlatList
