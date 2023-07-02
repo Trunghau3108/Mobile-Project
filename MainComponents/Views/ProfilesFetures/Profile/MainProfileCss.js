@@ -54,12 +54,13 @@ const MainProfileCss = StyleSheet.create({
         height:90,
         alignItems:'center',
         marginBottom:10,
+        width:'100%',
     },
     IconProfile:{
         marginHorizontal:30,
         borderWidth:2,
         height:55,
-        width:55,
+        width:'15%',
         justifyContent:'center',
         alignItems:'center',
         borderRadius:7,
@@ -67,8 +68,8 @@ const MainProfileCss = StyleSheet.create({
 
     }, 
     IconProfile2:{
-        marginHorizontal:330,
-        position:'absolute'
+        position:'relative',
+        width:'10%',
     }
 })
 

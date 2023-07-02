@@ -16,7 +16,7 @@ const ChosenList = (props) => {
         <View style = {MainProfileCss.IconProfile}>
             <FontAwesome name={props.icon1} size={25} color="black" />
         </View>
-            <Text style={{fontSize:15,fontWeight:'bold'}}>{props.tenmuc}</Text>
+            <Text style={{fontSize:15,fontWeight:'bold',width:'55%'}}>{props.tenmuc}</Text>
         <View style ={MainProfileCss.IconProfile2}>
             <Entypo name="chevron-right" size={30} color="black" />
         </View>

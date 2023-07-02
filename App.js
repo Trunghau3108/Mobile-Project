@@ -24,7 +24,7 @@ import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
-
+import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
 
@@ -34,6 +34,11 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
+
+    // <Main/>
+    // <FindCarFilter/>
+//     <UserPrivateInfo/>
+
     //<VerifyCode/>
     //<Main/>
     //<HeaderComp/>
