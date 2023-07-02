@@ -1,0 +1,8 @@
+const DataListXe = [
+    {carname:'Xe A',autogear: 'So Tu Dong', gaspump:'xang', seat:'4 cho ngoi', fan: 'dieu hoa A/C', location :'Dinh vi',bluetooth: 'bluetooth', price: '500000', distance:'1,3km', saleoff: '-5% tong gia', image:'https://maitangtrongoi.com/wp-content/uploads/2023/02/hinh-anh-xe-tang-le-chuyen-dung.jpg'},
+    {carname:'Xe B',autogear: 'So san', gaspump:'xang', seat:'7 cho ngoi', fan: 'dieu hoa A/C', location :'Dinh vi',bluetooth: 'bluetooth', price: '1000000', distance:'8,3km', saleoff: '-15% tong gia',image: 'https://vnn-imgs-f.vgcloud.vn/2019/02/22/06/o-to-khach-san.jpg'},
+    {carname:'Xe C',autogear: 'So vo cap', gaspump:'xang', seat:'4 cho ngoi', fan: 'dieu hoa A/C', location :'Dinh vi',bluetooth: 'no bluetooth', price: '5000000', distance:'9,4km', saleoff: '-25% tong gia', image:'https://maitangthanhbinh.com/images/avata/xe-dua-tang.jpg'},
+    {carname:'Xe D',autogear: 'So Tu Dong', gaspump:'xang', seat:'80 cho ngoi', fan: 'dieu hoa A/C', location :'Dinh vi',bluetooth: 'bluetooth', price: '700000', distance:'0,5km', saleoff: '-15% tong gia',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH-CeuUgu5pUXuBhD6RU-Ryu28tWX6hILF6w5nOlnCXK6_SIBipj_J2nFemrQl6qRccw0&usqp=CAU'},
+    {carname:'Xe E',autogear: 'Ly hop kep', gaspump:'xang', seat:'4 cho ngoi', fan: 'dieu hoa A/C', location :'Dinh vi',bluetooth: 'bluetooth', price: '600000', distance:'1km', saleoff: '-55% tong gia',image:'https://cdn.24h.com.vn/upload/4-2020/images/2020-12-07/1--copy--1607345357-527-width650height400.jpg'},
+];
+export default DataListXe;
