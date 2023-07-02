@@ -5,6 +5,7 @@ import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Post from '../../ItemComponent/Posts/Post';
 import DataPost from '../../../VisualData/DataPost';
+import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 
 const Home = () => {
   return (
@@ -69,9 +70,13 @@ const Home = () => {
                 
             </View>
         </View> */}
-        <View>
-            <CarListFilter/>
-        </View>
+
+//         <View>
+//             <CarListFilter/>
+//         </View>
+
+        <CarListFilter/>
+
         <View style = {styles.scrollview1}>
             <View style = {styles.view3}>    
                 <FlatList

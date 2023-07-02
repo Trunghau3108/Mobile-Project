@@ -1,23 +1,25 @@
-import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Dimensions } from 'react-native'
 import React,{useEffect, useState} from 'react'
 import MapView, {Marker} from 'react-native-maps';
 import { Entypo, AntDesign, FontAwesome  } from '@expo/vector-icons';
 import CarCard from '../../ItemComponent/CarCards/CarCard'
 import DataPost from '../../../VisualData/DataPost';
+import HeaderComp from '../../ItemComponent/HeaderComp/HeaderComp';
+
+const { width, height } = Dimensions.get('screen');
 
 const Map = () => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={[styles.dropdownView,{flexDirection: 'row'}]}>
-        <Entypo name="list" size={24} color="black" />
-        <Text style={styles.textDropdown} numberOfLines={1}>Ô tô, Tất cả kiểu xe, Tất cả hộp số, Tất cả hãng xe</Text>
-        <AntDesign name="down" size={20} color="black" />
-      </TouchableOpacity>
+    <SafeAreaView style={styles.container}>
+      <View>
+      <Entypo name="chevron-left" size={24} color="black" />
+      
+      </View>
       <MapView style={styles.map}/>
       <View style={styles.pageView}>
         <FlatList
           horizontal={true}
-          style={{paddingLeft: 50}}
+          style={{}}
           data={DataPost}
           renderItem={({item}) =>
             <CarCard
@@ -28,7 +30,7 @@ const Map = () => {
           }
         />
         </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -36,23 +38,18 @@ export default Map
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: width,
+        height: height,
     },
     map: {
-        width: '100%',
-        height: '100%',
-    },
-    dropdownView: {
-      height:60,
-      justifyContent: 'center',
-      alignItems:'center',
-      marginHorizontal: '5%',
+        width: width,
+        height: height,
     },
     pageView: {
-      width:'100%',
-      paddingVertical: 10,
+      width: width,
+      height: height *40/100,
       position:'absolute',
-      marginTop: 555,
+      marginTop:height * 60/100,
     },
     textDropdown: {
       width: '80%',

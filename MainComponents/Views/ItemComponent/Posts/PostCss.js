@@ -40,6 +40,7 @@ const PostCss = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         backgroundColor: '#ECECEC',
+
     },
     img: {
         width: "96%",

@@ -4,10 +4,12 @@ import React from 'react'
 const UserPrivateInfoCss  = StyleSheet.create({
     PrivateInfo:{
         flex:1,
-        padding:'2%'
+        padding:'2%',
     },
     InputInfo:{
         flex:8,
+        // backgroundColor:'red',
+        width:'100%'
     },
     NameInput:{
         padding:10,
@@ -86,16 +88,17 @@ const UserPrivateInfoCss  = StyleSheet.create({
         backgroundColor:'#EEFAFF'
     },
     ButtonXacNhan:{
-        backgroundColor:'red',
+        // backgroundColor:'red',
         height:36,
         width:150,
         // flexDirection:'flex-end'
-        marginLeft:200,
-        marginTop:20,
+        // marginLeft:200,
+        marginTop:60,
         backgroundColor:'#146C94',
-        borderRadius:4,
+        borderRadius:10,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        alignSelf:'center'
 
 
     }
