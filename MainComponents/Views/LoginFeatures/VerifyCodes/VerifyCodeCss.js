@@ -1,19 +1,20 @@
-import { StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
 
-const ForgetPassCss = StyleSheet.create({
+const VerifyCodeCss =StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor:'white',
     },
     img: {
-        width: 450,
-        height: 250,
+        width: 300,
+        height: 200,
         marginBottom: 20,
     },
     imgView: {
         flex: 1,
         alignItems:'center',
-        justifyContent:'flex-end',
+        justifyContent:"flex-end",
     },
     main: {
         flex: 1,
@@ -40,7 +41,7 @@ const ForgetPassCss = StyleSheet.create({
     },
     touchView: {
         alignItems:'center',
-        paddingTop: 10,
+        paddingTop: 20,
     },
     dangki: {
         backgroundColor:'#146C94',
@@ -51,9 +52,8 @@ const ForgetPassCss = StyleSheet.create({
         alignItems:'center',
     },
     dangnhapview: {
-        marginTop: 10,
         flexDirection:'row',
-        top: 150,
+        top: 100,
         justifyContent: 'flex-end',
     },
     text:{
@@ -61,4 +61,4 @@ const ForgetPassCss = StyleSheet.create({
     },
 });
 
-export default ForgetPassCss
+export default VerifyCodeCss

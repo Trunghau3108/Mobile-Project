@@ -9,6 +9,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Signin from './MainComponents/Views/LoginFeatures/Logins/Signin'
 import Signup from './MainComponents/Views/LoginFeatures/Registers/Signup'
 import ForgetPass from './MainComponents/Views/LoginFeatures/ForgetPass/ForgetPass'
+import VerifyCode from './MainComponents/Views/LoginFeatures/VerifyCodes/VerifyCode'
 
 //import view cho StackLogin
 import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProfile'
@@ -24,15 +25,24 @@ import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
+//import for dev
+import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
 const App = () => {
   return (
+
     // <Main/>
     // <FindCarFilter/>
-    <UserPrivateInfo/>
+//     <UserPrivateInfo/>
+
+    //<VerifyCode/>
+    //<Main/>
+    //<HeaderComp/>
+    <Map/>
   )
 }
 
@@ -56,6 +66,7 @@ const StackLogin = () => {
           <Stack.Screen name='Signin' component={Signin} />
           <Stack.Screen name='Signup' component={Signup}/>
           <Stack.Screen name='ForgetPass' component={ForgetPass}/>
+          <Stack.Screen name='Verify' component={VerifyCode}/>
           <Stack.Screen name='Home' component={TabHome}/>
           <Stack.Screen name='Map' component={Map}/>
       </Stack.Navigator>
