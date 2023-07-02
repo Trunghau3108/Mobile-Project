@@ -24,16 +24,23 @@ import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
+
+import MainScreen from './MainComponents/Views/HomesFeatures/MainScreen/MainScreen'
+
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
+
+
 const App = () => {
   return (
+
+    // <Main/>
+//     <MainScreen/>
 
     // <Main/>
     // <FindCarFilter/>
@@ -43,6 +50,7 @@ const App = () => {
     //<Main/>
     //<HeaderComp/>
     <Map/>
+
   )
 }
 

@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList} from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Post from '../../ItemComponent/Posts/Post';
 import DataPost from '../../../VisualData/DataPost';
@@ -70,7 +70,13 @@ const Home = () => {
                 
             </View>
         </View> */}
+
+//         <View>
+//             <CarListFilter/>
+//         </View>
+
         <CarListFilter/>
+
         <View style = {styles.scrollview1}>
             <View style = {styles.view3}>    
                 <FlatList
