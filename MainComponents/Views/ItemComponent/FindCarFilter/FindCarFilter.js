@@ -23,7 +23,6 @@ const FindCarFilter = () => {
             <View style= {{ marginLeft:250}}>
                 <Entypo name="chevron-down" size={24} color="black" />
             </View>
-            
         </TouchableOpacity>
         <View style = {styles.ChonTime}>
             <Text>Thang Lam Xong thi import Calendar vao day</Text>

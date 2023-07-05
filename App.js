@@ -15,7 +15,7 @@ import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProf
 import UpdateUserProfile from './MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile'
 import CarBorrowList from './MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList'
 import UserPrivateInfo from './MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo'
-
+import CarDetails from './MainComponents/Views/ItemComponent/CarDetails/CarDetails'
 //import view cho TabHome
 import Home from './MainComponents/Views/HomesFeatures/Home/Home'
 import History from './MainComponents/Views/HomesFeatures/Historys/History'
@@ -31,8 +31,7 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     // <Main/>
-    // <FindCarFilter/>
-    <UserPrivateInfo/>
+    <CarDetails/>
   )
 }
 
