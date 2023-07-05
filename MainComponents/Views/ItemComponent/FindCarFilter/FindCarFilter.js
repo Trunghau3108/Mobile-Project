@@ -1,18 +1,39 @@
 import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
-import React from 'react'
-import { FontAwesome5,Fontisto,Octicons,Entypo  } from '@expo/vector-icons';
+import React, { useState } from 'react'
+import { FontAwesome5,Fontisto,Octicons,Entypo, AntDesign } from '@expo/vector-icons';
 
 const FindCarFilter = () => {
+    const [isCarSelected, setCarSelected] = useState(false);
+    const [isMotorSelected, setMotorSelected] = useState(false);
+    const handleCarPress = () => {
+        setCarSelected(!isCarSelected);
+        setMotorSelected(false);
+      };
+    const handleMotorPress = () => {
+        setMotorSelected(!isMotorSelected);
+        setCarSelected(false);
+      };
+    
   return (
     <View style = {styles.FindCarTong}>
         <View style = {styles.ChonXe}>
-            <TouchableOpacity style = {styles.ChonOto}>
-                <FontAwesome5 name="car" size={24} color="black" style={{ marginLeft: 10 }}/>
-                <Text style = {{marginLeft:10}}>Ô tô</Text>
+            <TouchableOpacity style = {[styles.ChonOto, 
+            { backgroundColor: isCarSelected ? '#146C94' : '#ECECEC' }
+            ]} onPress={handleCarPress}>
+                <FontAwesome5 name="car" size={24} color={isCarSelected ? 'white':'black'}  style={{ marginLeft: 10 }}/>
+                <Text style = {{marginLeft:10,color: isCarSelected ? 'white': 'black'}}>Ô tô</Text>
+                {isCarSelected ?(
+                    <AntDesign name="check" size={24} style ={{marginLeft:50}} color={isCarSelected ? 'white':'black'} />
+                ): null}
             </TouchableOpacity>
-            <TouchableOpacity style = {styles.ChonMoTo}>
-                <Fontisto name="motorcycle" size={24} color="black" style={{ marginLeft: 10 }}/>
-                <Text style = {{marginLeft:10}}>Xe máy</Text>
+            <TouchableOpacity style = {[styles.ChonMoTo, 
+            { backgroundColor: isMotorSelected ? '#146C94' : '#ECECEC' }
+            ]} onPress={handleMotorPress}>
+                <Fontisto name="motorcycle" size={24} color={isMotorSelected ? 'white':'black'} style={{ marginLeft: 10 }}/>
+                <Text style = {{marginLeft:10,color: isMotorSelected ? 'white': 'black'}}>Xe máy</Text>
+                {isMotorSelected ?(
+                    <AntDesign name="check" size={24} style ={{marginLeft:50}} color={isMotorSelected ? 'white':'black'} />
+                ): null}
             </TouchableOpacity>
         </View>
         <TouchableOpacity style = {styles.ChonDiaDiem}>
@@ -20,7 +41,7 @@ const FindCarFilter = () => {
             <Text style = {{ marginLeft: 10 }}>
                 Hà Nội
             </Text>
-            <View style= {{ marginLeft:250}}>
+            <View style= {{ marginLeft:220}}>
                 <Entypo name="chevron-down" size={24} color="black" />
             </View>
         </TouchableOpacity>
@@ -42,6 +63,7 @@ const styles = StyleSheet.create({
     FindCarTong:{
         marginTop:40,
         height:270,
+        padding:20
 
     },  
     ChonXe:{
