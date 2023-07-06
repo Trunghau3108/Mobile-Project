@@ -60,7 +60,7 @@ const Post = (props) => {
             </View>
         </View>
         <View style={PostCss.tag} >
-            <Text>{props.giamgia}</Text>
+            <Text style={{color: 'white'}}>{props.giamgia}</Text>
         </View>
     </View>
   )

@@ -11,9 +11,7 @@ const VerifyCode = () => {
     <SafeAreaView style={VerifyCodeCss.container}>
       <View style={VerifyCodeCss.imgView}>
         <Image
-          source={{
-            uri:'https://png.pngtree.com/png-vector/20220527/ourmid/pngtree-fa-two-steps-authentication-password-secure-notice-login-verification-or-sms-png-image_4746695.png'
-          }}
+          source={require('../../../../assets/LoginFeaturesImg/VerifiedCode.png')}
           style={VerifyCodeCss.img}
         />
       </View>
@@ -32,9 +30,15 @@ const VerifyCode = () => {
         <View style={VerifyCodeCss.touchView}>
           <TouchableOpacity 
             style={VerifyCodeCss.dangki}
-            
+            onPress={()=>{nagivation.navigate('NewPass')}}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Xác Nhận</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={[VerifyCodeCss.dangki,{marginTop: 10}]}
+            onPress={()=>{nagivation.navigate('ForgetPass')}}
+          >
+            <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Quay lại</Text>
           </TouchableOpacity>
           
           <View style={VerifyCodeCss.dangnhapview}>

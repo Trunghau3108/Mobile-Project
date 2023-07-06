@@ -2,7 +2,7 @@ import {Modal, SafeAreaView, Text, View, TextInput, TouchableOpacity, Image } fr
 import React, {useState} from 'react'
 import SignupCss from './SignupCss';
 import VerifySignupCss from './VerifySignupCss';
-import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Feather, Ionicons, Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const Signup = () => {
@@ -41,11 +41,18 @@ const Signup = () => {
               </View>
           </View>
       </Modal>
+      <View style={SignupCss.header}>
+        <TouchableOpacity style={SignupCss.goBack} onPress={()=>{nagivation.goBack()}}>
+          <Entypo name="chevron-left" size={24} color="black" />
+        </TouchableOpacity>
+        <View style={SignupCss.tittle}>
+          <Text style={SignupCss.textHeader}>Registers</Text>
+        </View>
+        <View style={SignupCss.bonus}></View>
+      </View>
       <View style={SignupCss.imgView}>
         <Image
-          source={{
-            uri:'https://scontent.xx.fbcdn.net/v/t1.15752-9/349216882_175082398549945_529646601240619571_n.png?_nc_cat=102&ccb=1-7&_nc_sid=aee45a&_nc_ohc=7Jnf0pCuquwAX-u-BzO&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTk39XrpsuQVkt1mJjBPgvIv5R-sEnHoqkAQ8Ah4RTh3Q&oe=649C20FA'
-          }}
+          source={require('../../../../assets/LoginFeaturesImg/SignUp.png')}
           style={SignupCss.img}
         />
       </View>

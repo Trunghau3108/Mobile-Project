@@ -14,7 +14,7 @@ const HeaderComp = (props) => {
                 <Entypo name="chevron-left" size={24} color="black" />
             </TouchableOpacity>
             <View style={HeaderCompCss.tittle}>
-                <Text style={HeaderCompCss.text}>{props.Screen}</Text>
+                <Text style={HeaderCompCss.text}>Forgot Password</Text>
             </View>
             <View style={HeaderCompCss.bonus}></View>
         </View>

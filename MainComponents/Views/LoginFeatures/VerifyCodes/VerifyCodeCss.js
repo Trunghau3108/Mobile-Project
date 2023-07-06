@@ -1,5 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Dimensions } from 'react-native'
 import React from 'react'
+const { width, height } = Dimensions.get('screen');
 
 const VerifyCodeCss =StyleSheet.create({
     container: {
@@ -59,6 +60,7 @@ const VerifyCodeCss =StyleSheet.create({
     text:{
         color: '#146C94',
     },
+
 });
 
 export default VerifyCodeCss

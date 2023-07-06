@@ -10,6 +10,8 @@ import Signin from './MainComponents/Views/LoginFeatures/Logins/Signin'
 import Signup from './MainComponents/Views/LoginFeatures/Registers/Signup'
 import ForgetPass from './MainComponents/Views/LoginFeatures/ForgetPass/ForgetPass'
 import VerifyCode from './MainComponents/Views/LoginFeatures/VerifyCodes/VerifyCode'
+import NewPassword from './MainComponents/Views/LoginFeatures/NewPasswords/NewPassword'
+import Trailer from './MainComponents/Views/LoginFeatures/Trailers/Trailer'
 
 //import view cho StackLogin
 import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProfile'
@@ -27,6 +29,7 @@ import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
+import BottomTabComp from './MainComponents/Views/ItemComponent/BottomtabComp/BottomTabComp'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,9 +38,11 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     //<VerifyCode/>
-    //<Main/>
+    <Main/>
+    //<Trailer/>
+    //<BottomTabComp/>
     //<HeaderComp/>
-    <Map/>
+    //<Map/>
   )
 }
 
@@ -55,12 +60,14 @@ const Main = () => {
 const StackLogin = () => {
   return (
       <Stack.Navigator
-          initialRouteName='Signin'
+          initialRouteName='Trailer'
           screenOptions={{ headerShown: false}}
       >
+          <Stack.Screen name='Trailer' component={Trailer}/>
           <Stack.Screen name='Signin' component={Signin} />
           <Stack.Screen name='Signup' component={Signup}/>
           <Stack.Screen name='ForgetPass' component={ForgetPass}/>
+          <Stack.Screen name='NewPass' component={NewPassword}/>
           <Stack.Screen name='Verify' component={VerifyCode}/>
           <Stack.Screen name='Home' component={TabHome}/>
           <Stack.Screen name='Map' component={Map}/>
