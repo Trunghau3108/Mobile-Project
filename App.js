@@ -30,6 +30,7 @@ import MainScreen from './MainComponents/Views/HomesFeatures/MainScreen/MainScre
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
+import TestDATA from './TestDATA'
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,9 @@ const App = () => {
     //<VerifyCode/>
     //<Main/>
     //<HeaderComp/>
-    <Map/>
+    // <Map/>
+    // <MainScreen/>
+    <TestDATA/>
 
   )
 }

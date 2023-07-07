@@ -5,7 +5,7 @@ import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Post from '../../ItemComponent/Posts/Post';
 import DataPost from '../../../VisualData/DataPost';
-import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
+
 
 const Home = () => {
   return (
