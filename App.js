@@ -15,12 +15,12 @@ import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProf
 import UpdateUserProfile from './MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile'
 import CarBorrowList from './MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList'
 import UserPrivateInfo from './MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo'
-
+import Payment from './MainComponents/Views/HomesFeatures/Payment/Payment'
 //import view cho TabHome
 import Home from './MainComponents/Views/HomesFeatures/Home/Home'
 import History from './MainComponents/Views/HomesFeatures/Historys/History'
 import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
-
+import Method1 from './MainComponents/Views/HomesFeatures/Payment/Method1'
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
@@ -31,7 +31,9 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     // <Main/>
-    <FindCarFilter/>
+    // <FindCarFilter/>
+    <Payment/>
+    // <Method1/>
   )
 }
 
