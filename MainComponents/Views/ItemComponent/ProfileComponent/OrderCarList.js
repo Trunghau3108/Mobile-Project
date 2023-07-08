@@ -36,7 +36,7 @@ export default OrderCarList
 const styles = StyleSheet.create({
     OrderTong: {
         // backgroundColor:'blue',
-        height: 120,
+        height: 140,
         // paddingHorizontal:'5%',
         width: '93%',
         alignSelf: 'center',

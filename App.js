@@ -27,17 +27,20 @@ import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 
+import MainScreen from './MainComponents/Views/HomesFeatures/MainScreen/MainScreen'
+
+import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
-import BottomTabComp from './MainComponents/Views/ItemComponent/BottomtabComp/BottomTabComp'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
+
+
 const App = () => {
   return (
-    //<VerifyCode/>
     <Main/>
     //<Trailer/>
     //<BottomTabComp/>
@@ -64,12 +67,12 @@ const StackLogin = () => {
           screenOptions={{ headerShown: false}}
       >
           <Stack.Screen name='Trailer' component={Trailer}/>
+          <Stack.Screen name='Home' component={TabHome}/>
           <Stack.Screen name='Signin' component={Signin} />
           <Stack.Screen name='Signup' component={Signup}/>
           <Stack.Screen name='ForgetPass' component={ForgetPass}/>
           <Stack.Screen name='NewPass' component={NewPassword}/>
-          <Stack.Screen name='Verify' component={VerifyCode}/>
-          <Stack.Screen name='Home' component={TabHome}/>
+          <Stack.Screen name='Verify' component={VerifyCode}/>  
           <Stack.Screen name='Map' component={Map}/>
       </Stack.Navigator>
   )
@@ -113,7 +116,7 @@ const TabHome = () => {
             tabBarInactiveTintColor: 'gray',
         })}
     >
-        <Tab.Screen name='Home' component={Home}/>
+        <Tab.Screen name='Home' component={TabHome}/>
         <Tab.Screen name='History' component={History}/>
         <Tab.Screen name='Support' component={Support}/>
         <Tab.Screen name='Profile' component={StackProfile} options={{headerShown: false}}/>
