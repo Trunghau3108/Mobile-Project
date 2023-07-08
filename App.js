@@ -67,7 +67,7 @@ const StackLogin = () => {
           screenOptions={{ headerShown: false}}
       >
           <Stack.Screen name='Trailer' component={Trailer}/>
-          <Stack.Screen name='Home' component={TabHome}/>
+          <Stack.Screen name='TabHome' component={TabHome}/>
           <Stack.Screen name='Signin' component={Signin} />
           <Stack.Screen name='Signup' component={Signup}/>
           <Stack.Screen name='ForgetPass' component={ForgetPass}/>
@@ -116,7 +116,7 @@ const TabHome = () => {
             tabBarInactiveTintColor: 'gray',
         })}
     >
-        <Tab.Screen name='Home' component={TabHome}/>
+        <Tab.Screen name='Home' component={MainScreen} options={{headerShown: false}}/>
         <Tab.Screen name='History' component={History}/>
         <Tab.Screen name='Support' component={Support}/>
         <Tab.Screen name='Profile' component={StackProfile} options={{headerShown: false}}/>

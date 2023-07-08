@@ -41,7 +41,7 @@ export default FindCarFilter
 
 const styles = StyleSheet.create({
     FindCarTong:{
-        marginTop:40,
+        marginTop:20,
         height:270,
 
     },  
