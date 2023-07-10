@@ -54,7 +54,7 @@ const FilterLocation = () => {
                 </View>
                 <TouchableOpacity style = {LocateFilCss.Locate8}>
                         <View>
-                            <Text style ={{fontSize:15, fontWeight:'bold',color:'white'}}>Lọc</Text>
+                            <Text style ={{fontSize:15, fontWeight:'bold',color:'white',alignSelf:'center'}}>Lọc</Text>
                         </View>
                 </TouchableOpacity>
             </View>

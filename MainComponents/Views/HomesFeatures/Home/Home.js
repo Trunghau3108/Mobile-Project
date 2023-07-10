@@ -20,6 +20,8 @@ import Post from "../../ItemComponent/Posts/Post";
 import DataPost from "../../../VisualData/DataPost";
 import CarListFilter from "../../ItemComponent/CarListFilter/CarListFilter";
 
+
+
 const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
   return (
@@ -84,6 +86,7 @@ const Home = () => {
                 
             </View>
         </View> */}
+
       <View>
         <TouchableOpacity style={styles.filterText} onPress={() => setShowFilter(!showFilter)}>
             <MaterialCommunityIcons name="filter-menu" size={18} color="#fff" style ={{marginLeft:5}} />

@@ -84,11 +84,10 @@ const LocateFilCss = StyleSheet.create({
     Locate8:{
         justifyContent:'center',
         alignItems:'center',
-        width:'30%',
+        width:'25%',
         height:60,
         backgroundColor:'#146C94',
-        marginRight:20,
-        borderRadius:8
+        borderRadius:8,
     },
     Locate9:{
         justifyContent:'center',
