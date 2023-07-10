@@ -21,7 +21,7 @@ const Post = (props) => {
             />
 
             <View style={PostCss.infor}>
-                <View style={PostCss.name}><Text style={{fontSize: 20, fontWeight: 'bold'}}>{props.tenxe}</Text></View>
+                <View style={PostCss.name}><Text style={{fontSize: 20, fontWeight: 'bold', marginLeft:15}}>{props.tenxe}</Text></View>
                 
                 <View style={PostCss.define}>
                     <View style={PostCss.define1}>

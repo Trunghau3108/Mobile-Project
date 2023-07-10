@@ -22,12 +22,13 @@ import Home from './MainComponents/Views/HomesFeatures/Home/Home'
 import History from './MainComponents/Views/HomesFeatures/Historys/History'
 import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
 import Method1 from './MainComponents/Views/HomesFeatures/Payment/Method1'
+
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
-
+import BottomTabComp from './MainComponents/Views/ItemComponent/BottomTabComp/BottomTabComp'
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -35,14 +36,15 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
 
-    // <Main/>
+    <Main/>
     // <FindCarFilter/>
 //     <UserPrivateInfo/>
 
     //<VerifyCode/>
     //<Main/>
     //<HeaderComp/>
-    <Map/>
+    // <Map/>
+    // <BottomTabComp/>
   )
 }
 
