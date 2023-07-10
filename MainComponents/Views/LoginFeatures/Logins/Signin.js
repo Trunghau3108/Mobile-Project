@@ -1,6 +1,6 @@
 import { CheckBox, View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, } from 'react-native'
 import React, { useState } from 'react'
-import { Feather, AntDesign } from '@expo/vector-icons';
+import { Feather, AntDesign, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import SigninCss from './SigninCss'
@@ -80,7 +80,7 @@ const Signin = () => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          onPress={() => { nagivation.replace('Home') }}
+          onPress={() => { nagivation.replace('TabHome') }}
         >
           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Đăng Nhập</Text>
         </TouchableOpacity>

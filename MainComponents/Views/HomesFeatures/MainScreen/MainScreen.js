@@ -1,6 +1,7 @@
 import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 import React from 'react'
 import MainScreenCss from './MainScreenCss'
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const MainScreen = () => {
@@ -178,7 +179,7 @@ const MainScreen = () => {
               </View>
             </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 

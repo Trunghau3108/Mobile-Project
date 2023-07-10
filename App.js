@@ -32,20 +32,19 @@ import MainScreen from './MainComponents/Views/HomesFeatures/MainScreen/MainScre
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
+import BottomTabComp from './MainComponents/Views/ItemComponent/BottomtabComp/BottomTabComp'
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-
-
 const App = () => {
   return (
-    <Main/>
+    //<Main/>
     //<Trailer/>
-    //<BottomTabComp/>
+    <BottomTabComp/>
     //<HeaderComp/>
-    <Map/>
-
+    //<Map/>
   )
 }
 

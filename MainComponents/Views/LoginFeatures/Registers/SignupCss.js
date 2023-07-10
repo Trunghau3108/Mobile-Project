@@ -40,7 +40,7 @@ const SignupCss = StyleSheet.create({
     },
     touchView: {
         alignItems:'center',
-        justifyContent:'flex-end',
+        marginTop:50,
         height: 160,
     },
     dangki: {
