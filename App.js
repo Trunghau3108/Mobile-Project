@@ -18,12 +18,12 @@ import MainProfile from './MainComponents/Views/ProfilesFetures/Profile/MainProf
 import UpdateUserProfile from './MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile'
 import CarBorrowList from './MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList'
 import UserPrivateInfo from './MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo'
-
+import Payment from './MainComponents/Views/HomesFeatures/Payment/Payment'
 //import view cho TabHome
 import Home from './MainComponents/Views/HomesFeatures/Home/Home'
 import History from './MainComponents/Views/HomesFeatures/Historys/History'
 import Support from './MainComponents/Views/HomesFeatures/Supports/Support'
-
+import Method1 from './MainComponents/Views/HomesFeatures/Payment/Method1'
 //import phụ
 import Map from './MainComponents/Views/HomesFeatures/Maps/Map'
 
@@ -32,7 +32,6 @@ import MainScreen from './MainComponents/Views/HomesFeatures/MainScreen/MainScre
 import FindCarFilter from './MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter'
 //import for dev
 import HeaderComp from './MainComponents/Views/ItemComponent/HeaderComp/HeaderComp'
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +44,8 @@ const App = () => {
     //<Trailer/>
     //<BottomTabComp/>
     //<HeaderComp/>
-    //<Map/>
+    <Map/>
+
   )
 }
 

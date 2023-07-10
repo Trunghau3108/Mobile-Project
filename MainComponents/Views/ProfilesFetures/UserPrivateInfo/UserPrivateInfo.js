@@ -1,12 +1,12 @@
 import {  SafeAreaView, ScrollView, StatusBar,keyboardVerticalOffset,Keyboard, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList, TextInput,TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import ImageOnly from '../../ItemComponent/ProfileComponent/ImageOnly';
 import { AntDesign,Entypo } from '@expo/vector-icons';
 import UserPrivateInfoCss from './UserPrivateInfoCss';
 const UserPrivateInfo = () => {
     const [ten,email,pass, onChangeText] = React.useState('');
     const [phone, onChangeNumber] = React.useState('');
-
+    const [showPassword, setShowPassword] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {UserPrivateInfoCss.PrivateInfo}>
@@ -58,8 +58,18 @@ const UserPrivateInfo = () => {
                             onChangeText={onChangeText}
                             value  = {pass}
                             placeholder="Nhập Password"
-                            secureTextEntry={true}
+                            secureTextEntry={!showPassword}
                         />
+                        <TouchableOpacity
+                            onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
+                            style={{ marginLeft: 140 }}
+                        >
+                            {showPassword ? (
+                                <Entypo name="eye" size={24} color="#146C94" />
+                            ) : (
+                                <Entypo name="eye-with-line" size={24} color="#146C94" />
+                            )}
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <TouchableOpacity style ={UserPrivateInfoCss.ButtonXacNhan}>
