@@ -36,13 +36,17 @@ const Tab = createBottomTabNavigator();
 //import Component
 import CalendarItem from "./MainComponents/Views/ItemComponent/Calendar/CalendarItem";
 import CarListFilter from "./MainComponents/Views/ItemComponent/CarListFilter/CarListFilter";
+import FilterList from "./MainComponents/Views/ItemComponent/FilterList/FilterList";
 
 const App = () => {
   return (
     // <FindCarFilter />
 
     // <CarListFilter />
+
     // <CalendarItem />
+    <FilterList />
+
     // <Main/>
     //     <MainScreen/>
 

@@ -40,7 +40,7 @@ const FilterLocation = () => {
             TP. Hồ Chí Minh
           </Text>
           <Text>10:00 12/06/23 </Text>
-          <Text>11:00 12/06/23</Text>
+          <Text>11:00 12/06/23 </Text>
         </View>
         <View style={LocateFilCss.Locate3}>
           <TouchableOpacity>
@@ -48,6 +48,7 @@ const FilterLocation = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <View style={LocateFilCss.Location2}>
         <View style={LocateFilCss.Locate4}>
           <Entypo name="list" size={30} color="black" />
