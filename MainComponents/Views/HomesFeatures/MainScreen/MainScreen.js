@@ -1,11 +1,13 @@
 import {Text, View,Image, TouchableOpacity,ScrollView,ImageBackground } from 'react-native'
 import React from 'react'
 import MainScreenCss from './MainScreenCss'
+import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter'
+import FindCarFilter from '../../ItemComponent/FindCarFilter/FindCarFilter'
 
 
 const MainScreen = () => {
   return (
-    <View style={MainScreenCss.FullScreen}>
+    <ScrollView style={MainScreenCss.FullScreen}  showsHorizontalScrollIndicator={false}>
       <View style={MainScreenCss.Header}>
             <Image
                 source={{uri: 'https://scontent.fsgn5-2.fna.fbcdn.net/v/t1.15752-9/355277533_165164906548918_5098595855432448840_n.png?_nc_cat=105&cb=99be929b-3346023f&ccb=1-7&_nc_sid=ae9488&_nc_ohc=JFAd3fv7E8EAX9TB4Zc&_nc_ht=scontent.fsgn5-2.fna&oh=03_AdRQs3eE1J6gqd0VyZKSNaDHWjCUhg5X6OdwXuwLr1Opwg&oe=64BCAABC'}}
@@ -23,19 +25,20 @@ const MainScreen = () => {
            
       </View>
       <View style={MainScreenCss.Body}>
+        <FindCarFilter/>
             <View style={MainScreenCss.Popular}> 
-                <Text style={{paddingBottom:10,fontWeight:700}}>Các loại xe phổ biến tại CFA</Text>
-                <ScrollView horizontal style={{cursor:'pointer'}}>
+                <Text style={{paddingBottom:10,fontWeight:700,fontSize:20}}>Các loại xe phổ biến tại CFA</Text>
+                <ScrollView horizontal style={{cursor:'pointer'}} showsHorizontalScrollIndicator={false}>
                 <ImageBackground
                      source={require('./../../../../assets/backgroundCar/cfg0W5.jpg')}
                      style={{marginRight: 20,width:320,height:200,borderRadius: 20, overflow: 'hidden'}}
                   >
                   
                   <View style={MainScreenCss.textContainer}>
-                    <Image
-                        source={require('./../../../../assets/imageIcon/iconCar.png')}
+                    {/* <Image
+                        source={require('./../../../../assets/imageIcon/undraw_delivery_truck_vt6p.png')}
                         style={{height: '100%', width: '15%',marginRight:20}}
-                    />
+                    /> */}
                     <View style={MainScreenCss.leftTextContainer}>
                       <Text style={MainScreenCss.leftText}>Porsche</Text>
                       <Text style={MainScreenCss.leftText}>Berlint</Text>
@@ -148,7 +151,7 @@ const MainScreen = () => {
             </View>
             <View style={MainScreenCss.BodyItem}>
               <View style={MainScreenCss.Rent}> 
-                  <Text style={{fontWeight:700}}>Thuê xe như thế nào</Text>
+                  <Text style={{fontWeight:700,fontSize:20}}>Thuê xe như thế nào</Text>
 
                   <View style = {MainScreenCss.RentItem}>
                   <Image
@@ -178,11 +181,11 @@ const MainScreen = () => {
                   </View>
               </View>
               <View style={MainScreenCss.Partner}> 
-                  <Text>Các đối tác với chúng tôi</Text>
+                  <Text style={{fontWeight: 700, fontSize:20}}>Các đối tác với chúng tôi</Text>
               </View>
             </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 

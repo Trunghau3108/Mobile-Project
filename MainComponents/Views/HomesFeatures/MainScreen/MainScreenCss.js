@@ -21,7 +21,8 @@ const MainScreenCss = StyleSheet.create({
         paddingRight: 15,
     },
     Popular:{
-        padding:20
+        padding:20,
+        paddingTop:40
     },
     textContainer: {
         flexDirection: 'row',
@@ -48,10 +49,10 @@ const MainScreenCss = StyleSheet.create({
       },
       BodyItem:{
         backgroundColor:'#ECECEC',
-        
+        padding:20
       },
       Rent:{
-        padding:20
+        
       },
       RentItem:{
         height:180,
@@ -60,7 +61,11 @@ const MainScreenCss = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         marginTop: 20,
-      }
+      },
+      Partner:{
+        paddingTop:20,
+        
+      },
     
 
 })
