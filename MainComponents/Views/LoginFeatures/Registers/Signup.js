@@ -31,25 +31,10 @@ const Signup = () => {
                       >
                           <Text style={{fontWeight: 'bold', color:'white'}}>Đồng ý</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity 
-                          style={[VerifySignupCss.touch,{marginLeft:'4%', backgroundColor:'#9F9F9F'}]}
-                          onPress={() => setModalVisible(!modalVisible)}
-                      >
-                          <Text style={{fontWeight: 'bold', color:'white'}}>Hủy</Text>
-                      </TouchableOpacity>
                   </View>
               </View>
           </View>
       </Modal>
-      <View style={SignupCss.header}>
-        <TouchableOpacity style={SignupCss.goBack} onPress={()=>{nagivation.goBack()}}>
-          <Entypo name="chevron-left" size={24} color="black" />
-        </TouchableOpacity>
-        <View style={SignupCss.tittle}>
-          <Text style={SignupCss.textHeader}>Registers</Text>
-        </View>
-        <View style={SignupCss.bonus}></View>
-      </View>
       <View style={SignupCss.imgView}>
         <Image
           source={require('../../../../assets/LoginFeaturesImg/SignUp.png')}

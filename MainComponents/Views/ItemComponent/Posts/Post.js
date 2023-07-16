@@ -9,7 +9,7 @@ const Post = (props) => {
   return (
     <View style={PostCss.container}>
         <View style={PostCss.post}>
-            <TouchableOpacity style={PostCss.km} onPress={() => {nagivation.replace(props.map)}}>
+            <TouchableOpacity style={PostCss.km} onPress={() => {nagivation.navigate('Map')}}>
                 <FontAwesome5 name="map-marker-alt" size={20} color="black"  />
                 <Text style={{marginLeft: 10}}> {props.khcach}</Text>
             </TouchableOpacity>
