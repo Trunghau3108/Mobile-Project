@@ -15,6 +15,7 @@ const FindCarFilter = () => {
       };
     
   return (
+    <>
     <View style = {styles.FindCarTong}>
         <View style = {styles.ChonXe}>
             <TouchableOpacity style = {styles.ChonOto}>
@@ -59,7 +60,7 @@ const FindCarFilter = () => {
           Tìm xe ngay
         </Text>
       </TouchableOpacity>
-    </View>
+    </>
   );
 };
 
