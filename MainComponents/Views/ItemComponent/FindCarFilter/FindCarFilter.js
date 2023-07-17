@@ -1,6 +1,7 @@
 import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
 import React, { useState } from 'react'
 import { FontAwesome5,Fontisto,Octicons,Entypo, AntDesign } from '@expo/vector-icons';
+import CalendarItem from '../Calendar/CalendarItem';
 
 const FindCarFilter = () => {
     const [isCarSelected, setCarSelected] = useState(false);
@@ -37,29 +38,17 @@ const FindCarFilter = () => {
             </View>
             
         </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.ChonDiaDiem}>
-        <Octicons
-          name="location"
-          size={24}
-          color="black"
-          style={{ marginLeft: 10 }}
-        />
-        <Text style={{ marginLeft: 10 }}>Hà Nội</Text>
-        <View style={{ marginLeft: 250 }}>
-          <Entypo name="chevron-down" size={24} color="black" />
-        </View>
-      </TouchableOpacity>
-
-      <View>
+        <View>
         <CalendarItem />
       </View>
-
       <TouchableOpacity style={styles.FindCarButton}>
         <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
           Tìm xe ngay
         </Text>
       </TouchableOpacity>
+      </View>
+     
+      
     </>
   );
 };
@@ -124,3 +113,4 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center'
     },
+  })

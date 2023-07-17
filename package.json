@@ -17,11 +17,8 @@
     "expo": "~48.0.15",
     "expo-status-bar": "~1.4.4",
     "geocoder": "^0.2.3",
-<<<<<<< HEAD
     "moment": "^2.29.4",
-=======
     "mssql": "^9.1.1",
->>>>>>> 59db347c416572759f004cd5d6b913bd4572f60e
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-date-picker": "^4.2.13",
