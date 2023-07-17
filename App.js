@@ -40,7 +40,7 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
 
-    // <Main/>
+    
 //     <MainScreen/>
 
     // <Main/>
@@ -48,11 +48,13 @@ const App = () => {
 //     <UserPrivateInfo/>
 
     //<VerifyCode/>
-    //<Main/>
+    <Main/>
     //<HeaderComp/>
     // <Map/>
     // <MainScreen/>
-    <TestDATA/>
+    // <TestDATA/>
+    
+    
 
   )
 }
@@ -122,7 +124,7 @@ const TabHome = () => {
             tabBarInactiveTintColor: 'gray',
         })}
     >
-        <Tab.Screen name='Home' component={Home}/>
+        <Tab.Screen name='Home' component={MainScreen}/>
         <Tab.Screen name='History' component={History}/>
         <Tab.Screen name='Support' component={Support}/>
         <Tab.Screen name='Profile' component={StackProfile} options={{headerShown: false}}/>

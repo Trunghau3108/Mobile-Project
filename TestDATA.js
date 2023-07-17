@@ -11,7 +11,7 @@ const TestDATA = () => {
     const getDataAPI = async () => {
         let res = await axios.post(urlAPI+'/api/categories/GetListCategory');
         setData(res.data);
-        console.log(urlAPI)
+        // console.log(urlAPI)
     }
 
     useEffect(() => { getDataAPI() }, [])
