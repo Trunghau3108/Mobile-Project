@@ -189,28 +189,21 @@ const styles = StyleSheet.create({
   paymentTong: {
     height: height,
     width: width,
-    // backgroundColor: "red",
   },
   paymentInfo: {
     height: (height * 50) / 100,
     width: width,
-    // backgroundColor: "yellow",
   },
   paymentMethod: {
-    // height: (height * 50) / 100,
     width: width,
-    // backgroundColor: "green",
   },
   Coupon: {
     height: (height * 25) / 100,
     width: width,
-    // backgroundColor: "blue",
   },
   CouponInput: {
     height: 50,
     borderWidth: 1,
-    // padding:10,
-    // margin:10,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 6,

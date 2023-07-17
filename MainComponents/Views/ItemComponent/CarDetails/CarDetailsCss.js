@@ -16,7 +16,6 @@ const CarDetailsCss = StyleSheet.create({
         alignSelf:'center',
         alignItems:'center',
         justifyContent:'center',
-        flexDirection:'row',
         bottom:30,
         height:50,
         width:'90%',
@@ -53,6 +52,7 @@ const CarDetailsCss = StyleSheet.create({
     Detail1:{
         // flex:1,
         height:70,
+        alignSelf: 'center',
         flexDirection:'row'
     },
     Detail2:{
@@ -65,6 +65,11 @@ const CarDetailsCss = StyleSheet.create({
     },
     items2:{
         flexDirection:'row',marginTop:10,marginLeft:30
-    }
+    },
+    goBack: {
+        position: 'absolute',
+        top: 20,
+        left: 15,
+    },
 })
 export default CarDetailsCss

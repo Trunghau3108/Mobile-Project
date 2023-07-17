@@ -1,4 +1,4 @@
-import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
 import React from 'react'
 import UpdateUserInfoCss from'./UpdateUserInfoCss';
 import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';

@@ -2,14 +2,10 @@ import React from "react";
 import { Text, View } from "react-native";
 import {
   Ionicons,
-  MaterialIcons,
   Entypo,
-  FontAwesome5,
-  Fontisto,
 } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import FilterListCss from "./FilterCss";
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ltn = "TP.Hồ Chí Minh";

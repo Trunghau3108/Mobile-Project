@@ -14,7 +14,7 @@ const HeaderComp = (props) => {
                 <Entypo name="chevron-left" size={24} color="black" />
             </TouchableOpacity>
             <View style={HeaderCompCss.tittle}>
-                <Text style={HeaderCompCss.text}>{props.Screen}</Text>
+                <Text style={HeaderCompCss.text}>Forgot Password</Text>
             </View>
             <View style={HeaderCompCss.bonus}></View>
         </View>
@@ -26,11 +26,9 @@ export default HeaderComp
 const HeaderCompCss = StyleSheet.create({
     container: {
         width: width,
-        //marginTop: 20,
         height: 50,
         flexDirection: 'row',
         
-        //backgroundColor:'red',
     },
     goBack: {
         width: 50,

@@ -5,8 +5,12 @@ import CarFilCss from './CarFilCss';
 import LocateFilCss from './LocateFilCss';
 const CarListFilter = () => {
   return (
+<<<<<<< HEAD
     //<FilterLocation />
     <FilterCars />
+=======
+    <FilterLocation />
+>>>>>>> bcefa75b0c145ea9fa029d15db27d038e3825a5d
   );
 };
 const FilterLocation = () => {

@@ -1,10 +1,15 @@
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList} from 'react-native'
-import React, {useState}from 'react'
+import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import Post from '../../ItemComponent/Posts/Post';
-import DataPost from '../../../VisualData/DataPost';
 import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
+import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
+
+//thử data
+import urlAPI from '../../../../urlAPI';
+import axios from 'axios';
 
 const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -107,81 +112,18 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f6f6f6",
-    paddingHorizontal: 10,
-  },
-  view1: {
-    flex: 1,
-    backgroundColor: "yellow",
-  },
-  view2: {
-    flex: 4,
-    backgroundColor: "#f6f6f6",
-    height: 800,
-  },
-  view3: {
-    flex: 1,
-    backgroundColor: "#f6f6f6",
-    height: 1000,
-  },
-  view4: {
-    flex: 1,
-    //   backgroundColor: 'green',
-    flexDirection: "row",
-    backgroundColor: "#f6f6f6",
-    borderRadius: 10,
-    marginVertical: 5,
-    //   alignItems: 'center'
-  },
-  view5: {
-    flex: 4,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 10,
-    backgroundColor: "#f6f6f6",
-  },
-  view6: {
-    flex: 7,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 10,
-    height: 50,
-    alignSelf: "center",
-    paddingHorizontal: 10,
-    backgroundColor: "white",
-  },
-  view7: {
-    flex: 7,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 7,
-    height: 70,
-    alignSelf: "center",
-    paddingHorizontal: 7,
-    backgroundColor: "white",
-  },
-  scrollview1: {
-    flex: 8,
-  },
-  title: {
-    textAlign: "center",
-    paddingLeft: 10,
-    //   alignSelf: 'flex-start',
-    //   backgroundColor:'red',
-    flex: 8,
-    justifyContent: "center",
-    backgroundColor: "white",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  fixToText: {
-    justifyContent: "center", //can thanh phan trong - can doc
-    alignItems: "center", // can ngang - set theo view
-    //  alignSelf: 'flex-end', // set theo thanh phan
-      flex: 2,
-     backgroundColor: 'white',
+    container: {
+        flex: 1,
+        backgroundColor: '#f6f6f6',
+        paddingHorizontal: 10
+    },
+    scrollview1: {
+        flex: 8,
+    },
+    view3: {
+        flex: 1,
+        backgroundColor: '#f6f6f6',
+        height: 1000
     },
     dropdown1: {
         flex:1
@@ -221,4 +163,3 @@ const styles = StyleSheet.create({
     locationtext: {
         flex: 8
     },
-})
