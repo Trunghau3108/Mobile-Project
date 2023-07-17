@@ -1,4 +1,4 @@
-import {  SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
+import {ScrollView, StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
 import ImageOnly from '../ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../../VisualData/DataBorrowCar'
@@ -42,6 +42,5 @@ const styles = StyleSheet.create({
     ViewListXeMuon:{
       flex:1,
       height:1000,
-      // marginBottom:20,
     },  
 })

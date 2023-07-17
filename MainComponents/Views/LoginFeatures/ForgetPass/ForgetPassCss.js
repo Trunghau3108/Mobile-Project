@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
+
+const { width, height } = Dimensions.get('screen');
 
 const ForgetPassCss = StyleSheet.create({
     container: {
@@ -6,7 +8,7 @@ const ForgetPassCss = StyleSheet.create({
         backgroundColor:'white',
     },
     img: {
-        width: 450,
+        width: 400,
         height: 250,
         marginBottom: 20,
     },
@@ -53,7 +55,7 @@ const ForgetPassCss = StyleSheet.create({
     dangnhapview: {
         marginTop: 10,
         flexDirection:'row',
-        top: 150,
+        top: 100,
         justifyContent: 'flex-end',
     },
     text:{

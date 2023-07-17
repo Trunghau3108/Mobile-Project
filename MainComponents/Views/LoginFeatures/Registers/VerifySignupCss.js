@@ -28,7 +28,6 @@ const VerifySignupCss =StyleSheet.create ({
         height: 110,
     },
     touchView: {
-        flexDirection: 'row',
         alignItems: 'center',
         height: 50,
     },
@@ -39,6 +38,7 @@ const VerifySignupCss =StyleSheet.create ({
         height: 40,
         marginVertical: 10,
         borderRadius: 10,
+        alignSelf:'center',
     },
 });
 

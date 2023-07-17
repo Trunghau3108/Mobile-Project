@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Post from './MainComponents/Views/ItemComponent/Posts/Post'
@@ -9,17 +9,22 @@ const TestDATA = () => {
     //thuc hien lay data
     // chạy link backend trước, sau đó lấy link localhost backend để chạy public server ngrok
     const getDataAPI = async () => {
-        let res = await axios.post(urlAPI+'/api/categories/GetListCategory');
+        let res = await axios.post(urlAPI + '/api/categories/GetListCategory');
         setData(res.data);
         console.log(urlAPI)
     }
+
+    const requestionOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Email: 'React updates ', Password: '' })
+    };
 
     useEffect(() => { getDataAPI() }, [])
 
     return (
         <View>
             {
-
                 data.length ?
                     data.map((item) =>
                         <ScrollView>
@@ -27,7 +32,6 @@ const TestDATA = () => {
                             <Text>{item.name}</Text>
                         </ScrollView>
                     ) : null
-
             }
         </View>
     )

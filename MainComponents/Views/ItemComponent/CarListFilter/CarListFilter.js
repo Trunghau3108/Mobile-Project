@@ -6,7 +6,6 @@ import LocateFilCss from './LocateFilCss';
 const CarListFilter = () => {
   return (
     <FilterLocation />
-    // <FilterCars />
   );
 };
 const FilterLocation = () => {

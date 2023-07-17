@@ -1,9 +1,10 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
-import { AntDesign } from '@expo/vector-icons';
 import ChosenList from '../../ItemComponent/ProfileComponent/ChosenList';
 import MainProfileCss from './MainProfileCss';
 import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';
+import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
+
 const MainProfile = () => {
     return (
         <View style={MainProfileCss.ViewProfile}>
@@ -35,6 +36,8 @@ const MainProfile = () => {
                     navi="Signin"
                 />
             </View>
+            <BottomTabComp color5="#146C94"/>
+            
         </View>
     )
 }

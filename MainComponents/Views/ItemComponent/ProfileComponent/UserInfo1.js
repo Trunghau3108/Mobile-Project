@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MainProfileCss from '../../ProfilesFetures/Profile/MainProfileCss';
 import { useNavigation } from '@react-navigation/native';
@@ -35,5 +35,3 @@ const UserInfo1 = (props) => {
 }
 
 export default UserInfo1
-
-const styles = StyleSheet.create({})

@@ -1,5 +1,7 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
+const { width, height } = Dimensions.get('screen');
+
 const SigninCss = StyleSheet.create({
     container: {
         flex: 1,
@@ -15,11 +17,12 @@ const SigninCss = StyleSheet.create({
         left: -25,
     },
     main: {
-        top: 150,
+        top: height *25/100,
+        height: height *50/100,
         alignItems:'center',
     },
     inputview: {
-        width: '80%',
+        width: width *80/100,
         height:50,
         marginTop: 10,
         flexDirection:'row',
@@ -36,15 +39,18 @@ const SigninCss = StyleSheet.create({
     text:{
         color: '#146C94',
     },
+    linkTouch: {
+        width: width *40/100,
+    },
     link: {
-        width:'80%',
+        width:width *80/100,
         top: 10,
         flexDirection: 'row',
     },
     dangnhap: {
         top: 50,
         backgroundColor:'#146C94',
-        width:'80%',
+        width: width *80/100,
         height:40,
         borderRadius: 20,
         justifyContent:'center',
