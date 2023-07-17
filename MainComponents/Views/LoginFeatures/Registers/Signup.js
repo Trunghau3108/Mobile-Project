@@ -70,21 +70,13 @@ const Signup = () => {
                       >
                           <Text style={{fontWeight: 'bold', color:'white'}}>Đồng ý</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity 
-                          style={[VerifySignupCss.touch,{marginLeft:'4%', backgroundColor:'#9F9F9F'}]}
-                          onPress={() => setModalVisible(!modalVisible)}
-                      >
-                          <Text style={{fontWeight: 'bold', color:'white'}}>Hủy</Text>
-                      </TouchableOpacity>
                   </View>
               </View>
           </View>
       </Modal>
       <View style={SignupCss.imgView}>
         <Image
-          source={{
-            uri:'https://scontent.xx.fbcdn.net/v/t1.15752-9/349216882_175082398549945_529646601240619571_n.png?_nc_cat=102&ccb=1-7&_nc_sid=aee45a&_nc_ohc=7Jnf0pCuquwAX-u-BzO&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTk39XrpsuQVkt1mJjBPgvIv5R-sEnHoqkAQ8Ah4RTh3Q&oe=649C20FA'
-          }}
+          source={require('../../../../assets/LoginFeaturesImg/SignUp.png')}
           style={SignupCss.img}
         />
       </View>

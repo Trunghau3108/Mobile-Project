@@ -35,9 +35,7 @@ export default OrderCarList
 
 const styles = StyleSheet.create({
     OrderTong: {
-        // backgroundColor:'blue',
         height: 140,
-        // paddingHorizontal:'5%',
         width: '93%',
         alignSelf: 'center',
         borderRadius: 7,
@@ -49,29 +47,22 @@ const styles = StyleSheet.create({
     orderimg: {
         height: 97,
         width: 151,
-        // alignSelf:'center'
-
-
     },
     OrderHinh: {
         flex: 4,
-        // backgroundColor:'green',
         alignItems: 'center',
     },
     OrderChu: {
         flex: 6,
-        // backgroundColor:'red'
     },
     CarBorrowName: {
         flex: 1,
-        // backgroundColor:'yellow',
         alignItems: 'center',
         justifyContent: 'center'
     },
     CarBorrowDetail: {
         flex: 1,
         flexDirection: 'row',
-        // backgroundColor:'purple'
     },
     CarBorrowDetail1: {
         alignItems: 'center',

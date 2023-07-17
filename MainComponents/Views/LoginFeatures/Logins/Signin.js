@@ -41,13 +41,13 @@ const Signin = ({navigation}) => {
   return (
     <SafeAreaView style={SigninCss.container}>
       <Image
-        source={{ uri:'https://scontent.xx.fbcdn.net/v/t1.15752-9/350219221_636340484690964_2780560088413677302_n.png?stp=dst-png_p403x403&_nc_cat=104&ccb=1-7&_nc_sid=aee45a&_nc_ohc=aF5h5ugNyFIAX-YKK6_&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQGpB_YfqGPq0USHUOX5sGuxMU_G4nw395y2Ki5LsYknQ&oe=64995B75'}}
+        source={require('../../../../assets/LoginFeaturesImg/SiginPic.png')}
         style={SigninCss.img}
       />
       <View style={SigninCss.main}>
-        <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Xin chào</Text>
-        <Text style={{color:'gray'}}>Đăng nhập vào tài khoản của bạn</Text>
-        <View style={[SigninCss.inputview,{marginTop: 50}]}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#146C94' }}>Xin chào</Text>
+        <Text style={{ color: 'gray' }}>Đăng nhập vào tài khoản của bạn</Text>
+        <View style={[SigninCss.inputview, { marginTop: 50 }]}>
           <Feather name="phone" size={20} color="#146C94" />
           <TextInput
         placeholder='Nhập Email...'
@@ -66,32 +66,38 @@ const Signin = ({navigation}) => {
       />
         </View>
         <View style={SigninCss.link}>
-          <TouchableOpacity>
-            <Text style={[SigninCss.text,{fontSize: 12}]}>Nhớ mật khẩu</Text>
+          <TouchableOpacity style={[SigninCss.linkTouch,{flexDirection: 'row', alignItems:'center'}]} onPress={() => setSelection(!isSelected)}>
+            {isSelected ?
+              <AntDesign name="checksquareo" size={24} color="#146C94" />
+              :
+              <Feather name="square" size={24} color="gray" />
+            }
+            <Text style={[SigninCss.text, { fontSize: 12, marginLeft: 5}]}>Nhớ mật khẩu</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={()=>{
+            style={SigninCss.linkTouch}
+            onPress={() => {
               nagivation.replace('ForgetPass');
             }}
           >
-            <Text style={[SigninCss.text,{fontSize: 12, left: 125}]}>Quên mật khẩu?</Text>
+            <Text style={[SigninCss.text, { fontSize: 12, alignSelf: 'flex-end' }]}>Quên mật khẩu?</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={SigninCss.dangnhap}
           // onPress={() =>{nagivation.replace('Home')}}
           onPress={handleLogin}
         >
-          <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Nhập</Text>
+          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Đăng Nhập</Text>
         </TouchableOpacity>
         <View style={SigninCss.dangkiview}>
-          <Text style={[SigninCss.text,{fontSize: 13, right: 5}]}>Chưa có tài khoản?</Text>
+          <Text style={[SigninCss.text, { fontSize: 13, right: 5 }]}>Chưa có tài khoản?</Text>
           <TouchableOpacity
-            onPress={()=>{
+            onPress={() => {
               nagivation.replace('Signup');
             }}
           >
-            <Text style={[SigninCss.text,{fontSize: 13, textDecorationLine:'underline', fontWeight:'bold'}]}>Đăng kí</Text>
+            <Text style={[SigninCss.text, { fontSize: 13, textDecorationLine: 'underline', fontWeight: 'bold' }]}>Đăng kí</Text>
           </TouchableOpacity>
         </View>
       </View>

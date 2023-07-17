@@ -1,27 +1,20 @@
-import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Dimensions } from 'react-native'
-import React,{useEffect, useState} from 'react'
-import MapView, {Marker} from 'react-native-maps';
-import { Entypo, AntDesign, FontAwesome  } from '@expo/vector-icons';
+import { StyleSheet, View, SafeAreaView, FlatList, Dimensions } from 'react-native'
+import React from 'react'
+import MapView from 'react-native-maps';
 import CarCard from '../../ItemComponent/CarCards/CarCard'
 import DataPost from '../../../VisualData/DataPost';
-import HeaderComp from '../../ItemComponent/HeaderComp/HeaderComp';
 
 const { width, height } = Dimensions.get('screen');
 
 const Map = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-      <Entypo name="chevron-left" size={24} color="black" />
-      
-      </View>
-      <MapView style={styles.map}/>
+      <MapView style={styles.map} />
       <View style={styles.pageView}>
         <FlatList
           horizontal={true}
-          style={{}}
           data={DataPost}
-          renderItem={({item}) =>
+          renderItem={({ item }) =>
             <CarCard
               imguri={item.uri}
               tenxe={item.tenxe}
@@ -29,7 +22,7 @@ const Map = () => {
             />
           }
         />
-        </View>
+      </View>
     </SafeAreaView>
   )
 }
@@ -37,23 +30,23 @@ const Map = () => {
 export default Map
 
 const styles = StyleSheet.create({
-    container: {
-        width: width,
-        height: height,
-    },
-    map: {
-        width: width,
-        height: height,
-    },
-    pageView: {
-      width: width,
-      height: height *40/100,
-      position:'absolute',
-      marginTop:height * 60/100,
-    },
-    textDropdown: {
-      width: '80%',
-      color:'gray',
-      marginHorizontal: 20,
-    },
+  container: {
+    width: width,
+    height: height,
+  },
+  map: {
+    width: width,
+    height: height,
+  },
+  pageView: {
+    width: width,
+    height: height * 40 / 100,
+    position: 'absolute',
+    bottom: height *5/100, 
+  },
+  textDropdown: {
+    width: '80%',
+    color: 'gray',
+    marginHorizontal: 20,
+  },
 });

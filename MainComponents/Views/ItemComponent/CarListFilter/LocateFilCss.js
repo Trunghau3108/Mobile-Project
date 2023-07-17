@@ -74,7 +74,7 @@ const LocateFilCss = StyleSheet.create({
     Locate7:{
         justifyContent:'center',
         alignItems:'center',
-        width:'70%',
+        width:'65%',
         height:60,
         backgroundColor:'#ECECEC',
         marginRight:20,

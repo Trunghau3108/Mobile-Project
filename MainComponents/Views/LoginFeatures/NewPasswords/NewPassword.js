@@ -1,64 +1,66 @@
-import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, } from 'react-native'
+import { View, SafeAreaView, Text, TextInput, TouchableOpacity, Image } from 'react-native'
+import { Feather } from '@expo/vector-icons';
 import React from 'react'
-import NewPasswordCss from './NewPasswordCss'
+import ForgetPassCss from '../ForgetPass/ForgetPassCss';
+import NewPasswordCss from './NewPasswordCss';
+import { useNavigation } from '@react-navigation/native';
 
 const NewPassword = () => {
+  const nagivation = useNavigation();
   return (
     <SafeAreaView style={NewPasswordCss.container}>
-      <Image
-        source={{ uri:'https://scontent.xx.fbcdn.net/v/t1.15752-9/350219221_636340484690964_2780560088413677302_n.png?stp=dst-png_p403x403&_nc_cat=104&ccb=1-7&_nc_sid=aee45a&_nc_ohc=aF5h5ugNyFIAX-YKK6_&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQGpB_YfqGPq0USHUOX5sGuxMU_G4nw395y2Ki5LsYknQ&oe=64995B75'}}
-        style={NewPasswordCss.img}
-      />
+      <View style={NewPasswordCss.imgView}>
+        <Image
+          source={require('../../../../assets/LoginFeaturesImg/InputPass.png')}
+          style={NewPasswordCss.img}
+        />
+      </View>
       <View style={NewPasswordCss.main}>
-        <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Xin chào</Text>
-        <Text style={{color:'gray'}}>Đăng nhập vào tài khoản của bạn</Text>
-        <View style={[NewPasswordCss.inputview,{marginTop: 50}]}>
-          <Feather name="phone" size={20} color="#146C94" />
-          <TextInput 
-            placeholder='Nhập số điện thoại...'
-            style={NewPasswordCss.input}
-            value={userPhone}
-            onChangeText={(userPhone) => setUserPhone(userPhone)}
-          />
+        <View style={NewPasswordCss.textView}>
+          <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Nhập mật khẩu mới</Text>
+          <Text style={{color:'gray'}}>Vui lòng nhập mật khẩu mới</Text>
         </View>
-        <View style={NewPasswordCss.inputview}>
+        <View style={NewPasswordCss.inputView}>
           <Feather name="lock" size={20} color="#146C94" />
           <TextInput 
             placeholder='Nhập mật khẩu...'
-            keyboardType='number-pad'
-            secureTextEntry={true}
             style={NewPasswordCss.input}
-            value={userPassword}
-            onChangeText={(userPassword) => setUserPassword(userPassword)}
           />
         </View>
-        <View style={NewPasswordCss.link}>
-          <TouchableOpacity>
-            <Text style={[SigninCss.text,{fontSize: 12}]}>Nhớ mật khẩu</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>{
-              nagivation.replace('ForgetPass');
-            }}
-          >
-            <Text style={[NewPasswordCss.text,{fontSize: 12, left: 125}]}>Quên mật khẩu?</Text>
-          </TouchableOpacity>
+        <View style={NewPasswordCss.inputView}>
+          <Feather name="lock" size={20} color="#146C94" />
+          <TextInput 
+            placeholder='Nhập lại mật khẩu...'
+            style={NewPasswordCss.input}
+          />
         </View>
-        <TouchableOpacity 
-          style={NewPasswordCss.dangnhap}
-          onPress={() =>{nagivation.replace('Home')}}
-        >
-          <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Nhập</Text>
-        </TouchableOpacity>
-        <View style={NewPasswordCss.dangkiview}>
-          <Text style={[NewPasswordCss.text,{fontSize: 13, right: 5}]}>Chưa có tài khoản?</Text>
-          <TouchableOpacity
-            onPress={()=>{
-              nagivation.replace('Signup');
+        <View style={NewPasswordCss.touchView}>
+          <TouchableOpacity 
+            style={NewPasswordCss.dangki}
+            onPress={() => {
+              nagivation.replace('Signin');
             }}
           >
-            <Text style={[NewPasswordCss.text,{fontSize: 13, textDecorationLine:'underline', fontWeight:'bold'}]}>Đăng kí</Text>
+            <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Xác Nhận</Text>
           </TouchableOpacity>
+          <TouchableOpacity 
+            style={[NewPasswordCss.dangki,{ marginTop: 10}]}
+            onPress={() => {
+              nagivation.replace('Verify');
+            }}
+          >
+            <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Quay lại</Text>
+          </TouchableOpacity>
+          <View style={NewPasswordCss.dangnhapview}>
+            <Text style={[NewPasswordCss.text,{fontSize: 13, right: 5}]}>Đã có tài khoản ?</Text>
+            <TouchableOpacity
+              onPress={()=>{
+                nagivation.replace('Signin');
+              }}
+            >
+              <Text style={[NewPasswordCss.text,{fontSize: 13, textDecorationLine:'underline', fontWeight:'bold'}]}>Đăng nhập</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </SafeAreaView>

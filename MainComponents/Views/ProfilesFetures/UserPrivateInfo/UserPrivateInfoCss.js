@@ -8,7 +8,6 @@ const UserPrivateInfoCss  = StyleSheet.create({
     },
     InputInfo:{
         flex:8,
-        // backgroundColor:'red',
         width:'100%'
     },
     NameInput:{
@@ -19,8 +18,6 @@ const UserPrivateInfoCss  = StyleSheet.create({
     NameInput1:{
         height:50,
         borderWidth:1,
-        // padding:10,
-        // margin:10,
         flexDirection:'row',
         alignItems:'center',
         borderRadius:6,
@@ -50,8 +47,6 @@ const UserPrivateInfoCss  = StyleSheet.create({
     PhoneInput1:{
         height:50,
         borderWidth:1,
-        // padding:10,
-        // margin:10,
         flexDirection:'row',
         alignItems:'center',
         borderRadius:6,
@@ -65,8 +60,6 @@ const UserPrivateInfoCss  = StyleSheet.create({
     EmailInput1:{
         height:50,
         borderWidth:1,
-        // padding:10,
-        // margin:10,
         flexDirection:'row',
         alignItems:'center',
         borderRadius:6,
