@@ -2,9 +2,11 @@ import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, But
 import React from 'react'
 import { FontAwesome,Ionicons, FontAwesome5,  MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import CarDetailsCss from './CarDetailsCss';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const CarDetails = (props) => {
+    const nagivation = useNavigation();
     return (
         <View style={CarDetailsCss.CarDetailsTong}>
             <ScrollView style={CarDetailsCss.ViewDetails1}>
@@ -91,7 +93,7 @@ const CarDetails = (props) => {
                 </TouchableOpacity>
             </LinearGradient>
 
-            <TouchableOpacity style={CarDetailsCss.goBack}>
+            <TouchableOpacity style={CarDetailsCss.goBack} onPress={()=>{nagivation.goBack()}}>
                 <Ionicons name="arrow-back" size={35} color="white" />
             </TouchableOpacity>
         </View>

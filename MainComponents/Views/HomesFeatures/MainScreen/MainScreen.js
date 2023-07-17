@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, StatusBar, SafeAreaView } from 'react-native'
+import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView } from 'react-native'
 import React from 'react'
 import MainScreenCss from './MainScreenCss'
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
@@ -211,19 +211,6 @@ const MainScreen = () => {
       </ScrollView>
       <BottomTabComp color1="#146C94" />
     </SafeAreaView>
-  )
-}
-
-const HowtoThue = () => {
-  return (
-    <View style={MainScreenCss.RentItem}>
-      <Image
-        source={require('./../../../../assets/Home/NhanXe.png')}
-        style={{ height: '40%', width: '45%' }}
-      />
-      <Text style={{ fontWeight: 700, paddingBottom: 5, fontSize: 20 }}>2 - Nhận xe</Text>
-      <Text style={{ width: 250, marginLeft: 25, textAlign: 'center' }}>Nhận xe tại nhà hoặc tại các đại lý trong khu vực của chúng tôi.</Text>
-    </View>
   )
 }
 

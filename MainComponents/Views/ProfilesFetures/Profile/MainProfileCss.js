@@ -1,13 +1,12 @@
 import { StyleSheet } from 'react-native'
-import React from 'react'
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('screen');
 
 const MainProfileCss = StyleSheet.create({
     ViewProfile: {
-        height: 250,
-        flex: 1,
+        width: width,
+        height: height,
         paddingTop: 50,
     },
     ViewProfile1: {

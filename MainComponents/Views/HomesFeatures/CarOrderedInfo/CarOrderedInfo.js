@@ -1,7 +1,7 @@
 //View
-import { SafeAreaView, ScrollView, StatusBar, keyboardVerticalOffset, Keyboard, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native'
 import React from 'react'
-import { AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons';
+import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
 const CarOrderedInfo = () => {
     const [name, address, paymethod, coupon, onChangeText] = React.useState('');
     const [phone, onChangeNumber] = React.useState('');
@@ -148,8 +148,6 @@ const styles = StyleSheet.create({
     Name1: {
         height: 50,
         borderWidth: 1,
-        // padding:10,
-        // margin:10,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 6,
@@ -158,8 +156,6 @@ const styles = StyleSheet.create({
     Phone1: {
         height: 50,
         borderWidth: 1,
-        // padding:10,
-        // margin:10,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 6,
@@ -168,8 +164,7 @@ const styles = StyleSheet.create({
     Address1: {
         height: 50,
         borderWidth: 1,
-        // padding:10,
-        // margin:10,
+
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 6,
@@ -178,8 +173,6 @@ const styles = StyleSheet.create({
     PayMethod1: {
         height: 50,
         borderWidth: 1,
-        // padding:10,
-        // margin:10,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 6,
@@ -188,8 +181,6 @@ const styles = StyleSheet.create({
     Coupon1: {
         height: 50,
         borderWidth: 1,
-        // padding:10,
-        // margin:10,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 6,

@@ -1,20 +1,15 @@
 import { StyleSheet } from 'react-native'
-import React from 'react'
 
 const CarFilCss = StyleSheet.create({
-           //Car Filter
     CarFil:{
         height:600, 
-        // backgroundColor:'red'
     },
     CarType:{
         height:150,
-        // backgroundColor:'blue',
         justifyContent:'center'
     },
     CarTypeChoose:{
         height:90,
-        // backgroundColor:'green',
         alignItems:'center',
         marginBottom:20,
         flexDirection:'row'
@@ -39,7 +34,6 @@ const CarFilCss = StyleSheet.create({
     },
     CarStyle:{
         height:250,
-        // backgroundColor:'yellow'
     },
     CarStyleAll:{
         height:80,
@@ -52,7 +46,6 @@ const CarFilCss = StyleSheet.create({
     },
     CarStyleChoose:{
         height:90,
-        // backgroundColor:'green',
         alignItems:'center',
         marginBottom:20,
         flexDirection:'row',
@@ -87,11 +80,9 @@ const CarFilCss = StyleSheet.create({
     },
     CarBrand:{
         height:110,
-        // backgroundColor:'purple'
     },
     ChooseBrand:{
         height:55,
-        // backgroundColor:'brown',
         marginTop:15,
         width:'90%',
         alignSelf:'center',
@@ -103,7 +94,6 @@ const CarFilCss = StyleSheet.create({
     },
     ChooseBrandButton2:{
         width:'10%',
-        // backgroundColor:'red',
         alignItems:'center',
         justifyContent:'center',
     },

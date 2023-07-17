@@ -1,5 +1,4 @@
-import { View, Text, StyleSheet, Dimensions } from 'react-native'
-import React from 'react'
+import { StyleSheet, Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('screen');
 
 const VerifyCodeCss =StyleSheet.create({

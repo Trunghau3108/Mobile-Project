@@ -1,10 +1,8 @@
-import { ScrollView, StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Dimensions } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import MapView, { Marker } from 'react-native-maps';
-import { Entypo, AntDesign, FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, View, SafeAreaView, FlatList, Dimensions } from 'react-native'
+import React from 'react'
+import MapView from 'react-native-maps';
 import CarCard from '../../ItemComponent/CarCards/CarCard'
 import DataPost from '../../../VisualData/DataPost';
-import HeaderComp from '../../ItemComponent/HeaderComp/HeaderComp';
 
 const { width, height } = Dimensions.get('screen');
 

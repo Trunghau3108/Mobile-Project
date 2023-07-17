@@ -7,6 +7,8 @@ const { width, height } = Dimensions.get('screen');
 const MainScreenCss = StyleSheet.create({
   FullScreen: {
     fontFamily: 'Roboto',
+    width: width,
+    height: height,
     
   },
   Header: {

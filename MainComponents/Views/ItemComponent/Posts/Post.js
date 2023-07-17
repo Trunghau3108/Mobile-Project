@@ -7,7 +7,7 @@ import PostCss from './PostCss';
 const Post = (props) => {
     const nagivation = useNavigation();
   return (
-    <View style={PostCss.container}>
+    <TouchableOpacity style={PostCss.container} onPress={()=>{nagivation.navigate("CarDetail")}}>
         <View style={PostCss.post}>
             <TouchableOpacity style={PostCss.km} onPress={() => {nagivation.navigate('Map')}}>
                 <FontAwesome5 name="map-marker-alt" size={20} color="black"  />
@@ -21,7 +21,7 @@ const Post = (props) => {
             />
 
             <View style={PostCss.infor}>
-                <View style={PostCss.name}><Text style={{fontSize: 20, fontWeight: 'bold'}}>{props.tenxe}</Text></View>
+                <View style={PostCss.name}><Text style={{fontSize: 20, fontWeight: 'bold', marginLeft:15}}>{props.tenxe}</Text></View>
                 
                 <View style={PostCss.define}>
                     <View style={PostCss.define1}>
@@ -62,7 +62,7 @@ const Post = (props) => {
         <View style={PostCss.tag} >
             <Text style={{color: 'white'}}>{props.giamgia}</Text>
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

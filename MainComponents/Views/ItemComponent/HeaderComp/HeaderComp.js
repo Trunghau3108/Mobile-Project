@@ -26,11 +26,9 @@ export default HeaderComp
 const HeaderCompCss = StyleSheet.create({
     container: {
         width: width,
-        //marginTop: 20,
         height: 50,
         flexDirection: 'row',
         
-        //backgroundColor:'red',
     },
     goBack: {
         width: 50,

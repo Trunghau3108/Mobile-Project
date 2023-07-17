@@ -5,62 +5,75 @@ import CarFilCss from './CarFilCss';
 import LocateFilCss from './LocateFilCss';
 const CarListFilter = () => {
   return (
-    <FilterLocation/>
-    // <FilterCars/>
-  )
-}
+    <FilterLocation />
+  );
+};
 const FilterLocation = () => {
-    return (
-      <View style = {LocateFilCss.LocationFil}>
-            <View style = {LocateFilCss.Location1}>
-                <View style = {LocateFilCss.Locate1}>
-                    <Ionicons name="ios-location-outline" size={40} color="black" />
-                </View>
-                <View style = {LocateFilCss.Locate2}>
-                    <Text style ={{fontSize:17, fontWeight:'bold'}}>TP. Hồ Chí Minh</Text>
-                    <Text>10:00 12/06/23 </Text>
-                    <Text>11:00 12/06/23</Text>
-                </View>
-                <View style = {LocateFilCss.Locate3}>
-                    <TouchableOpacity>
-                        <Text style = {{color:'#146C94',fontSize:17}}> THAY ĐỔI </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View style = {LocateFilCss.Location2}>
-                <View style = {LocateFilCss.Locate4} >
-                    <Entypo name="list" size={30} color="black" />
-                </View>
-                <View style = {LocateFilCss.Locate5}>
-                    <Text style ={{fontSize:15}}>Ô tô, Kiểu xe, Hộp số, Chỗ ngồi...</Text>
-                </View>
-                <TouchableOpacity style = {LocateFilCss.Locate6}>
-                    <Entypo name="chevron-down" size={30} color="black" />
-                </TouchableOpacity>
-            </View>
-            <View style = {LocateFilCss.Location3}>
-                <View style = {LocateFilCss.Locate7}>
-                    <View style = {LocateFilCss.Locate12}>
-                        <View style = {LocateFilCss.Locate9} >
-                            <Entypo name="list" size={30} color="black" />
-                        </View>
-                        <View style = {LocateFilCss.Locate10}>
-                            <Text style ={{fontSize:15}}>Giá từ thấp đến cao</Text>
-                        </View>
-                        <TouchableOpacity style = {LocateFilCss.Locate11}>
-                            <Entypo name="chevron-down" size={30} color="black" />
-                        </TouchableOpacity>
-                        </View>
-                </View>
-                <TouchableOpacity style = {LocateFilCss.Locate8}>
-                        <View>
-                            <Text style ={{fontSize:15, fontWeight:'bold',color:'white',alignSelf:'center'}}>Lọc</Text>
-                        </View>
-                </TouchableOpacity>
-            </View>
+  return (
+    <View style={LocateFilCss.LocationFil}>
+      <View style={LocateFilCss.Location1}>
+        <View style={LocateFilCss.Locate1}>
+          <Ionicons name="ios-location-outline" size={40} color="black" />
+        </View>
+        <View style={LocateFilCss.Locate2}>
+          <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+            TP. Hồ Chí Minh
+          </Text>
+          <Text>10:00 12/06/23 </Text>
+          <Text>11:00 12/06/23 </Text>
+        </View>
+        <View style={LocateFilCss.Locate3}>
+          <TouchableOpacity>
+            <Text style={{ color: "#146C94", fontSize: 17 }}> THAY ĐỔI </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    )
-}
+
+      <View style={LocateFilCss.Location2}>
+        <View style={LocateFilCss.Locate4}>
+          <Entypo name="list" size={30} color="black" />
+        </View>
+        <View style={LocateFilCss.Locate5}>
+          <Text style={{ fontSize: 15 }}>
+            Ô tô, Kiểu xe, Hộp số, Chỗ ngồi...
+          </Text>
+        </View>
+        <TouchableOpacity style={LocateFilCss.Locate6}>
+          <Entypo name="chevron-down" size={30} color="black" />
+        </TouchableOpacity>
+      </View>
+      <View style={LocateFilCss.Location3}>
+        <View style={LocateFilCss.Locate7}>
+          <View style={LocateFilCss.Locate12}>
+            <View style={LocateFilCss.Locate9}>
+              <Entypo name="list" size={30} color="black" />
+            </View>
+            <View style={LocateFilCss.Locate10}>
+              <Text style={{ fontSize: 15 }}>Giá từ thấp đến cao</Text>
+            </View>
+            <TouchableOpacity style={LocateFilCss.Locate11}>
+              <Entypo name="chevron-down" size={30} color="black" />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <TouchableOpacity style={LocateFilCss.Locate8}>
+          <View>
+            <Text
+              style={{
+                fontSize: 15,
+                fontWeight: "bold",
+                color: "white",
+                alignSelf: "center",
+              }}
+            >
+              Lọc
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 const FilterCars = () => {
     const [isPressed1, setIsPressed1] = useState(false);
     const [isPressed2, setIsPressed2] = useState(false);

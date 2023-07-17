@@ -2,7 +2,7 @@ import {Modal, SafeAreaView, Text, View, TextInput, TouchableOpacity, Image } fr
 import React, {useState} from 'react'
 import SignupCss from './SignupCss';
 import VerifySignupCss from './VerifySignupCss';
-import { MaterialCommunityIcons, Feather, Ionicons, Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const Signup = () => {

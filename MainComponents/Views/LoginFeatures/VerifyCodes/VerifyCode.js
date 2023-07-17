@@ -3,7 +3,6 @@ import React from 'react'
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import VerifyCodeCss from './VerifyCodeCss'
-import HeaderComp from '../../ItemComponent/HeaderComp/HeaderComp';
 
 const VerifyCode = () => {
   const nagivation = useNavigation();

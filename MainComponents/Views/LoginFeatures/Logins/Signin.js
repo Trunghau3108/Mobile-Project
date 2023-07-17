@@ -1,6 +1,6 @@
-import { CheckBox, View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, } from 'react-native'
+import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
-import { Feather, AntDesign, FontAwesome } from '@expo/vector-icons';
+import { Feather, AntDesign, } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import SigninCss from './SigninCss'
