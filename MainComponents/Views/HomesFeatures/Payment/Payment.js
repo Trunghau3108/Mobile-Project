@@ -15,17 +15,25 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
-import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
+import { AntDesign, Entypo, Feather, Ionicons } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
 import UserPrivateInfoCss from "../../ProfilesFetures/UserPrivateInfo/UserPrivateInfoCss";
 import Method1 from "./Method1";
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient';
+
 const Payment = () => {
   const [ten, email, pass, coupon, onChangeText] = React.useState("");
   const [phone, onChangeNumber] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSelected, setSelection] = useState(false);
+
+  const nagivation = useNavigation();
   return (
     <View>
+      <View style={{ width: width, height: 80, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 24, fontWeight: "bold", color: '#156791' }}> Thanh Toán</Text>
+      </View>
       <ScrollView style={styles.paymentTong}>
         <View style={styles.paymentInfo}>
           <Text
@@ -126,7 +134,7 @@ const Payment = () => {
                 />
                 <TouchableOpacity
                   onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
-                  style={{ marginLeft: 160 }}
+                  style={{ marginLeft: 195 }}
                 >
                   {showPassword ? (
                     <Entypo name="eye" size={24} color="#146C94" />
@@ -174,10 +182,25 @@ const Payment = () => {
           </View>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.buttonConfirm}>
-        <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
-          Xác Nhận Thanh Toán
-        </Text>
+      <LinearGradient
+        colors={["#156791", "#209ddd", "#2498ff"]}
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.buttonConfirm}
+      >
+        <TouchableOpacity
+          onPress={()=>{
+            alert('Đặt xe thành công !');
+            nagivation.navigate('Home')
+          }}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
+            Xác Nhận Thanh Toán
+          </Text>
+        </TouchableOpacity>
+      </LinearGradient>
+      <TouchableOpacity style={styles.goBack} onPress={() => { nagivation.goBack() }}>
+        <Ionicons name="arrow-back" size={35} color="#156791" />
       </TouchableOpacity>
     </View>
   );
@@ -221,10 +244,15 @@ const styles = StyleSheet.create({
     height: "7%",
     width: (width * 90) / 100,
     backgroundColor: "#146C94",
-    top: "90%",
+    top: "81%",
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 6,
+    borderRadius: 10,
+  },
+  goBack: {
+    position: 'absolute',
+    top: 20,
+    left: 15,
   },
 });

@@ -6,6 +6,7 @@ import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 
 const MainProfile = () => {
+    
     return (
         <View style={MainProfileCss.ViewProfile}>
             <UserInfo1 navig="UserPrivate" />

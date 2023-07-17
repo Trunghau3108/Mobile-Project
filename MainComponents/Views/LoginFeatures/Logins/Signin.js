@@ -1,13 +1,16 @@
 import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, } from 'react-native'
-import { Feather } from '@expo/vector-icons';
+import { Feather, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, {useState } from 'react'
 import axios from 'axios'
 import SigninCss from './SigninCss'
-import url from '../../../../urlAPI'; 
+import url from '../../../../urlAPI';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Signin = ({navigation}) => {
     const [userPhone, setUserPhone] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    const [isSelected, setSelection] = useState(false);
   
     const handleLogin = async () => {
       try {
@@ -24,8 +27,14 @@ const Signin = ({navigation}) => {
         if (response.status === 200) {
           // Xử lý khi đăng nhập thành công
           const result = response.data;
-          console.log('Login successful:', result);
-          navigation.replace('Home');
+          try {
+            const jsonValue = JSON.stringify(result);
+            await AsyncStorage.setItem('user', jsonValue);
+          } catch (e) {
+            console.log(e)
+          }
+          alert('Login successful');
+          navigation.replace('TabHome');
         } else {
           // Xử lý khi đăng nhập không thành công
           console.log('Login failed:', response.status, response.statusText);

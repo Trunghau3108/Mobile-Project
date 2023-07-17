@@ -1,28 +1,76 @@
 import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView } from 'react-native'
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import MainScreenCss from './MainScreenCss'
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width, height } = Dimensions.get('screen');
 
 const MainScreen = () => {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState(null);
+  
+  useEffect(() => {
+    // Lấy thông tin từ AsyncStorage khi component mount
+    retrieveUserInfo();
+  }, []);
+
+  const retrieveUserInfo = async () => {
+    try {
+      // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
+      const jsonString = await AsyncStorage.getItem('user');
+
+      if (jsonString) {
+        // Chuyển chuỗi JSON thành đối tượng
+        const userData = JSON.parse(jsonString);
+
+        // Cập nhật state để hiển thị lên view
+        setUserInfo(userData);
+      } else {
+        // Không tìm thấy dữ liệu trong AsyncStorage
+        console.log('User data not found in AsyncStorage');
+      }
+    } catch (error) {
+      console.error('Error retrieving user data from AsyncStorage:', error);
+    }
+  };
+
+
   return (
     <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
+      
       <View style={MainScreenCss.Header}>
+      {userInfo ? (
+        <>
         <Image
           source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
           style={{ height: '100%', width: '40%' }}
         />
 
-        <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('Signin') }}>
-          <Text style={{ fontWeight: 700 }}>Đăng nhập /  </Text>
-          <FontAwesome name="user-circle-o" size={24} color="black" />
-        </TouchableOpacity>
+              <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
+                <Text style={{fontSize: 20, alignSelf: "center", marginRight: 10}}>{userInfo.email}</Text>
+                <FontAwesome name="user-circle-o" size={30} color="black" />
+              </TouchableOpacity>
 
+        </>
+      ) : (
+        <>
+        <Image
+          source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+          style={{ height: '100%', width: '40%' }}
+        />
+
+              <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
+                <Text style={{fontSize: 20, alignSelf: "center", marginRight: 10}}>Đăng nhập / </Text>
+                <FontAwesome name="user-circle-o" size={30} color="black" />
+              </TouchableOpacity>
+
+        </>
+    )}
       </View>
+      
       <ScrollView style={MainScreenCss.Body}>
         <View style={MainScreenCss.Popular}>
           <Text style={{ paddingBottom: 10, fontWeight: 700 }}>Các loại xe phổ biến tại CFA</Text>

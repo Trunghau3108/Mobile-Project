@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#87CEEB",
     width: width,
     height: (height * 8) / 100,
-    borderRadius: 20,
     flexDirection: "row",
     alignSelf: 'center',
     position: 'absolute',

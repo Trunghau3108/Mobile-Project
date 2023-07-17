@@ -5,8 +5,7 @@ const { width, height } = Dimensions.get('screen');
 
 const MainProfileCss = StyleSheet.create({
     ViewProfile: {
-        width: width,
-        height: height,
+        flex: 1,
         paddingTop: 50,
     },
     ViewProfile1: {

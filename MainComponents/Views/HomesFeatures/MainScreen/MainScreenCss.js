@@ -7,9 +7,7 @@ const { width, height } = Dimensions.get('screen');
 const MainScreenCss = StyleSheet.create({
   FullScreen: {
     fontFamily: 'Roboto',
-    width: width,
-    height: height,
-    
+    flex: 1,
   },
   Header: {
     paddingTop: 10,
@@ -19,8 +17,6 @@ const MainScreenCss = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#87CEEB',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
   },
   TextLogin: {
     flexDirection: 'row'

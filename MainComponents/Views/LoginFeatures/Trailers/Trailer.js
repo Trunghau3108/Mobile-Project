@@ -17,7 +17,7 @@ const Trailer = () => {
         <Text style={styles.text}>You don't like booking car</Text>
         <Text style={styles.text}>Don't worry, find me and you rental a car to race with her</Text>
       </View>
-      <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('Signin')}>
+      <TouchableOpacity style={styles.touch} onPress={() => navigation.navigate('TabHome')}>
         <Text style={[styles.text,{paddingTop: 0}]}> Start </Text>
       </TouchableOpacity>
     </View>
