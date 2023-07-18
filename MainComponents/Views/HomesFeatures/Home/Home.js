@@ -1,11 +1,26 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList} from 'react-native'
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
-import { FontAwesome, Entypo } from '@expo/vector-icons';
-import Post from '../../ItemComponent/Posts/Post';
-import DataPost from '../../../VisualData/DataPost';
-import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+  Alert,
+  TouchableOpacity,
+  SectionList,
+  FlatList,
+} from "react-native";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import CarListFilter from "../../ItemComponent/CarListFilter/CarListFilter";
+import FilterList from "../../ItemComponent/FilterList/FilterList";
+import { FontAwesome, Entypo } from "@expo/vector-icons";
+import Post from "../../ItemComponent/Posts/Post";
+import DataPost from "../../../VisualData/DataPost";
+import { useState } from "react";
+import CarListFilter from "../../ItemComponent/CarListFilter/CarListFilter";
 
 const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -72,35 +87,31 @@ const Home = () => {
             </View>
         </View> */}
 
-//         <View>
-//             <CarListFilter/>
-//         </View>
-
-        <CarListFilter/>
-
-        <View style = {styles.scrollview1}>
-            <View style = {styles.view3}>    
-                <FlatList
-                    data = {DataPost}
-                    renderItem={({item}) =>
-                    <Post
-                        giamgia={item.giamgia}
-                        khcach={item.khcach}
-                        tenxe={item.tenxe}
-                        hopso={item.hopso}
-                        nhienlieu={item.nhienlieu}
-                        kieuxe={item.kieuxe}
-                        tienich1={item.tienich1}
-                        tienich2={item.tienich2}
-                        tienich3={item.tienich3}
-                        gia={item.gia}
-                        imguri={item.uri}
-                        map="Map"
-                    />
-                    }
-                />
-            </View>
+      {/* <FilterList /> */}
+      {/* <CarListFilter /> */}
+      <View style={styles.scrollview1}>
+        <View style={styles.view3}>
+          <FlatList
+            data={DataPost}
+            renderItem={({ item }) => (
+              <Post
+                giamgia={item.giamgia}
+                khcach={item.khcach}
+                tenxe={item.tenxe}
+                hopso={item.hopso}
+                nhienlieu={item.nhienlieu}
+                kieuxe={item.kieuxe}
+                tienich1={item.tienich1}
+                tienich2={item.tienich2}
+                tienich3={item.tienich3}
+                gia={item.gia}
+                imguri={item.uri}
+                map="Map"
+              />
+            )}
+          />
         </View>
+      </View>
     </View>
   );
 };
@@ -181,44 +192,44 @@ const styles = StyleSheet.create({
     justifyContent: "center", //can thanh phan trong - can doc
     alignItems: "center", // can ngang - set theo view
     //  alignSelf: 'flex-end', // set theo thanh phan
-      flex: 2,
-     backgroundColor: 'white',
-    },
-    dropdown1: {
-        flex:1
-    },
-    button3: {
-        flex:1,
-        // borderWidth:1,
-        borderRadius:3,
-        height: 50,
-        width:30,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'#146C94',
-    },
-    button4: {
-        flex:1,
-        // borderWidth:1,
-        borderRadius:3,
-        height: 50,
-        width:30,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'green'
-
-    },
-    button5: {
-        flex:1,
-        // borderWidth:1,
-        borderRadius:3,
-        height: 70,
-        width:30,
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'white',
-        marginTop: 6
-    },
-    locationtext: {
-        flex: 8
-    },
+    flex: 2,
+    backgroundColor: "white",
+  },
+  dropdown1: {
+    flex: 1,
+  },
+  button3: {
+    flex: 1,
+    // borderWidth:1,
+    borderRadius: 3,
+    height: 50,
+    width: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#146C94",
+  },
+  button4: {
+    flex: 1,
+    // borderWidth:1,
+    borderRadius: 3,
+    height: 50,
+    width: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "green",
+  },
+  button5: {
+    flex: 1,
+    // borderWidth:1,
+    borderRadius: 3,
+    height: 70,
+    width: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    marginTop: 6,
+  },
+  locationtext: {
+    flex: 8,
+  },
+});

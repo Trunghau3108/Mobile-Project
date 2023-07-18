@@ -16,12 +16,12 @@ import MainProfile from "./MainComponents/Views/ProfilesFetures/Profile/MainProf
 import UpdateUserProfile from "./MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile";
 import CarBorrowList from "./MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList";
 import UserPrivateInfo from "./MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo";
-import Payment from './MainComponents/Views/HomesFeatures/Payment/Payment'
+import Payment from "./MainComponents/Views/HomesFeatures/Payment/Payment";
 //import view cho TabHome
 import Home from "./MainComponents/Views/HomesFeatures/Home/Home";
 import History from "./MainComponents/Views/HomesFeatures/Historys/History";
 import Support from "./MainComponents/Views/HomesFeatures/Supports/Support";
-import Method1 from './MainComponents/Views/HomesFeatures/Payment/Method1'
+import Method1 from "./MainComponents/Views/HomesFeatures/Payment/Method1";
 
 //import phụ
 import Map from "./MainComponents/Views/HomesFeatures/Maps/Map";
@@ -32,8 +32,8 @@ import FindCarFilter from "./MainComponents/Views/ItemComponent/FindCarFilter/Fi
 //import for dev
 import HeaderComp from "./MainComponents/Views/ItemComponent/HeaderComp/HeaderComp";
 
-import BottomTabComp from './MainComponents/Views/ItemComponent/BottomTabComp/BottomTabComp'
-import TestDATA from './TestDATA'
+import BottomTabComp from "./MainComponents/Views/ItemComponent/BottomTabComp/BottomTabComp";
+import TestDATA from "./TestDATA";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -41,35 +41,29 @@ const Tab = createBottomTabNavigator();
 import CalendarItem from "./MainComponents/Views/ItemComponent/Calendar/CalendarItem";
 import CarListFilter from "./MainComponents/Views/ItemComponent/CarListFilter/CarListFilter";
 import FilterList from "./MainComponents/Views/ItemComponent/FilterList/FilterList";
+import SortPrice from "./MainComponents/Views/ItemComponent/SortPrice/SortPrice";
 
 const App = () => {
   return (
+    // <Support />
+    // <SortPrice />
     // <FindCarFilter />
-
     // <CarListFilter />
+    // <FilterList />
+    <CalendarItem />
 
-    // <CalendarItem />
-    <FilterList />
+    // <Main />
+    // <MainScreen />
+    // <Main />
+    // <UserPrivateInfo />
+    // <VerifyCode/>
 
-
-    
     // <Main/>
-    //     <MainScreen/>
-
-    // <Main/>
-
-    // <FindCarFilter/>
-    //     <UserPrivateInfo/>
-
-    //<VerifyCode/>
-    //<Main/>
-    //<HeaderComp/>
-    // // <Map/>
-
+    // <HeaderComp />
+    // <Map />
     // <BottomTabComp/>
-
     // <MainScreen/>
-//     <TestDATA/>
+    // <TestDATA />
   );
 };
 
