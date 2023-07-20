@@ -1,0 +1,281 @@
+{
+    "User": [
+        {
+            "id": "user1",
+            "name": "La Hoang Tuan Kiet",
+            "email": "lahoangtuankiet@gmail.com",
+            "phone": "070758108",
+            "rental": [
+                {
+                    "car_id": "car1",
+                    "start_date": "2023-06-15",
+                    "end_date": "2023-06-20"
+                },
+                {
+                    "car_id": "car2",
+                    "start_date": "2023-07-01",
+                    "end_date": "2023-07-05"
+                }
+            ]
+        },
+        
+        {
+            "id": "user2",
+            "name": "Hoang Van Thang",
+            "email": "vanthang@gmail.com",
+            "phone": "123",
+            "rental": [
+                {
+                    "car_id": "car5",
+                    "start_date": "2023-04-30",
+                    "end_date": "2023-05-05"
+                }
+            ]
+        },
+
+        {
+            "id": "user3",
+            "name": "Nguyen Trung Hau",
+            "email": "trunghau@gmail.com",
+            "phone": "456",
+            "rental": [
+                {
+                    "car_id": "car7",
+                    "start_date": "2023-03-15",
+                    "end_date": "2023-04-01"
+                }
+            ]
+        },
+
+        {
+            "id": "user4",
+            "name": "Duong Gia Minh",
+            "email": "minhduong@gmail.com",
+            "phone": "789",
+            "rental": [
+                {
+                    "car_id": "car10",
+                    "start_date": "2023-06-15",
+                    "end_date": "2023-06-20"
+                },
+                {
+                    "car_id": "car6",
+                    "start_date": "2023-07-01",
+                    "end_date": "2023-07-05"
+                }
+            ]
+        }
+    ],
+    "CarRentals": [
+        {
+            "id": "car1",
+            "brand": "Toyota",
+            "model": "Camry",
+            "year": 2022,
+            "color": "Silver",
+            "is_rented": true,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "GPS Navigation",
+                "Bluetooth Connectivity",
+                "Backup Camera"
+            ],
+            "location": {
+                "latitude": 37.7749,
+                "longitude": -122.4194
+            },
+            "picture": "https://vcdn-vnexpress.vnecdn.net/2021/10/28/Camry-2022-0-5265-1635395842.jpg",
+            "price": 5000000
+        },
+        {
+            "id": "car2",
+            "brand": "Honda",
+            "model": "Accord",
+            "year": 2021,
+            "color": "Red",
+            "is_rented": true,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "Sunroof",
+                "Leather Seats",
+                "Heated Front Seats"
+            ],
+            "location": {
+                "latitude": 34.0522,
+                "longitude": -118.2437
+            },
+            "picture": "https://di-uploads-pod11.dealerinspire.com/hondaofkirkland/uploads/2020/02/2020-Accord-Radiant-Red-Metallic.png",
+            "price": 5500000
+        },
+        {
+            "id": "car3",
+            "brand": "Ford",
+            "model": "Mustang",
+            "year": 2023,
+            "color": "Black",
+            "is_rented": false,
+            "transmission": "Manual",
+            "seating_capacity": 4,
+            "features": [
+                "Convertible Top",
+                "Sports Exhaust",
+                "Rear Spoiler"
+            ],
+            "location": {
+                "latitude": 40.7128,
+                "longitude": -74.0060
+            },
+            "picture": "https://vehicle-images.dealerinspire.com/e033-110008618/1FA6P8CF6P5306465/64c5cbde377864079bc4040ab5090b1f.jpg",
+            "price": 5200000
+        },
+        {
+            "id": "car4",
+            "brand": "Mercedes-Benz",
+            "model": "C-Class",
+            "year": 2022,
+            "color": "White",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "Panoramic Sunroof",
+                "Leather Seats",
+                "Blind Spot Assist"
+            ],
+            "location": {
+                "latitude": 34.0522,
+                "longitude": -118.2437
+            },
+            "picture": "https://65e81151f52e248c552b-fe74cd567ea2f1228f846834bd67571e.ssl.cf1.rackcdn.com/ldm-images/2022-Mercedes-Benz-C-Class-Colors-Polar-White.png",
+            "price": 5000000
+        },
+        {
+            "id": "car5",
+            "brand": "BMW",
+            "model": "X5",
+            "year": 2023,
+            "color": "Blue",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "Navigation System",
+                "Panoramic Roof",
+                "Parking Assistance"
+            ],
+            "location": {
+                "latitude": 37.7749,
+                "longitude": -122.4194
+            },
+            "picture": "https://content.homenetiol.com/2000292/2153505/0x0/stock_images/8/cc_2024BMS19_01_640/cc_2024BMS190009_01_640_C3Z.jpg",
+            "price": 5500000
+        },
+        {
+            "id": "car6",
+            "brand": "Audi",
+            "model": "A4",
+            "year": 2022,
+            "color": "Gray",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "Virtual Cockpit",
+                "Apple CarPlay",
+                "Android Auto"
+            ],
+            "location": {
+                "latitude": 34.0522,
+                "longitude": -118.2437
+            },
+            "picture": "https://stimg.cardekho.com/images/car-images/large/Audi/A4/8223/1609834726431/221_Terra-Gray-Metallic_747474.jpg?impolicy=resize&imwidth=420",
+            "price": 5300000
+        },
+        {
+            "id": "car7",
+            "brand": "Tesla",
+            "model": "Model 3",
+            "year": 2022,
+            "color": "White",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 5,
+            "features": [
+                "Electric Vehicle",
+                "Autopilot",
+                "Large Touchscreen"
+            ],
+            "location": {
+                "latitude": 37.7749,
+                "longitude": -122.4194
+            },
+            "picture": "https://manuals.plus/wp-content/uploads/2022/12/TESLA-Model-3-2022-Owners-feature-img.png",
+            "price": 5500000
+        },
+        {
+            "id": "car8",
+            "brand": "Chevrolet",
+            "model": "Camaro",
+            "year": 2023,
+            "color": "Yellow",
+            "is_rented": false,
+            "transmission": "Manual",
+            "seating_capacity": 4,
+            "features": [
+                "V8 Engine",
+                "Sports Seats",
+                "Rear-Wheel Drive"
+            ],
+            "location": {
+                "latitude": 40.7128,
+                "longitude": -74.0060
+            },
+            "picture": "mydiecastcars.com/wp-content/uploads/2023/01/chevrolet-camaro-yellow-autoart-1.jpg",
+            "price": 6500000
+        },
+        {
+            "id": "car9",
+            "brand": "Lamborghini",
+            "model": "Aventador",
+            "year": 2023,
+            "color": "Orange",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 2,
+            "features": [
+                "Mid-Engine Design",
+                "Carbon Fiber Body",
+                "Lamborghini Doors"
+            ],
+            "location": {
+                "latitude": 34.0522,
+                "longitude": -118.2437
+            },
+            "picture": "https://imgcdn.zigwheels.ae/large/gallery/color/20/214/lamborghini-aventador-color-332454.jpg",
+            "price": 7500000
+        },
+        {
+            "id": "car10",
+            "brand": "Porsche",
+            "model": "911",
+            "year": 2022,
+            "color": "Silver",
+            "is_rented": false,
+            "transmission": "Automatic",
+            "seating_capacity": 4,
+            "features": [
+                "Rear-Wheel Drive",
+                "Sports Exhaust",
+                "Porsche Active Suspension Management"
+            ],
+            "location": {
+                "latitude": 37.7749,
+                "longitude": -122.4194
+            },
+            "picture": "https://blogmedia.dealerfire.com/wp-content/uploads/sites/1150/2022/02/2022-Porsche-911-Carrera-4S-Dolomite-Silver-Metallic_o.jpg",
+            "price": 5000000
+        }
+    ]
+}

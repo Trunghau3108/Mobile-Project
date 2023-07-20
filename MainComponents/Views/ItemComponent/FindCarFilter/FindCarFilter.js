@@ -17,12 +17,15 @@ import {
   FontAwesome5,
   Fontisto,
   Octicons,
+  Feather,
   Entypo,
   AntDesign,
 } from "@expo/vector-icons";
 import CalendarItem from "../Calendar/CalendarItem";
 import FilterList from "../FilterList/FilterList";
 import { useNavigation } from "@react-navigation/native";
+import SelectDropdown from "react-native-select-dropdown";
+import DataTinh from "../../../VisualData/DataListXe";
 // import { getData, storeData } from "../../../../AsyncStorage";
 
 const FindCarFilter = () => {
@@ -40,6 +43,7 @@ const FindCarFilter = () => {
 
   const [selectedRentCar, setSelectedRentCar] = useState("");
   const [selectedReturnCar, setSelectedReturnCar] = useState("");
+  const [whereCar, setWhereCar] = useState('');
   const handleRentCarSelection = (selectedRentCar) => {
     setSelectedRentCar(selectedRentCar);
     // storeData("rentcar", selectedRentCar);
@@ -56,6 +60,30 @@ const FindCarFilter = () => {
       selectedReturnCar: selectedReturnCar,
     });
   };
+
+// import { useNavigation } from "@react-navigation/native";
+
+
+// const FindCarFilter = (props) => {
+  // const navigation = useNavigation();
+  // const [rentCar, setRentCar] = useState('A123');
+  // const [returnCar, setReturnCar] = useState('B');
+  
+
+  // const [isCarSelected, setCarSelected] = useState(false);
+  // const [isMotorSelected, setMotorSelected] = useState(false);
+  // const handleCarPress = () => {
+  //   setCarSelected(!isCarSelected);
+  //   setMotorSelected(false);
+  // };
+  // const handleMotorPress = () => {
+  //   setMotorSelected(!isMotorSelected);
+  //   setCarSelected(false);
+  // };
+
+  // const handleFindCar = () => {
+  //   console.log(whereCar, rentCar, returnCar);
+  // }
 
   return (
     <>
@@ -88,7 +116,7 @@ const FindCarFilter = () => {
             <Text style={{ marginLeft: 10 }}>Xe máy</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.ChonDiaDiem}>
+        {/* <TouchableOpacity style={styles.ChonDiaDiem}>
           <Octicons
             name="location"
             size={24}
@@ -99,7 +127,7 @@ const FindCarFilter = () => {
           <View style={{ marginLeft: 250 }}>
             <Entypo name="chevron-down" size={24} color="black" />
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View>
           <CalendarItem
             onRentCarSelect={handleRentCarSelection}
@@ -111,13 +139,43 @@ const FindCarFilter = () => {
         </View> */}
         <TouchableOpacity
           style={styles.FindCarButton}
-          onPress={handleFilterPress}
+          onPress={handleFilterPress}>
+            <Text style={{ marginLeft: 10 }}>Xe máy</Text>
+          </TouchableOpacity>
+        </View>
+
+        <SelectDropdown
+          buttonStyle={styles.ChonDiaDiem}
+          data={DataTinh}
+          onSelect={(selectItem, index) => { setWhereCar(selectItem), console.log(whereCar) }}
+          buttonTextAfterSelection={(selectedItem, index) => {
+            return selectedItem
+          }}
+          rowTextForSelection={(item, index) => { return item }}
+        />
+        <Feather name="map-pin" size={24} color="black"  style={{position: 'absolute', top: '36%', left: '5%'}}/>
+        <AntDesign name="down" size={20} color="black" style={{position: 'absolute', top: '37%', right: '5%'}}/>
+
+        <View>
+          <CalendarItem
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.FindCarButton}
+          onPress={() => {
+            navigation.navigate('Home', {
+              rentCar: rentCar,
+              returnCar: returnCar,
+              whereCar: whereCar,
+            }),
+            handleFindCar()
+          }}
         >
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
             Tìm xe ngay
           </Text>
         </TouchableOpacity>
-      </View>
+      
     </>
   );
 };
@@ -128,9 +186,11 @@ const styles = StyleSheet.create({
   FilterList: {
     display: "none",
   },
+
   FindCarTong: {
-    marginTop: 40,
-    height: 270,
+    paddingTop: 10,
+    height: "33%",
+    backgroundColor: 'white'
   },
   ChonXe: {
     height: 60,
@@ -140,13 +200,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   ChonDiaDiem: {
-    height: 60,
+    width: '95%',
     backgroundColor: "#ECECEC",
-    width: "95%",
     alignSelf: "center",
-    flexDirection: "row",
-    alignItems: "center",
     marginTop: 10,
+    borderRadius: 5,
   },
   ChonTime: {
     height: 60,

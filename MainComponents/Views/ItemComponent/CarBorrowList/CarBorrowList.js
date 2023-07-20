@@ -1,21 +1,9 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  Alert,
-  TouchableOpacity,
-  SectionList,
-  FlatList,
-} from "react-native";
-import React from "react";
-import ImageOnly from "../ProfileComponent/ImageOnly";
-import DataBorrowCar from "../../../VisualData/DataBorrowCar";
-import OrderCarList from "../ProfileComponent/OrderCarList";
+import {ScrollView, StyleSheet, View, FlatList } from 'react-native'
+import React from 'react'
+import ImageOnly from '../ProfileComponent/ImageOnly'
+import DataBorrowCar from '../../../VisualData/DataBorrowCar'
+import OrderCarList from '../ProfileComponent/OrderCarList'
+import DataPost from '../../../VisualData/DataPost'
 
 const CarBorrowList = () => {
   return (
@@ -24,14 +12,14 @@ const CarBorrowList = () => {
       <View style={styles.ViewList2}>
         <ScrollView style={styles.ViewListXeMuon}>
           <FlatList
-            data={DataBorrowCar}
-            renderItem={({ item }) => (
-              <OrderCarList
-                tenxemuon={item.tenxemuon}
-                ngaygiomuon={item.ngaygiomuon}
-                avaxemuon={item.imgava}
-              />
-            )}
+            data = {DataPost}
+            renderItem={({item}) =>
+            <OrderCarList
+                tenxemuon = {item.tenxe}
+                ngaygiomuon = {item.gioihan}
+                imgava = {item.uri}
+            />
+            }
           />
         </ScrollView>
       </View>
@@ -42,19 +30,19 @@ const CarBorrowList = () => {
 export default CarBorrowList;
 
 const styles = StyleSheet.create({
-  ViewListTong: {
-    flex: 1,
-  },
-  ViewList1: {
-    flex: 2,
-    backgroundColor: "blue",
-  },
-  ViewList2: {
-    flex: 8,
-  },
-  ViewListXeMuon: {
-    flex: 1,
-    height: 1000,
-    // marginBottom:20,
-  },
-});
+    ViewListTong:{
+        flex:1
+    },
+    ViewList1:{
+        flex:2,
+        backgroundColor:'blue'
+    },
+    ViewList2: {
+        flex:8,
+    },
+    ViewListXeMuon:{
+      flex:1,
+      height:1000,
+      marginBottom: 20,
+    },  
+})

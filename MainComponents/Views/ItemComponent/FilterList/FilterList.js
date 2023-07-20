@@ -18,8 +18,6 @@ import SortPrice from "../SortPrice/SortPrice";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 
-const ltn = "TP.Hồ Chí Minh";
-const hour = "10:00 12/06/23";
 
 const FilterList = () => {
   const route = useRoute();
@@ -58,6 +56,9 @@ const FilterList = () => {
             <Text style={FilterListCss.hour}>
               {route.params.selectedReturnCar}
             </Text>
+            {/* <Text style={FilterListCss.ltn}>{props.where}</Text>
+            <Text style={FilterListCss.hour}>{props.rentcar}</Text>
+            <Text style={FilterListCss.hour}>{props.returncar}</Text> */}
           </View>
           <TouchableOpacity onPress={navigation.goBack}>
             <Text style={FilterListCss.changebtn}> THAY ĐỔI</Text>

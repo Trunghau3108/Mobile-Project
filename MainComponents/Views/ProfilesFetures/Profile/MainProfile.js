@@ -1,10 +1,13 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
-import { AntDesign } from '@expo/vector-icons';
 import ChosenList from '../../ItemComponent/ProfileComponent/ChosenList';
 import MainProfileCss from './MainProfileCss';
 import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';
+import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
+import { useNavigation } from '@react-navigation/native';
+
 const MainProfile = () => {
+    const navigation = useNavigation();
     return (
         <View style={MainProfileCss.ViewProfile}>
             <UserInfo1 navig="UserPrivate" />
@@ -12,18 +15,17 @@ const MainProfile = () => {
                 <ChosenList
                     tenmuc="Cập nhật giấy phép lái xe"
                     icon1="id-card"
-                    navi="UpdateUserPro"
+                    onPress={()=>{navigation.navigate("UpdateUserPro")}}
                 />
 
                 <ChosenList
                     tenmuc="Danh sách xe đang đặt"
                     icon1="th-list"
-                    navi="BorrowList"
+                    onPress={()=>{navigation.navigate("BorrowList")}}
                 />
                 <ChosenList
                     tenmuc="Cài đặt"
                     icon1="gear"
-
                 />
                 <ChosenList
                     tenmuc="Điều khoản sử dụng"
@@ -32,9 +34,11 @@ const MainProfile = () => {
                 <ChosenList
                     tenmuc="Đăng xuất"
                     icon1="sign-out"
-                    navi="Signin"
+                    onPress={()=>{navigation.navigate("Signin")}}
                 />
             </View>
+            <BottomTabComp color5="#146C94"/>
+            
         </View>
     )
 }

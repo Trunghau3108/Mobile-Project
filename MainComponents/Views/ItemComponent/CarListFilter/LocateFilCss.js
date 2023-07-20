@@ -4,14 +4,15 @@ import React from 'react'
 const LocateFilCss = StyleSheet.create({
     //LocationFilter
     LocationFil:{
-        height:300,
+        height:320,
         // backgroundColor:'red',
         width:'100%',
         alignSelf:'center'
     },
     Location1:{
-        height:100,
+        height:70,
         backgroundColor:'#ECECEC',
+        alignItems: 'center',
         alignSelf:'center',
         width:'95%',
         marginTop:30,

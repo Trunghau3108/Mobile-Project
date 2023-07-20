@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native'
+const { width, height } = Dimensions.get('screen');
 
 const SignupCss = StyleSheet.create({
     container: {
@@ -39,7 +40,7 @@ const SignupCss = StyleSheet.create({
     },
     touchView: {
         alignItems:'center',
-        justifyContent:'flex-end',
+        marginTop:50,
         height: 160,
     },
     dangki: {
@@ -56,6 +57,33 @@ const SignupCss = StyleSheet.create({
     },
     text:{
         color: '#146C94',
+    },
+    header: {
+        width: width,
+        height: 50,
+        flexDirection: 'row',
+    },
+    goBack: {
+        width: 50,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    tittle: {
+        width: width - 100,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    bonus: {
+        width: 50,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textHeader: {
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 });
 

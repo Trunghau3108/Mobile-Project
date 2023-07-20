@@ -1,10 +1,13 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
+const {width, height} = Dimensions.get("screen");
 
 const OrderCarList = (props) => {
+    const navigation = useNavigation();
     return (
-        <TouchableOpacity style={styles.OrderTong}>
+        <TouchableOpacity style={styles.OrderTong} onPress={()=>{navigation.navigate('CarDetail')}}>
             <View style={styles.OrderHinh}>
                 <Image
                     source={{ uri: props.imgava }}
@@ -35,43 +38,36 @@ export default OrderCarList
 
 const styles = StyleSheet.create({
     OrderTong: {
-        // backgroundColor:'blue',
-        height: 140,
-        // paddingHorizontal:'5%',
-        width: '93%',
+        height: height *20/100,
+        width: width *95/100,
         alignSelf: 'center',
         borderRadius: 7,
         flexDirection: 'row',
         borderWidth: 0.7,
         borderColor: 'black',
-        marginTop: 15
+        marginTop: 15,
     },
     orderimg: {
-        height: 97,
-        width: 151,
-        // alignSelf:'center'
-
-
+        height: height *18/100,
+        width: width *38/100,
+        borderRadius: 7,
     },
     OrderHinh: {
-        flex: 4,
-        // backgroundColor:'green',
+        width: width *40/100,
         alignItems: 'center',
+        justifyContent: 'center',
     },
     OrderChu: {
-        flex: 6,
-        // backgroundColor:'red'
+        width: width *55/100,
     },
     CarBorrowName: {
         flex: 1,
-        // backgroundColor:'yellow',
         alignItems: 'center',
         justifyContent: 'center'
     },
     CarBorrowDetail: {
         flex: 1,
         flexDirection: 'row',
-        // backgroundColor:'purple'
     },
     CarBorrowDetail1: {
         alignItems: 'center',
@@ -91,8 +87,9 @@ const styles = StyleSheet.create({
     ReturnCarButton: {
         backgroundColor: '#146C94',
         borderRadius: 7,
-        borderWidth: 1,
-        width: 90,
+        width: 80,
+        height: 30,
+        justifyContent:'center',
         marginLeft: 10
     },
 
