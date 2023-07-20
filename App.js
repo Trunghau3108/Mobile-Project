@@ -25,15 +25,15 @@ import CarDetails from './MainComponents/Views/ItemComponent/CarDetails/CarDetai
 //import phụ
 import Map from "./MainComponents/Views/HomesFeatures/Maps/Map";
 import MainScreen from "./MainComponents/Views/HomesFeatures/MainScreen/MainScreen";
-
+import CalendarItem from './MainComponents/Views/ItemComponent/Calendar/CalendarItem';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     //<CarDetails/>
-    <Main/>
     //<CalendarItem/>
     //<Trailer/>
+    <Main/>
     //<BottomTabComp/>
     //<HeaderComp/>
     //<Map/>

@@ -22,10 +22,7 @@ const ChosenList = (props) => {
   return (
     <TouchableOpacity 
       style ={MainProfileCss.ViewMucProfile}
-      onPress={() =>{
-        removeValue();
-        navigation.navigate(props.navi);
-      }}
+      onPress={props.onPress}
     >
         <View style = {MainProfileCss.IconProfile}>
             <FontAwesome name={props.icon1} size={25} color="black" />

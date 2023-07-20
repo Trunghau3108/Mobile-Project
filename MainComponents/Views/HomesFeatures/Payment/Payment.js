@@ -1,26 +1,20 @@
 import {
-  SafeAreaView,
   ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   View,
-  Image,
-  Button,
-  Alert,
   TouchableOpacity,
-  SectionList,
-  FlatList,
-  Dimensions,
   TextInput,
+  Dimensions
 } from "react-native";
 import React, { useState } from "react";
-import { AntDesign, Entypo, Feather, Ionicons } from "@expo/vector-icons";
-const { width, height } = Dimensions.get("screen");
+import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import UserPrivateInfoCss from "../../ProfilesFetures/UserPrivateInfo/UserPrivateInfoCss";
 import Method1 from "./Method1";
+import styles from "./PaymentCss";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width, height } = Dimensions.get("screen");
 
 const Payment = () => {
   const [ten, email, pass, coupon, onChangeText] = React.useState("");
@@ -39,7 +33,7 @@ const Payment = () => {
           <Text
             style={{
               fontSize: 18,
-              marginTop: 30,
+              marginTop: 10,
               fontWeight: "bold",
               color: "#146C94",
               marginLeft: 15,
@@ -150,7 +144,6 @@ const Payment = () => {
           <Text
             style={{
               fontSize: 18,
-              marginTop: 10,
               fontWeight: "bold",
               color: "#146C94",
               marginLeft: 15,
@@ -164,7 +157,6 @@ const Payment = () => {
           <Text
             style={{
               fontSize: 18,
-              marginTop: 10,
               fontWeight: "bold",
               color: "#146C94",
               marginLeft: 15,
@@ -189,7 +181,7 @@ const Payment = () => {
         style={styles.buttonConfirm}
       >
         <TouchableOpacity
-          onPress={()=>{
+          onPress={() => {
             alert('Đặt xe thành công !');
             nagivation.navigate('Home')
           }}
@@ -208,51 +200,3 @@ const Payment = () => {
 
 export default Payment;
 
-const styles = StyleSheet.create({
-  paymentTong: {
-    height: height,
-    width: width,
-  },
-  paymentInfo: {
-    height: (height * 50) / 100,
-    width: width,
-  },
-  paymentMethod: {
-    width: width,
-  },
-  Coupon: {
-    height: (height * 25) / 100,
-    width: width,
-  },
-  CouponInput: {
-    height: 50,
-    borderWidth: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: 6,
-    backgroundColor: "#EEFAFF",
-    padding: 10,
-    margin: 10,
-    marginBottom: -10,
-  },
-  inputCoupon: {
-    marginLeft: 10,
-    color: "#146C94",
-  },
-  buttonConfirm: {
-    position: "absolute",
-    height: "7%",
-    width: (width * 90) / 100,
-    backgroundColor: "#146C94",
-    top: "81%",
-    alignSelf: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-  },
-  goBack: {
-    position: 'absolute',
-    top: 20,
-    left: 15,
-  },
-});

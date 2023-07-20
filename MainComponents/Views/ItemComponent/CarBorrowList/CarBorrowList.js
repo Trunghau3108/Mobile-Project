@@ -3,6 +3,7 @@ import React from 'react'
 import ImageOnly from '../ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../../VisualData/DataBorrowCar'
 import OrderCarList from '../ProfileComponent/OrderCarList'
+import DataPost from '../../../VisualData/DataPost'
 
 const CarBorrowList = () => {
   return (
@@ -11,12 +12,12 @@ const CarBorrowList = () => {
       <View style = {styles.ViewList2}>
         <ScrollView style = {styles.ViewListXeMuon}>
           <FlatList
-            data = {DataBorrowCar}
+            data = {DataPost}
             renderItem={({item}) =>
             <OrderCarList
-                tenxemuon = {item.tenxemuon}
-                ngaygiomuon = {item.ngaygiomuon}
-                avaxemuon = {item.imgava}
+                tenxemuon = {item.tenxe}
+                ngaygiomuon = {item.gioihan}
+                imgava = {item.uri}
             />
             }
           />
@@ -42,5 +43,6 @@ const styles = StyleSheet.create({
     ViewListXeMuon:{
       flex:1,
       height:1000,
+      marginBottom: 20,
     },  
 })
