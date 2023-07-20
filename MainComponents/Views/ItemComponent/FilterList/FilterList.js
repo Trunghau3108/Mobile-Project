@@ -18,21 +18,9 @@ import SortPrice from "../SortPrice/SortPrice";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 
-
-const FilterList = () => {
+const FilterList = (props) => {
   const route = useRoute();
   const navigation = useNavigation();
-  // const [rentCarString, setRentCarString] = useState();
-  // const [returnCarString, setReturnCarString] = useState();
-  // const mySetCalen = async () => {
-  //   const ngaydat = await getData("rentcar");
-  //   const ngaytra = await getData("return");
-  //   setRentCarString(ngaydat);
-  //   setReturnCarString(ngaytra);
-  // };
-  // useEffect(() => {
-  //   mySetCalen();
-  // }, []);
 
   const [showCarFil, setShowCarFil] = useState(false);
   const [showSortPrice, setShowSortPrice] = useState(false);
@@ -47,18 +35,11 @@ const FilterList = () => {
         <View style={FilterListCss.ltnhourctn}>
           <Ionicons name="ios-location-outline" size={35} color="black" />
           <View style={FilterListCss.ltnhour}>
-            <Text style={FilterListCss.ltn}>{ltn}</Text>
+            <Text style={FilterListCss.ltn}>{props.where}</Text>
 
-            <Text style={FilterListCss.hour}>
-              {route.params.selectedRentCar}
-            </Text>
-
-            <Text style={FilterListCss.hour}>
-              {route.params.selectedReturnCar}
-            </Text>
-            {/* <Text style={FilterListCss.ltn}>{props.where}</Text>
             <Text style={FilterListCss.hour}>{props.rentcar}</Text>
-            <Text style={FilterListCss.hour}>{props.returncar}</Text> */}
+
+            <Text style={FilterListCss.hour}>{props.returncar}</Text>
           </View>
           <TouchableOpacity onPress={navigation.goBack}>
             <Text style={FilterListCss.changebtn}> THAY ĐỔI</Text>
@@ -114,19 +95,17 @@ const FilterList = () => {
         )}
       </View>
 
-      <View style={FilterListCss.CarFil}>
-        {showCarFil ? (
-          <>
-            <CarFil
-              onPress={() => {
-                setShowCarFil(false);
-              }}
-            />
-          </>
-        ) : (
-          <></>
-        )}
-      </View>
+      {showCarFil ? (
+        <View style={FilterListCss.CarFil}>
+          <CarFil
+            onPress={() => {
+              setShowCarFil(false);
+            }}
+          />
+        </View>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
