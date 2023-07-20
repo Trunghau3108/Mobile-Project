@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { TouchableOpacity } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-function SortPrice() {
+function SortPrice(props) {
   return (
     <>
       <View style={styles.container}>
         <View style={styles.background}>
           <Text style={styles.title}>Sắp xếp theo thứ tự</Text>
-          <View style={styles.down}>
+          <TouchableOpacity style={styles.down} onPress={props.onPressDown}>
             <Icon name="arrow-down" size={20} style={styles.arrow} />
             <Text>Giá từ thấp đến cao</Text>
-          </View>
-          <View style={styles.up}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.up} onPress={props.onPressUp}>
             <Icon name="arrow-up" size={20} style={styles.arrow} />
             <Text>Giá từ cao đến thấp</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </>
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "gray",
+    borderRadius: 20,
   },
   background: {
     backgroundColor: "white",

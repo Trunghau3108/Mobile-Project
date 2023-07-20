@@ -7,7 +7,9 @@ const CalendarItemCss = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
   },
-
+  FilterList: {
+    display: "none",
+  },
   button: {
     backgroundColor: "#ececec",
     width: 160,

@@ -12,7 +12,7 @@ import {
   SectionList,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FontAwesome5,
   Fontisto,
@@ -21,8 +21,12 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 import CalendarItem from "../Calendar/CalendarItem";
+import FilterList from "../FilterList/FilterList";
+import { useNavigation } from "@react-navigation/native";
+// import { getData, storeData } from "../../../../AsyncStorage";
 
 const FindCarFilter = () => {
+  const navigation = useNavigation();
   const [isCarSelected, setCarSelected] = useState(false);
   const [isMotorSelected, setMotorSelected] = useState(false);
   const handleCarPress = () => {
@@ -34,26 +38,53 @@ const FindCarFilter = () => {
     setCarSelected(false);
   };
 
+  const [selectedRentCar, setSelectedRentCar] = useState("");
+  const [selectedReturnCar, setSelectedReturnCar] = useState("");
+  const handleRentCarSelection = (selectedRentCar) => {
+    setSelectedRentCar(selectedRentCar);
+    // storeData("rentcar", selectedRentCar);
+  };
+
+  const handleReturnCarSelection = (selectedReturnCar) => {
+    setSelectedReturnCar(selectedReturnCar);
+    // storeData("return", selectedReturnCar);
+  };
+
+  const handleFilterPress = () => {
+    navigation.navigate("FilterList", {
+      selectedRentCar: selectedRentCar,
+      selectedReturnCar: selectedReturnCar,
+    });
+  };
+
   return (
     <>
       <View style={styles.FindCarTong}>
         <View style={styles.ChonXe}>
-          <TouchableOpacity style={styles.ChonOto}>
+          <TouchableOpacity
+            style={[styles.ChonOto, isCarSelected && styles.ChonOtoSelected]}
+            onPress={handleCarPress}
+          >
             <FontAwesome5
               name="car"
               size={24}
               color="black"
               style={{ marginLeft: 10 }}
             />
-            <Text style={{ marginLeft: 10 }}>Ô tô</Text>
+            <Text style={[{ marginLeft: 10 }]}>Ô tô</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.ChonMoTo}>
+
+          <TouchableOpacity
+            style={[styles.ChonOto, isMotorSelected && styles.ChonOtoSelected]}
+            onPress={handleMotorPress}
+          >
             <Fontisto
               name="motorcycle"
               size={24}
               color="black"
               style={{ marginLeft: 10 }}
             />
+
             <Text style={{ marginLeft: 10 }}>Xe máy</Text>
           </TouchableOpacity>
         </View>
@@ -70,9 +101,18 @@ const FindCarFilter = () => {
           </View>
         </TouchableOpacity>
         <View>
-          <CalendarItem />
+          <CalendarItem
+            onRentCarSelect={handleRentCarSelection}
+            onReturnCarSelect={handleReturnCarSelection}
+          />
         </View>
-        <TouchableOpacity style={styles.FindCarButton}>
+        {/* <View style={styles.FilterList}>
+          <FilterList selectedRentCar={selectedRentCar} />
+        </View> */}
+        <TouchableOpacity
+          style={styles.FindCarButton}
+          onPress={handleFilterPress}
+        >
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
             Tìm xe ngay
           </Text>
@@ -85,6 +125,9 @@ const FindCarFilter = () => {
 export default FindCarFilter;
 
 const styles = StyleSheet.create({
+  FilterList: {
+    display: "none",
+  },
   FindCarTong: {
     marginTop: 40,
     height: 270,
@@ -140,5 +183,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     alignItems: "center",
+  },
+  ChonOtoSelected: {
+    borderWidth: 2,
+    borderColor: "#146C94",
   },
 });

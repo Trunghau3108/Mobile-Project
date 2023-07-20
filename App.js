@@ -22,7 +22,7 @@ import Home from "./MainComponents/Views/HomesFeatures/Home/Home";
 import History from "./MainComponents/Views/HomesFeatures/Historys/History";
 import Support from "./MainComponents/Views/HomesFeatures/Supports/Support";
 import Method1 from "./MainComponents/Views/HomesFeatures/Payment/Method1";
-
+import CarFil from "./MainComponents/Views/ItemComponent/CarListFilter/CarFil";
 //import phụ
 import Map from "./MainComponents/Views/HomesFeatures/Maps/Map";
 
@@ -47,10 +47,17 @@ const App = () => {
   return (
     // <Support />
     // <SortPrice />
-    // <FindCarFilter />
+
     // <CarListFilter />
+
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="FindCarFilter">
+        <Stack.Screen name="FindCarFilter" component={FindCarFilter} />
+        <Stack.Screen name="FilterList" component={FilterList} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    // <CalendarItem />
     // <FilterList />
-    <CalendarItem />
 
     // <Main />
     // <MainScreen />
@@ -64,6 +71,7 @@ const App = () => {
     // <BottomTabComp/>
     // <MainScreen/>
     // <TestDATA />
+    // <CarFil />
   );
 };
 

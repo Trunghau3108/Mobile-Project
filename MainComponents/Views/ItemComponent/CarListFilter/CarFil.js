@@ -21,80 +21,7 @@ import {
   Fontisto,
 } from "@expo/vector-icons";
 import CarFilCss from "./CarFilCss";
-import LocateFilCss from "./LocateFilCss";
-const CarListFilter = () => {
-  return (
-    // <FilterLocation />
-    <FilterCars />
-  );
-};
-const FilterLocation = () => {
-  return (
-    <View style={LocateFilCss.LocationFil}>
-      <View style={LocateFilCss.Location1}>
-        <View style={LocateFilCss.Locate1}>
-          <Ionicons name="ios-location-outline" size={40} color="black" />
-        </View>
-        <View style={LocateFilCss.Locate2}>
-          <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-            TP. Hồ Chí Minh
-          </Text>
-          <Text>10:00 12/06/23 </Text>
-          <Text>11:00 12/06/23 </Text>
-        </View>
-        <View style={LocateFilCss.Locate3}>
-          <TouchableOpacity>
-            <Text style={{ color: "#146C94", fontSize: 17 }}> THAY ĐỔI </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      <View style={LocateFilCss.Location2}>
-        <View style={LocateFilCss.Locate4}>
-          <Entypo name="list" size={30} color="black" />
-        </View>
-        <View style={LocateFilCss.Locate5}>
-          <Text style={{ fontSize: 15 }}>
-            Ô tô, Kiểu xe, Hộp số, Chỗ ngồi...
-          </Text>
-        </View>
-        <TouchableOpacity style={LocateFilCss.Locate6}>
-          <Entypo name="chevron-down" size={30} color="black" />
-        </TouchableOpacity>
-      </View>
-      <View style={LocateFilCss.Location3}>
-        <View style={LocateFilCss.Locate7}>
-          <View style={LocateFilCss.Locate12}>
-            <View style={LocateFilCss.Locate9}>
-              <Entypo name="list" size={30} color="black" />
-            </View>
-            <View style={LocateFilCss.Locate10}>
-              <Text style={{ fontSize: 15 }}>Giá từ thấp đến cao</Text>
-            </View>
-            <TouchableOpacity style={LocateFilCss.Locate11}>
-              <Entypo name="chevron-down" size={30} color="black" />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <TouchableOpacity style={LocateFilCss.Locate8}>
-          <View>
-            <Text
-              style={{
-                fontSize: 15,
-                fontWeight: "bold",
-                color: "white",
-                alignSelf: "center",
-              }}
-            >
-              Lọc
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
-const FilterCars = () => {
+const CarFil = (props) => {
   const [isPressed1, setIsPressed1] = useState(false);
   const [isPressed2, setIsPressed2] = useState(false);
   const [isPressed3, setIsPressed3] = useState(false);
@@ -104,20 +31,28 @@ const FilterCars = () => {
 
   const handlePress1 = () => {
     setIsPressed1(!isPressed1);
+    setIsPressed4(true);
+    setIsPressed3(true);
+    setIsPressed2(true);
   };
   const handlePress2 = () => {
     setIsPressed2(!isPressed2);
+    setIsPressed1(false);
   };
   const handlePress3 = () => {
     setIsPressed3(!isPressed3);
+    setIsPressed1(false);
   };
   const handlePress4 = () => {
     setIsPressed4(!isPressed4);
+    setIsPressed1(false);
   };
   const handlePress5 = () => {
+    setIsPressed6(false);
     setIsPressed5(!isPressed5);
   };
   const handlePress6 = () => {
+    setIsPressed5(false);
     setIsPressed6(!isPressed6);
   };
 
@@ -231,7 +166,7 @@ const FilterCars = () => {
             <Text
               style={{ marginTop: 5, color: isPressed2 ? "white" : "black" }}
             >
-              4/5 chỗ
+              4 chỗ
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -251,7 +186,7 @@ const FilterCars = () => {
             <Text
               style={{ marginTop: 5, color: isPressed3 ? "white" : "black" }}
             >
-              7 chỗ
+              5 chỗ
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -271,7 +206,7 @@ const FilterCars = () => {
             <Text
               style={{ marginTop: 5, color: isPressed4 ? "white" : "black" }}
             >
-              16 chỗ
+              7 chỗ
             </Text>
           </TouchableOpacity>
         </View>
@@ -299,10 +234,16 @@ const FilterCars = () => {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={CarFilCss.CarFilCloseButton}>
+      <TouchableOpacity
+        style={CarFilCss.CarFilCloseButton}
+        onPress={props.onPress}
+      >
         <Text style={{ color: "#fff" }}>Đóng</Text>
       </TouchableOpacity>
     </View>
   );
 };
-export default CarListFilter;
+
+export default CarFil;
+
+const styles = StyleSheet.create({});

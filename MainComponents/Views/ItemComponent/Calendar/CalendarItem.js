@@ -5,7 +5,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { StatusBar } from "expo-status-bar";
 import moment from "moment";
-
+import FindCarFilter from "../FindCarFilter/FindCarFilter";
 import {
   StyleSheet,
   Button,
@@ -17,7 +17,7 @@ import {
   Platform,
 } from "react-native";
 
-const CalendarItem = () => {
+const CalendarItem = ({ onRentCarSelect, onReturnCarSelect }) => {
   const [isRentDatePickerVisible, setRentDatePickerVisibility] =
     useState(false);
   const [isReturnDatePickerVisible, setReturnDatePickerVisibility] =
@@ -60,6 +60,8 @@ const CalendarItem = () => {
     minDate.setDate(minDate.getDate() + 1);
     setMinimumDate(minDate);
     hideRentDatePicker();
+
+    onRentCarSelect(formattedDateTimeRent);
   };
 
   const handleConfirmReturnCar = (date) => {
@@ -72,6 +74,7 @@ const CalendarItem = () => {
     setReturnCar(formattedDateTimeReturn);
     // console.log(formattedDateTimeReturn);
     hideReturnDatePicker();
+    onReturnCarSelect(formattedDateTimeReturn);
   };
 
   return (

@@ -69,5 +69,23 @@ const FilterListCss = StyleSheet.create({
     color: "white",
     fontWeight: "800",
   },
+  CarFil: {
+    position: "absolute",
+    backgroundColor: "white",
+    bottom: 0,
+    paddingVertical: 25,
+    width: "100%",
+    borderRadius: 20,
+    elevation: 10,
+  },
+  SortPrice: {
+    position: "absolute",
+  },
+  BackSortPrice: {
+    width: "100%",
+    marginTop: 200,
+    position: "absolute",
+    alignItems: "center",
+  },
 });
 export default FilterListCss;
