@@ -4,10 +4,49 @@ import SignupCss from './SignupCss';
 import VerifySignupCss from './VerifySignupCss';
 import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import axios from 'axios';
+import url from '../../../../urlAPI';
 const Signup = () => {
-  const [modalVisible, setModalVisible] = useState(false);
   const nagivation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  
+  const handleSignup = async () => {
+    // Perform signup validation here
+    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+      alert('Error', 'Please fill in all fields');
+    } else if (password !== confirmPassword) {
+      alert('Error', 'Passwords do not match');
+    } else {
+      // Perform the signup process here
+      try {
+        const payload = {
+          email: email,
+          password: password,
+        };
+
+        // Make a POST request to your backend API
+        const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
+
+        if (response.status === 200) {
+          alert('Success', 'Signup successful!');
+          nagivation.navigate("Signin")
+
+        } else {
+          alert('Error', 'Signup failed. Please try again later.');
+        }
+      } catch (error) {
+        alert('Error:', error);
+        alert('Error', 'Signup failed. Please try again later.');
+      }
+    }
+  };
+
+  
+
   return (
     <SafeAreaView style={SignupCss.container}>
       <Modal
@@ -46,40 +85,44 @@ const Signup = () => {
           <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Đăng kí</Text>
           <Text style={{color:'gray'}}>Tạo cho bạn một tài khoản mới</Text>
         </View>
-        <View style={SignupCss.inputView}>
+        {/* <View style={SignupCss.inputView}>
           <MaterialCommunityIcons name="account" size={24} color="#146C94" />
           <TextInput
             placeholder='Nhập tên...'
             style={SignupCss.input}
           />
-        </View>
-        <View style={SignupCss.inputView}>
-          <Feather name="phone" size={20} color="#146C94" />
-          <TextInput 
-            placeholder='Nhập số điện thoại...'
-            style={SignupCss.input}
-          />
-        </View>
-        <View style={SignupCss.inputView}>
-          <Feather name="lock" size={20} color="#146C94" />
-          <TextInput 
-            placeholder='Nhập mật khẩu...'
-            secureTextEntry={true}
-            style={SignupCss.input}
-          />
-        </View>
-        <View style={SignupCss.inputView}>
-          <Feather name="lock" size={20} color="#146C94" />
-          <TextInput 
-            placeholder='Nhập lại mật khẩu...'
-            secureTextEntry={true}
-            style={SignupCss.input}
-          />
-        </View>
+        </View> */}
+          <View style={SignupCss.inputView}>
+        <Feather name="mail" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập Email..."
+          style={SignupCss.input}
+          onChangeText={(text) => setEmail(text)}
+        />
+      </View>
+      <View style={SignupCss.inputView}>
+        <Feather name="lock" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập mật khẩu..."
+          secureTextEntry={true}
+          style={SignupCss.input}
+          onChangeText={(text) => setPassword(text)}
+        />
+      </View>
+      <View style={SignupCss.inputView}>
+        <Feather name="lock" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập lại mật khẩu..."
+          secureTextEntry={true}
+          style={SignupCss.input}
+          onChangeText={(text) => setConfirmPassword(text)}
+        />
+      </View>
         <View style={SignupCss.touchView}>
           <TouchableOpacity 
             style={SignupCss.dangki}
-            onPress={() => setModalVisible(true)}
+            // onPress={() => setModalVisible(true)}
+            onPress={handleSignup}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Kí</Text>
           </TouchableOpacity>

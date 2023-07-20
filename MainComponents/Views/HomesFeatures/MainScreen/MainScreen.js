@@ -1,20 +1,51 @@
+import React,{useEffect,useState} from 'react'
 import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView, FlatList } from 'react-native'
-import React, {useState} from 'react'
 import MainScreenCss from './MainScreenCss'
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 import { FontAwesome } from '@expo/vector-icons';
 import DataPost from '../../../VisualData/DataPost';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import FindCarFilter from '../../ItemComponent/FindCarFilter/FindCarFilter';
 
 const { width, height } = Dimensions.get('screen');
 
 const MainScreen = () => {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState(null);
+  
+  useEffect(() => {
+    // Lấy thông tin từ AsyncStorage khi component mount
+    retrieveUserInfo();
+  }, []);
+
+  const retrieveUserInfo = async () => {
+    try {
+      // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
+      const jsonString = await AsyncStorage.getItem('user');
+
+      if (jsonString) {
+        // Chuyển chuỗi JSON thành đối tượng
+        const userData = JSON.parse(jsonString);
+
+        // Cập nhật state để hiển thị lên view
+        setUserInfo(userData);
+      } else {
+        // Không tìm thấy dữ liệu trong AsyncStorage
+        console.log('User data not found in AsyncStorage');
+      }
+    } catch (error) {
+      console.error('Error retrieving user data from AsyncStorage:', error);
+    }
+  };
+
 
   return (
-    <View style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
+    <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
+      
       <View style={MainScreenCss.Header}>
+      {userInfo ? (
+        <>
         <Image
           source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
           style={{ height: '100%', width: '40%' }}
@@ -25,6 +56,21 @@ const MainScreen = () => {
           <FontAwesome name="user-circle-o" size={30} color="black" />
         </TouchableOpacity>
 
+        </>
+      ) : (
+        <>
+        <Image
+          source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+          style={{ height: '100%', width: '40%' }}
+        />
+
+              <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
+                <Text style={{fontSize: 20, alignSelf: "center", marginRight: 10}}>Đăng nhập / </Text>
+                <FontAwesome name="user-circle-o" size={30} color="black" />
+              </TouchableOpacity>
+
+        </>
+    )}
       </View>
       <FindCarFilter/>
       <ScrollView style={MainScreenCss.Body}>
@@ -108,7 +154,7 @@ const MainScreen = () => {
         </View>
       </ScrollView>
       <BottomTabComp color1="#146C94" />
-    </View>
+    </SafeAreaView>
   )
 }
 

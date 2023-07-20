@@ -1,36 +1,52 @@
-import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import { Feather, AntDesign, } from '@expo/vector-icons';
+import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity, Alert, } from 'react-native'
+import { Feather, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import React, {useState } from 'react'
+import axios from 'axios'
 import SigninCss from './SigninCss'
-import Account from '../../../VisualData/DataAcountUser';
+import url from '../../../../urlAPI';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Signin = () => {
-  const [userPhone, setUserPhone] = useState('');
-  const [userPassword, setUserPassword] = useState('');
-  const [isSelected, setSelection] = useState(false);
-
-  const Dangnhap = () => {
-    for (let i = 0; i < Account.length; i++) {
-      if (userPhone === Account[i].phone) {
-        for (let p = 0; p < Account.length; p++) {
-          if (userPassword === Account[p].password) {
-            alert('Đăng nhập thành công');
-            nagivation.replace('Home');
+const Signin = ({navigation}) => {
+    const [userPhone, setUserPhone] = useState('');
+    const [userPassword, setUserPassword] = useState('');
+    const [isSelected, setSelection] = useState(false);
+  
+    const handleLogin = async () => {
+      try {
+        // Tạo đối tượng payload từ thông tin đăng nhập
+        const payload = {
+          email: userPhone,
+          password: userPassword,
+        };
+  
+        // Gửi yêu cầu POST đăng nhập đến API
+        const response = await axios.post(url+'/api/customers/Login', payload);
+      
+        // Kiểm tra phản hồi từ API
+        if (response.status === 200) {
+          // Xử lý khi đăng nhập thành công
+          const result = response.data;
+          try {
+            const jsonValue = JSON.stringify(result);
+            await AsyncStorage.setItem('user', jsonValue);
+          } catch (e) {
+            console.log(e)
           }
-          else {
-            alert('Sai mật khẩu rồi!');
-          }
+          alert('Login successful');
+          navigation.replace('TabHome');
+        } else {
+          // Xử lý khi đăng nhập không thành công
+          console.log('Login failed:', response.status, response.statusText);
         }
+      } catch (error) {
+        console.error('Error:', error);
       }
-      else {
-        alert('Không tìm thấy số điện thoại !');
-      }
-    }
-  }
+    };
+  
 
   const nagivation = useNavigation();
+
   return (
     <SafeAreaView style={SigninCss.container}>
       <Image
@@ -43,22 +59,20 @@ const Signin = () => {
         <View style={[SigninCss.inputview, { marginTop: 50 }]}>
           <Feather name="phone" size={20} color="#146C94" />
           <TextInput
-            placeholder='Nhập số điện thoại...'
-            style={SigninCss.input}
-            value={userPhone}
-            onChangeText={(userPhone) => setUserPhone(userPhone)}
-          />
+        placeholder='Nhập Email...'
+        style={SigninCss.input}
+        onChangeText={(userPhone) => setUserPhone(userPhone)}
+      />
         </View>
         <View style={SigninCss.inputview}>
           <Feather name="lock" size={20} color="#146C94" />
           <TextInput
-            placeholder='Nhập mật khẩu...'
-            keyboardType='number-pad'
-            secureTextEntry={true}
-            style={SigninCss.input}
-            value={userPassword}
-            onChangeText={(userPassword) => setUserPassword(userPassword)}
-          />
+        placeholder='Nhập mật khẩu...'
+        keyboardType='number-pad'
+        secureTextEntry={true}
+        style={SigninCss.input}
+        onChangeText={(userPassword) => setUserPassword(userPassword)}
+      />
         </View>
         <View style={SigninCss.link}>
           <TouchableOpacity style={[SigninCss.linkTouch,{flexDirection: 'row', alignItems:'center'}]} onPress={() => setSelection(!isSelected)}>
@@ -80,7 +94,8 @@ const Signin = () => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          onPress={() => { nagivation.replace('TabHome') }}
+          // onPress={() =>{nagivation.replace('Home')}}
+          onPress={handleLogin}
         >
           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Đăng Nhập</Text>
         </TouchableOpacity>
