@@ -7,10 +7,10 @@ import DataPost from '../../../VisualData/DataPost'
 
 const CarBorrowList = () => {
   return (
-    <View style = {styles.ViewListTong}>
-      <ImageOnly/>
-      <View style = {styles.ViewList2}>
-        <ScrollView style = {styles.ViewListXeMuon}>
+    <View style={styles.ViewListTong}>
+      <ImageOnly />
+      <View style={styles.ViewList2}>
+        <ScrollView style={styles.ViewListXeMuon}>
           <FlatList
             data = {DataPost}
             renderItem={({item}) =>
@@ -24,10 +24,10 @@ const CarBorrowList = () => {
         </ScrollView>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default CarBorrowList
+export default CarBorrowList;
 
 const styles = StyleSheet.create({
     ViewListTong:{

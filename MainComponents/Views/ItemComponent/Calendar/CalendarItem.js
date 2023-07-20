@@ -2,7 +2,7 @@ import React, { useState,} from "react";
 import CalendarItemCss from "./CalendarItemCss";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
-
+import FindCarFilter from "../FindCarFilter/FindCarFilter";
 import {
   View,
   Text,
@@ -10,9 +10,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const CalendarItem = ({onRentCarSelect}) => {
-  const [isRentDatePickerVisible, setRentDatePickerVisibility] = useState(false);
-  const [isReturnDatePickerVisible, setReturnDatePickerVisibility] = useState(false);
+const CalendarItem = ({ onRentCarSelect, onReturnCarSelect }) => {
+  const [isRentDatePickerVisible, setRentDatePickerVisibility] =
+    useState(false);
+  const [isReturnDatePickerVisible, setReturnDatePickerVisibility] =
+    useState(false);
   const [rentCar, setRentCar] = useState("Ngày nhận...");
   const [returnCar, setReturnCar] = useState("Ngày trả...");
 
@@ -51,6 +53,8 @@ const CalendarItem = ({onRentCarSelect}) => {
     minDate.setDate(minDate.getDate() + 1);
     setMinimumDate(minDate);
     hideRentDatePicker();
+
+    onRentCarSelect(formattedDateTimeRent);
     // onRentCarSelect(formattedDateTimeRent);
   };
 
@@ -63,6 +67,7 @@ const CalendarItem = ({onRentCarSelect}) => {
 
     setReturnCar(formattedDateTimeReturn);
     hideReturnDatePicker();
+    onReturnCarSelect(formattedDateTimeReturn);
   };
 
   return (
