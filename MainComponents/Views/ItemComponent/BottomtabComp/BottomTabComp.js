@@ -91,8 +91,7 @@ const styles = StyleSheet.create({
   bottomTab: {
     backgroundColor: "#87CEEB",
     width: width,
-    height: (height * 8) / 100,
-    borderRadius: 20,
+    height: (height * 7) / 100,
     flexDirection: "row",
     alignSelf: 'center',
     position: 'absolute',

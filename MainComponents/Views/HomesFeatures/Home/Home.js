@@ -1,15 +1,21 @@
 import { View, FlatList, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react';
+import { useRoute } from '@react-navigation/native';
 import Post from '../../ItemComponent/Posts/Post';
 import CarListFilter from '../../ItemComponent/CarListFilter/CarListFilter';
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
-
+import FilterList from '../../ItemComponent/FilterList/FilterList';
 //thử data
 import urlAPI from '../../../../urlAPI';
 import axios from 'axios';
 
-const Home = () => {
+const Home = (props) => {
+    const route = useRoute();
     const [data, setData] = useState([]);
+    const [rentCar, setRentCar] = useState('');
+    const [returnCar, setReturnCar] = useState('');
+
+    const email = props.email;
     //thuc hien lay data
     // chạy link backend trước, sau đó lấy link localhost backend để chạy public server ngrok
     const getDataAPI = async () => {
@@ -22,7 +28,11 @@ const Home = () => {
 
     return (
         <View style={styles.container}>
-            <CarListFilter />
+            <FilterList 
+                where = {route.params.whereCar}
+                rentcar= {route.params.rentCar} 
+                returncar = {route.params.returnCar}
+            />
             <View style={styles.scrollview1}>
                 <View style={styles.view3}>
                     <FlatList
@@ -50,10 +60,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f6f6f6',
-        paddingHorizontal: 10
+        padding: 5,
     },
     scrollview1: {
-        flex: 8,
+        height: "70%",
     },
     view3: {
         flex: 1,

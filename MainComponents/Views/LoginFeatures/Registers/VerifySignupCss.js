@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const VerifySignupCss =StyleSheet.create ({
-    centeredView: {
+     centeredView: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

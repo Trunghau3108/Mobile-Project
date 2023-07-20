@@ -87,7 +87,7 @@ const CarDetails = (props) => {
                 end={{x: 1, y: 1}}
                 style={CarDetailsCss.ViewDetails2}
             >
-                <TouchableOpacity style={{flexDirection: 'row'}}>
+                <TouchableOpacity style={{flexDirection: 'row'}} onPress={()=>{nagivation.navigate('Payment')}}>
                     <Text style={{ marginRight: 180, color: 'white', fontWeight: 'bold' }}>Thuê Ngay</Text>
                     <Text style={{ color: 'white', fontWeight: 'bold' }}>500.000đ</Text>
                 </TouchableOpacity>

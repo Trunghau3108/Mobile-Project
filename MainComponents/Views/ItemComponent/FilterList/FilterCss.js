@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const FilterListCss = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "30%",
+    justifyContent: 'center',
   },
   ltnhourctn: {
     backgroundColor: "#ececec",
@@ -15,7 +16,6 @@ const FilterListCss = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  ltnhour: {},
   ltn: {
     fontWeight: "700",
     fontSize: 15,
@@ -37,6 +37,9 @@ const FilterListCss = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
+  
+  
+  
   prcctn: {
     flexDirection: "row",
     alignItems: "center",

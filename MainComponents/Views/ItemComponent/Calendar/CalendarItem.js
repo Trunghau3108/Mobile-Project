@@ -10,11 +10,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const CalendarItem = () => {
-  const [isRentDatePickerVisible, setRentDatePickerVisibility] =
-    useState(false);
-  const [isReturnDatePickerVisible, setReturnDatePickerVisibility] =
-    useState(false);
+const CalendarItem = ({onRentCarSelect}) => {
+  const [isRentDatePickerVisible, setRentDatePickerVisibility] = useState(false);
+  const [isReturnDatePickerVisible, setReturnDatePickerVisibility] = useState(false);
   const [rentCar, setRentCar] = useState("Ngày nhận...");
   const [returnCar, setReturnCar] = useState("Ngày trả...");
 
@@ -41,7 +39,7 @@ const CalendarItem = () => {
     setReturnDatePickerVisibility(false);
   };
 
-  const handleConfirmRentCar = (date) => {
+  const handleConfirmRentCar = (date,) => {
     let currentDateRent = new Date(date);
     let formattedDateTimeRent = moment
       .utc(currentDateRent)
@@ -53,6 +51,7 @@ const CalendarItem = () => {
     minDate.setDate(minDate.getDate() + 1);
     setMinimumDate(minDate);
     hideRentDatePicker();
+    // onRentCarSelect(formattedDateTimeRent);
   };
 
   const handleConfirmReturnCar = (date) => {
@@ -70,7 +69,8 @@ const CalendarItem = () => {
     <>
       <View style={CalendarItemCss.container}>
         <TouchableOpacity
-          onPress={showRentDatePicker}
+          onPress={
+            showRentDatePicker}
           style={CalendarItemCss.button}
         >
           <Text style={CalendarItemCss.buttontext}>{rentCar}</Text>
