@@ -33,7 +33,7 @@ const Method1 = () => {
       <TouchableOpacity
         style={[
           styles.linkTouch,
-          { flexDirection: "row", alignItems: "center", marginTop: 30 },
+          { flexDirection: "row", alignItems: "center", marginTop: 10},
         ]}
         onPress={handleSelection1}
       >

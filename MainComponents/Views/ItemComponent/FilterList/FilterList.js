@@ -2,16 +2,18 @@ import React from "react";
 import { Text, View } from "react-native";
 import {
   Ionicons,
+  MaterialIcons,
   Entypo,
+  FontAwesome5,
+  Fontisto,
 } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import FilterListCss from "./FilterCss";
+import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const ltn = "TP.Hồ Chí Minh";
-const hour = "10:00 12/06/23";
 
-const FilterList = () => {
+const FilterList = (props) => {
   return (
     <>
       <SafeAreaView />
@@ -19,9 +21,9 @@ const FilterList = () => {
         <View style={FilterListCss.ltnhourctn}>
           <Ionicons name="ios-location-outline" size={35} color="black" />
           <View style={FilterListCss.ltnhour}>
-            <Text style={FilterListCss.ltn}>{ltn}</Text>
-            <Text style={FilterListCss.hour}>{hour}</Text>
-            <Text style={FilterListCss.hour}>{hour}</Text>
+            <Text style={FilterListCss.ltn}>{props.where}</Text>
+            <Text style={FilterListCss.hour}>{props.rentcar}</Text>
+            <Text style={FilterListCss.hour}>{props.returncar}</Text>
           </View>
           <TouchableOpacity>
             <Text style={FilterListCss.changebtn}> THAY ĐỔI</Text>
