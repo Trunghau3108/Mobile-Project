@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View, Modal, ImageBackground, TouchableOpacity, ScrollView } from "react-native";
-import React, { useState } from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  ImageBackground,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import React, { useState } from "react";
 import BottomTabComp from "../../ItemComponent/BottomtabComp/BottomTabComp";
 import Icon from "react-native-vector-icons/FontAwesome";
 import ModalCss from "./ModalCss";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 const Support = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -12,14 +20,41 @@ const Support = () => {
       <View style={styles.container}>
         <ModalItem
           visible={modalVisible}
-          onPress={()=>{setModalVisible(false)}}
+          onPress={() => {
+            setModalVisible(false);
+          }}
         />
         <View style={styles.questioncontainer}>
-          <ItemComp text="Hướng dẫn thuê xe" onPress={()=>{setModalVisible(true)}}/>
-          <ItemComp text="Hợp đồng thuê xe tự lái" onPress={()=>{setModalVisible(true)}}/>
-          <ItemComp text="Cẩm nang thuê xe tự lái" onPress={()=>{setModalVisible(true)}}/>
-          <ItemComp text="Câu hỏi thường gặp" onPress={()=>{setModalVisible(true)}}/>
-          <ItemComp text="CarRental blog" onPress={()=>{setModalVisible(true)}}/>
+          <ItemComp
+            text="Hướng dẫn thuê xe"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
+          <ItemComp
+            text="Hợp đồng thuê xe tự lái"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
+          <ItemComp
+            text="Cẩm nang thuê xe tự lái"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
+          <ItemComp
+            text="Câu hỏi thường gặp"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
+          <ItemComp
+            text="CarRental blog"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
         </View>
 
         <View style={styles.contact}>
@@ -49,10 +84,7 @@ const Support = () => {
 
 const ItemComp = (props) => {
   return (
-    <TouchableOpacity 
-      style={styles.question}
-      onPress={props.onPress}
-    >
+    <TouchableOpacity style={styles.question} onPress={props.onPress}>
       <Icon
         name="question"
         size={15}
@@ -62,16 +94,12 @@ const ItemComp = (props) => {
       <Text style={styles.titlequestion}>{props.text}</Text>
       <Icon name="chevron-right" style={styles.chevron} />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const ModalItem = (props) => {
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={props.visible}
-    >
+    <Modal animationType="slide" transparent={true} visible={props.visible}>
       <View style={ModalCss.modalView}>
         <View style={ModalCss.modal}>
           <View style={ModalCss.titleView}>
@@ -83,9 +111,7 @@ const ModalItem = (props) => {
           >
             <Text style={ModalCss.imgText}>HỖ TRỢ</Text>
           </ImageBackground>
-          <ScrollView
-            style={ModalCss.bodyView}
-          >
+          <ScrollView style={ModalCss.bodyView}>
             <ItemComp text="Tôi cần chuẩn bị gì để thuê xe?" />
             <ItemComp text="Tôi có thể thuê cho người khác?" />
             <ItemComp text="Những điều lưu ý" />
@@ -113,9 +139,9 @@ const ModalItem = (props) => {
           </View>
         </View>
       </View>
-    </Modal >
+    </Modal>
   );
-}
+};
 export default Support;
 
 const styles = StyleSheet.create({

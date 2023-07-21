@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const FilterListCss = StyleSheet.create({
   container: {
     height: "30%",
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   ltnhourctn: {
     backgroundColor: "#ececec",
@@ -37,9 +37,7 @@ const FilterListCss = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  
-  
-  
+
   prcctn: {
     flexDirection: "row",
     alignItems: "center",
@@ -70,6 +68,24 @@ const FilterListCss = StyleSheet.create({
   prcbtntext: {
     color: "white",
     fontWeight: "800",
+  },
+  CarFil: {
+    position: "absolute",
+    backgroundColor: "white",
+    bottom: 0,
+    paddingVertical: 25,
+    width: "100%",
+    borderRadius: 20,
+    elevation: 10,
+    zIndex: 50,
+  },
+
+  BackSortPrice: {
+    width: "100%",
+    marginTop: 200,
+    position: "absolute",
+    alignItems: "center",
+    zIndex: 100,
   },
 });
 export default FilterListCss;

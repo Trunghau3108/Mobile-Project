@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
+import { Dimensions } from 'react-native';
+
+const {width, height}= Dimensions.get("screen");
 
 const CarDetailsCss = StyleSheet.create({
     CarDetailsTong:{
@@ -28,7 +31,7 @@ const CarDetailsCss = StyleSheet.create({
     },
     DetailImg:{
         height:200,
-        width:400
+        width: width,
     },
     DetailsChu:{
         flex:1,

@@ -23,7 +23,7 @@ const BottomTabComp = (props) => {
         icon="home"
         name="Home"
         onPress={() => {
-          navigation.navigate('TabHome');
+          navigation.navigate("TabHome");
         }}
       />
 
@@ -32,32 +32,32 @@ const BottomTabComp = (props) => {
         icon="history"
         name="History"
         onPress={() => {
-          navigation.navigate('History');
+          navigation.navigate("History");
         }}
       />
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{
-          color: {colorSearch},
+          color: { colorSearch },
           backgroundColor: "#87CEEB",
           width: (width * 20) / 100,
           height: (height * 8) / 100,
-          alignItems: 'center',
-          justifyContent: 'center',
+          alignItems: "center",
+          justifyContent: "center",
         }}
         onPress={() => {
-          navigation.navigate('Home');
+          navigation.navigate("Home");
         }}
       >
         <FontAwesome name="search" size={35} color={colorSearch} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <BottomTabItem
         gettabColor={colorSupport}
         icon="question"
         name="Support"
         onPress={() => {
-          navigation.navigate('Support');
+          navigation.navigate("Support");
         }}
       />
 
@@ -66,7 +66,7 @@ const BottomTabComp = (props) => {
         icon="user"
         name="Profile"
         onPress={() => {
-          navigation.navigate('MainPro');
+          navigation.navigate("MainPro");
         }}
       />
     </View>
@@ -80,10 +80,12 @@ const BottomTabItem = (props) => {
       onPress={props.onPress}
     >
       <FontAwesome name={props.icon} size={24} color={props.gettabColor} />
-      <Text style={{ fontSize: 13, color: props.gettabColor }}>{props.name}</Text>
+      <Text style={{ fontSize: 13, color: props.gettabColor }}>
+        {props.name}
+      </Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 export default BottomTabComp;
 
@@ -93,12 +95,12 @@ const styles = StyleSheet.create({
     width: width,
     height: (height * 7) / 100,
     flexDirection: "row",
-    alignSelf: 'center',
-    position: 'absolute',
+    alignSelf: "center",
+    position: "absolute",
     bottom: 0,
   },
   tab: {
-    width: (width * 20) / 100,
+    width: (width * 25) / 100,
     marginVertical: 10,
     alignItems: "center",
     justifyContent: "center",

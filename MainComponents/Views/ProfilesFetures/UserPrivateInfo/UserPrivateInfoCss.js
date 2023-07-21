@@ -8,7 +8,7 @@ const UserPrivateInfoCss  = StyleSheet.create({
     },
     InputInfo:{
         flex:8,
-        width:'100%'
+        width:'100%',
     },
     NameInput:{
         padding:10,
