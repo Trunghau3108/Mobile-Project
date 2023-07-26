@@ -6,12 +6,13 @@ const { width, height } = Dimensions.get('screen');
 
 const MainScreenCss = StyleSheet.create({
   FullScreen: {
+    flex: 1,
     fontFamily: 'Roboto',
     width: width,
     height: height,
-    
   },
   Header: {
+    
     paddingTop: 10,
     height: height *10/100,
     paddingHorizontal: 10,
@@ -19,20 +20,19 @@ const MainScreenCss = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#87CEEB',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
   },
   TextLogin: {
     flexDirection: 'row'
   },
   Body: {
-    height: height *87/100 ,
+    flex: 9,
+    marginVertical:10,
   },
   ScrollView: {
     paddingRight: 15,
   },
   Popular: {
-    padding: 20,
+    padding: 10,
     height: height * 34/100,
     backgroundColor: 'white',
   },
@@ -60,8 +60,8 @@ const MainScreenCss = StyleSheet.create({
     fontWeight: 700
   },
   BodyItem: {
+    marginBottom: height*7/100,
     backgroundColor: '#ECECEC',
-    height: height *50/100,
   },
   Rent: {
     padding: 20,
@@ -75,16 +75,68 @@ const MainScreenCss = StyleSheet.create({
     marginTop: 20,
   },
   Partner: {
-    height: height *18/100,
   },
   logoCar: {
+    backgroundColor: 'white',
     width: width * 20/100,
     height: width *20/100,
     marginLeft: 10,
     borderRadius: 10,
   },
 
+  PopularPost: {
+    width: width *90/100,
+    height: height *25/100,
+    borderRadius: 10,
+    borderColor: '#146C94',
+    borderWidth: 1,
+    marginRight: 10,
+  },
+  PopularItem: {
+    flexDirection: 'row',
+  },
+  PopularViewInfo: {
+    width: width *35/100,
+    height: height *21/100,
+    padding: 20,
+    alignItems:'center',
+  },
+  PopularViewImg: {
+    width: width *53/100,
+    height: height *20/100,
+    borderRadius: 10,
+  },
+  promotionView: {
+    height: height *4/100,
+    justifyContent:'center',
+    paddingLeft: 10,
+  },
+  promotionText: {
+    fontSize: 15,
+    fontWeight:"bold",
+    color: 'gray',
+  },
+  nameText: {
+    fontSize: 18,
+  },
+  priceText: {
+    fontSize: 15,
+  },
 
+  distanceTouch: {
+    width: 100,
+    height: 30,
+    marginTop: 5,
+    borderRadius:10,
+    alignItems: 'center',
+    justifyContent:'center',
+    backgroundColor: '#146C94',
+  },
+  distanceText: {
+    fontSize: 15,
+    fontWeight:'bold',
+    color: "white",
+  },
 })
 
 export default MainScreenCss;

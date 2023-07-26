@@ -6,12 +6,23 @@ import { useNavigation } from '@react-navigation/native';
 
 const ChosenList = (props) => {
   const navigation = useNavigation();
+  const removeValue = async () => {
+    if (props.tenmuc == "Đăng xuất"){
+    try {
+       await JSON.parse(AsyncStorage.removeItem('user'));
+
+    } catch(e) {
+      // remove error
+    }
+    console.log('Done.')
+  }
+  }
+
+
   return (
     <TouchableOpacity 
       style ={MainProfileCss.ViewMucProfile}
-      onPress={() =>{
-        navigation.navigate(props.navi);
-      }}
+      onPress={props.onPress}
     >
         <View style = {MainProfileCss.IconProfile}>
             <FontAwesome name={props.icon1} size={25} color="black" />

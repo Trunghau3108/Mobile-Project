@@ -2,7 +2,7 @@ import React, { useState,} from "react";
 import CalendarItemCss from "./CalendarItemCss";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from "moment";
-
+import FindCarFilter from "../FindCarFilter/FindCarFilter";
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const CalendarItem = () => {
+const CalendarItem = ({ onRentCarSelect, onReturnCarSelect }) => {
   const [isRentDatePickerVisible, setRentDatePickerVisibility] =
     useState(false);
   const [isReturnDatePickerVisible, setReturnDatePickerVisibility] =
@@ -41,7 +41,7 @@ const CalendarItem = () => {
     setReturnDatePickerVisibility(false);
   };
 
-  const handleConfirmRentCar = (date) => {
+  const handleConfirmRentCar = (date,) => {
     let currentDateRent = new Date(date);
     let formattedDateTimeRent = moment
       .utc(currentDateRent)
@@ -53,6 +53,9 @@ const CalendarItem = () => {
     minDate.setDate(minDate.getDate() + 1);
     setMinimumDate(minDate);
     hideRentDatePicker();
+
+    onRentCarSelect(formattedDateTimeRent);
+    // onRentCarSelect(formattedDateTimeRent);
   };
 
   const handleConfirmReturnCar = (date) => {
@@ -64,13 +67,15 @@ const CalendarItem = () => {
 
     setReturnCar(formattedDateTimeReturn);
     hideReturnDatePicker();
+    onReturnCarSelect(formattedDateTimeReturn);
   };
 
   return (
     <>
       <View style={CalendarItemCss.container}>
         <TouchableOpacity
-          onPress={showRentDatePicker}
+          onPress={
+            showRentDatePicker}
           style={CalendarItemCss.button}
         >
           <Text style={CalendarItemCss.buttontext}>{rentCar}</Text>

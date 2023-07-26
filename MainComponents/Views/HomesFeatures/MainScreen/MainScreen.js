@@ -1,153 +1,97 @@
-import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView } from 'react-native'
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView, FlatList } from 'react-native'
 import MainScreenCss from './MainScreenCss'
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 import { FontAwesome } from '@expo/vector-icons';
+import DataPost from '../../../VisualData/DataPost';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import FindCarFilter from '../../ItemComponent/FindCarFilter/FindCarFilter';
 
 const { width, height } = Dimensions.get('screen');
 
 const MainScreen = () => {
   const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState(null);
+  
+  useEffect(() => {
+    // Lấy thông tin từ AsyncStorage khi component mount
+    //retrieveUserInfo();
+  }, []);
+
+  const retrieveUserInfo = async () => {
+    try {
+      // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
+      const jsonString = await AsyncStorage.getItem('user');
+
+      if (jsonString) {
+        // Chuyển chuỗi JSON thành đối tượng
+        const userData = JSON.parse(jsonString);
+
+        // Cập nhật state để hiển thị lên view
+        setUserInfo(userData);
+      } else {
+        // Không tìm thấy dữ liệu trong AsyncStorage
+        console.log('User data not found in AsyncStorage');
+      }
+    } catch (error) {
+      console.error('Error retrieving user data from AsyncStorage:', error);
+    }
+  };
+
+
   return (
     <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
+      
       <View style={MainScreenCss.Header}>
+      {userInfo ? (
+        <>
         <Image
           source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
           style={{ height: '100%', width: '40%' }}
         />
 
         <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('Signin') }}>
-          <Text style={{ fontWeight: 700 }}>Đăng nhập /  </Text>
-          <FontAwesome name="user-circle-o" size={24} color="black" />
+          <Text style={{ fontSize: 20, alignSelf: "center", marginRight: 10 }}>Đăng nhập /  </Text>
+          <FontAwesome name="user-circle-o" size={30} color="black" />
         </TouchableOpacity>
 
+        </>
+      ) : (
+        <>
+        <Image
+          source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+          style={{ height: '100%', width: '40%' }}
+        />
+
+              <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
+                <Text style={{fontSize: 20, alignSelf: "center", marginRight: 10}}>Đăng nhập / </Text>
+                <FontAwesome name="user-circle-o" size={30} color="black" />
+              </TouchableOpacity>
+
+        </>
+    )}
       </View>
+      <FindCarFilter/>
       <ScrollView style={MainScreenCss.Body}>
         <View style={MainScreenCss.Popular}>
           <Text style={{ paddingBottom: 10, fontWeight: 700 }}>Các loại xe phổ biến tại CFA</Text>
-          <ScrollView horizontal style={{ cursor: 'pointer' }}>
-            <ImageBackground
-              source={require('./../../../../assets/backgroundCar/cfg0W5.jpg')}
-              style={{ marginRight: 20, width: 320, height: 200, borderRadius: 20, overflow: 'hidden' }}
-            >
-
-              <View style={MainScreenCss.textContainer}>
-                <Image
-                  source={require('./../../../../assets/imageIcon/iconCar.png')}
-                  style={{ height: '100%', width: '15%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.leftTextContainer}>
-                  <Text style={MainScreenCss.leftText}>Porsche</Text>
-                  <Text style={MainScreenCss.leftText}>Berlint</Text>
-                </View>
-                <Image
-                  source={require('./../../../../assets/imageIcon/nwaba_websiteicons_makeagift_1024x1024_2017_dollar.png')}
-                  style={{ height: '100%', width: '20%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.rightTextContainer}>
-                  <Text style={MainScreenCss.rightText}>/Day</Text>
-                  <Text style={MainScreenCss.rightText}>$$$$</Text>
-                </View>
-              </View>
-
-
-            </ImageBackground>
-            <ImageBackground
-              source={require('./../../../../assets/backgroundCar/1454584-full-size-porsche-911-hd-wallpapers-1920x1080-windows.jpg')}
-              style={{ marginRight: 20, width: 320, height: 200, borderRadius: 20, overflow: 'hidden' }}
-            >
-              <View style={MainScreenCss.textContainer}>
-                <Image
-                  source={require('./../../../../assets/imageIcon/iconCar.png')}
-                  style={{ height: '100%', width: '15%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.leftTextContainer}>
-                  <Text style={MainScreenCss.leftText}>Porsche</Text>
-                  <Text style={MainScreenCss.leftText}>Berlint</Text>
-                </View>
-                <Image
-                  source={require('./../../../../assets/imageIcon/nwaba_websiteicons_makeagift_1024x1024_2017_dollar.png')}
-                  style={{ height: '100%', width: '20%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.rightTextContainer}>
-                  <Text style={MainScreenCss.rightText}>/Day</Text>
-                  <Text style={MainScreenCss.rightText}>$$$$</Text>
-                </View>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              source={require('./../../../../assets/backgroundCar/b6IjFi.jpg')}
-              style={{ marginRight: 20, width: 320, height: 200, borderRadius: 20, overflow: 'hidden' }}
-            >
-              <View style={MainScreenCss.textContainer}>
-                <Image
-                  source={require('./../../../../assets/imageIcon/iconCar.png')}
-                  style={{ height: '100%', width: '15%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.leftTextContainer}>
-                  <Text style={MainScreenCss.leftText}>Porsche</Text>
-                  <Text style={MainScreenCss.leftText}>Berlint</Text>
-                </View>
-                <Image
-                  source={require('./../../../../assets/imageIcon/nwaba_websiteicons_makeagift_1024x1024_2017_dollar.png')}
-                  style={{ height: '100%', width: '20%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.rightTextContainer}>
-                  <Text style={MainScreenCss.rightText}>/Day</Text>
-                  <Text style={MainScreenCss.rightText}>$$$$</Text>
-                </View>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              source={require('./../../../../assets/backgroundCar/porsche-rs-gt3-night-city-ie.jpg')}
-              style={{ marginRight: 20, width: 320, height: 200, borderRadius: 20, overflow: 'hidden' }}
-            >
-              <View style={MainScreenCss.textContainer}>
-                <Image
-                  source={require('./../../../../assets/imageIcon/iconCar.png')}
-                  style={{ height: '100%', width: '15%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.leftTextContainer}>
-                  <Text style={MainScreenCss.leftText}>Porsche</Text>
-                  <Text style={MainScreenCss.leftText}>Berlint</Text>
-                </View>
-                <Image
-                  source={require('./../../../../assets/imageIcon/nwaba_websiteicons_makeagift_1024x1024_2017_dollar.png')}
-                  style={{ height: '100%', width: '20%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.rightTextContainer}>
-                  <Text style={MainScreenCss.rightText}>/Day</Text>
-                  <Text style={MainScreenCss.rightText}>$$$$</Text>
-                </View>
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              source={require('./../../../../assets/backgroundCar/361334.jpg')}
-              style={{ marginRight: 20, width: 320, height: 200, borderRadius: 20, overflow: 'hidden' }}
-            >
-              <View style={MainScreenCss.textContainer}>
-                <Image
-                  source={require('./../../../../assets/imageIcon/iconCar.png')}
-                  style={{ height: '100%', width: '15%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.leftTextContainer}>
-                  <Text style={MainScreenCss.leftText}>Porsche</Text>
-                  <Text style={MainScreenCss.leftText}>Berlint</Text>
-                </View>
-                <Image
-                  source={require('./../../../../assets/imageIcon/nwaba_websiteicons_makeagift_1024x1024_2017_dollar.png')}
-                  style={{ height: '100%', width: '20%', marginRight: 20 }}
-                />
-                <View style={MainScreenCss.rightTextContainer}>
-                  <Text style={MainScreenCss.rightText}>/Day</Text>
-                  <Text style={MainScreenCss.rightText}>$$$$</Text>
-                </View>
-              </View>
-            </ImageBackground>
-          </ScrollView>
+          <FlatList
+            horizontal
+            style={{ cursor: 'pointer' }}
+            data={DataPost}
+            renderItem={({ item }) =>
+              <PostItem
+                promote={item.giamgia}
+                name={item.tenxe}
+                price={item.gia}
+                distance={item.khcach}
+                imguri={item.uri}
+              />
+            }
+          />
         </View>
-        <ScrollView style={MainScreenCss.BodyItem}>
+        <View style={MainScreenCss.BodyItem}>
           <View style={MainScreenCss.Rent}>
             <Text style={{ fontWeight: 700 }}>Thuê xe như thế nào</Text>
 
@@ -207,10 +151,44 @@ const MainScreen = () => {
               />
             </ScrollView>
           </View>
-        </ScrollView>
+        </View>
       </ScrollView>
       <BottomTabComp color1="#146C94" />
     </SafeAreaView>
+  )
+}
+
+const PostItem = (props) => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity
+      style={MainScreenCss.PopularPost}
+      onPress={() => {navigation.navigate("CarDetail")}}
+    >
+      <View style={MainScreenCss.promotionView}>
+        <Text style={MainScreenCss.promotionText}>{props.promote}</Text>
+      </View>
+      <View style={MainScreenCss.PopularItem}>
+        <View style={MainScreenCss.PopularViewInfo}>
+          <View>
+            <Text style={MainScreenCss.nameText}>{props.name}</Text>
+            <Text style={MainScreenCss.priceText}>Giá:</Text>
+            <Text style={[MainScreenCss.priceText, { fontSize: 18, color: 'gray' }]}>{props.price}</Text>
+            <Text style={MainScreenCss.priceText}>đ / ngày</Text>
+            <TouchableOpacity 
+              style={MainScreenCss.distanceTouch}
+              onPress={() => {navigation.navigate("Map")}}
+            >
+              <Text style={MainScreenCss.distanceText}>{props.distance}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Image
+          style={MainScreenCss.PopularViewImg}
+          source={{ uri: props.imguri }}
+        />
+      </View>
+    </TouchableOpacity>
   )
 }
 

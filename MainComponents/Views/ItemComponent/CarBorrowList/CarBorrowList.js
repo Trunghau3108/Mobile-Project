@@ -3,30 +3,31 @@ import React from 'react'
 import ImageOnly from '../ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../../VisualData/DataBorrowCar'
 import OrderCarList from '../ProfileComponent/OrderCarList'
+import DataPost from '../../../VisualData/DataPost'
 
 const CarBorrowList = () => {
   return (
-    <View style = {styles.ViewListTong}>
-      <ImageOnly/>
-      <View style = {styles.ViewList2}>
-        <ScrollView style = {styles.ViewListXeMuon}>
+    <View style={styles.ViewListTong}>
+      <ImageOnly />
+      <View style={styles.ViewList2}>
+        <ScrollView style={styles.ViewListXeMuon}>
           <FlatList
-            data = {DataBorrowCar}
+            data = {DataPost}
             renderItem={({item}) =>
             <OrderCarList
-                tenxemuon = {item.tenxemuon}
-                ngaygiomuon = {item.ngaygiomuon}
-                avaxemuon = {item.imgava}
+                tenxemuon = {item.tenxe}
+                ngaygiomuon = {item.gioihan}
+                imgava = {item.uri}
             />
             }
           />
         </ScrollView>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default CarBorrowList
+export default CarBorrowList;
 
 const styles = StyleSheet.create({
     ViewListTong:{
@@ -42,5 +43,6 @@ const styles = StyleSheet.create({
     ViewListXeMuon:{
       flex:1,
       height:1000,
+      marginBottom: 20,
     },  
 })
