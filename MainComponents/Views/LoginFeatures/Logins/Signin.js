@@ -102,7 +102,7 @@ const Signin = ({ navigation }) => {
           <TouchableOpacity
             style={SigninCss.linkTouch}
             onPress={() => {
-              nagivation.replace("ForgetPass");
+              nagivation.replace("Forget");
             }}
           >
             <Text
@@ -114,8 +114,8 @@ const Signin = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          // onPress={() =>{nagivation.replace('Home')}}
-          onPress={handleLogin}
+          onPress={() =>{nagivation.replace('Home')}}
+          // onPress={handleLogin}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>
             Đăng Nhập

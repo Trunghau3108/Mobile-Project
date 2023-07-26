@@ -46,7 +46,7 @@ const NewPassword = () => {
           <TouchableOpacity 
             style={[NewPasswordCss.dangki,{ marginTop: 10}]}
             onPress={() => {
-              nagivation.replace('Verify');
+              nagivation.goBack
             }}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Quay lại</Text>

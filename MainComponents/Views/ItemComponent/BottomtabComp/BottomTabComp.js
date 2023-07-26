@@ -36,22 +36,6 @@ const BottomTabComp = (props) => {
         }}
       />
 
-      {/* <TouchableOpacity
-        style={{
-          color: { colorSearch },
-          backgroundColor: "#87CEEB",
-          width: (width * 20) / 100,
-          height: (height * 8) / 100,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onPress={() => {
-          navigation.navigate("Home");
-        }}
-      >
-        <FontAwesome name="search" size={35} color={colorSearch} />
-      </TouchableOpacity> */}
-
       <BottomTabItem
         gettabColor={colorSupport}
         icon="question"

@@ -2,9 +2,9 @@ import { FlatList, StyleSheet, View, Dimensions } from 'react-native'
 import React from 'react'
 
 //component import
-import Post from '../../ItemComponent/Posts/Post'
-import DataPost from '../../../VisualData/DataPost'
-import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp'
+import Post from '../../ItemComponent/Posts/Post';
+import DataPost from '../../../VisualData/DataPost';
+import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 
 const { width, height } = Dimensions.get('screen');
 

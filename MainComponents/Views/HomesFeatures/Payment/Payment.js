@@ -13,6 +13,7 @@ import Method1 from "./Method1";
 import styles from "./PaymentCss";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import Popup from "../../ItemComponent/Popup/Popup";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -20,11 +21,22 @@ const Payment = () => {
   const [ten, email, pass, coupon, onChangeText] = React.useState("");
   const [phone, onChangeNumber] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isSelected, setSelection] = useState(false);
+  const [modal, setModal] = useState(false);
+
+  const handleXacNhanThanhToan = () => {
+    setModal(true)
+    console.log(modal)
+  }
 
   const nagivation = useNavigation();
   return (
     <View>
+      <Popup
+        visible={modal}
+        icon="checkmark-done-sharp"
+        text="Thanh toán thành công !"
+        onPress={() => { setModal(false) }}
+      />
       <View style={{ width: width, height: 80, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: '#156791' }}> Thanh Toán</Text>
       </View>
@@ -181,10 +193,7 @@ const Payment = () => {
         style={styles.buttonConfirm}
       >
         <TouchableOpacity
-          onPress={() => {
-            alert('Đặt xe thành công !');
-            nagivation.navigate('Home')
-          }}
+          onPress={handleXacNhanThanhToan}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
             Xác Nhận Thanh Toán
