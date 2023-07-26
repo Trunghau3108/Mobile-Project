@@ -29,7 +29,7 @@ const Signin = ({ navigation }) => {
       };
 
       // Gửi yêu cầu POST đăng nhập đến API
-      const response = await axios.post(url + "/api/customers/Login", payload);
+      const response = await axios.post(url+"/api/customers/Login", payload);
 
       // Kiểm tra phản hồi từ API
       if (response.status === 200) {
@@ -41,14 +41,13 @@ const Signin = ({ navigation }) => {
         } catch (e) {
           console.log(e);
         }
-        alert("Login successful");
+        alert("Đăng nhập thành công");
         navigation.replace("TabHome");
-      } else {
+      }else {
         // Xử lý khi đăng nhập không thành công
-        console.log("Login failed:", response.status, response.statusText);
       }
     } catch (error) {
-      console.error("Error:", error);
+        alert("Đăng nhập thất bại: Sai email hoặc mật khẩu");
     }
   };
 
