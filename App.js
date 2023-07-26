@@ -16,6 +16,7 @@ import MainProfile from "./MainComponents/Views/ProfilesFetures/Profile/MainProf
 import UpdateUserProfile from "./MainComponents/Views/ProfilesFetures/UpdateUserProfile/UpdateUserProfile";
 import CarBorrowList from "./MainComponents/Views/ItemComponent/CarBorrowList/CarBorrowList";
 import UserPrivateInfo from "./MainComponents/Views/ProfilesFetures/UserPrivateInfo/UserPrivateInfo";
+import Forget from "./MainComponents/Views/LoginFeatures/Forget/Forget";
 import Payment from "./MainComponents/Views/HomesFeatures/Payment/Payment";
 //import view cho TabHome
 import Home from "./MainComponents/Views/HomesFeatures/Home/Home";
@@ -27,49 +28,15 @@ import CarDetails from "./MainComponents/Views/ItemComponent/CarDetails/CarDetai
 //import phụ
 import Map from "./MainComponents/Views/HomesFeatures/Maps/Map";
 import MainScreen from "./MainComponents/Views/HomesFeatures/MainScreen/MainScreen";
+import Status from "./MainComponents/Views/ItemComponent/Popup/Popup";
 
-import FindCarFilter from "./MainComponents/Views/ItemComponent/FindCarFilter/FindCarFilter";
-//import for dev
-import HeaderComp from "./MainComponents/Views/ItemComponent/HeaderComp/HeaderComp";
-
-import TestDATA from "./TestDATA";
 const Stack = createNativeStackNavigator();
 
 //import Component
-import CalendarItem from "./MainComponents/Views/ItemComponent/Calendar/CalendarItem";
-import CarListFilter from "./MainComponents/Views/ItemComponent/CarListFilter/CarListFilter";
-import FilterList from "./MainComponents/Views/ItemComponent/FilterList/FilterList";
-import SortPrice from "./MainComponents/Views/ItemComponent/SortPrice/SortPrice";
 
 const App = () => {
   return (
-    // <Support />
-    // <SortPrice />
-
-    // <CarListFilter />
-
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName="FindCarFilter">
-    //     <Stack.Screen name="FindCarFilter" component={FindCarFilter} />
-    //     <Stack.Screen name="FilterList" component={FilterList} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    // <CalendarItem />
-    // <FilterList />
-
-    // <Main />
-    // <MainScreen />
-    // <Main />
-    // <UserPrivateInfo />
-    // <VerifyCode/>
-
-    <Main />
-    // <HeaderComp />
-    // <Map />
-    // <BottomTabComp/>
-    // <MainScreen/>
-    // <TestDATA />
-    // <CarFil />
+    <Main/>
   );
 };
 
@@ -85,13 +52,12 @@ const Main = () => {
         <Stack.Screen name="Trailer" component={Trailer} />
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="ForgetPass" component={ForgetPass} />
         <Stack.Screen name="NewPass" component={NewPassword} />
-        <Stack.Screen name="Verify" component={VerifyCode} />
         <Stack.Screen name="TabHome" component={MainScreen} />
+        <Stack.Screen name="Forget" component={Forget}/>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="History" component={History} />
-        <Stack.Screen name="Support" component={Support} />
+        <Stack.Screen name="History" component={History} options={{ headerShown: true, headerTitleAlign: "center" }} />
+        <Stack.Screen name="Support" component={Support} options={{ headerShown: true, headerTitleAlign: "center" }} />
         <Stack.Screen
           name="Map"
           component={Map}

@@ -1,0 +1,6 @@
+kiệt
+26/07
+1. npm install --save @react-native-firebase/app
+2. npm i firebase
+3. npm i react-native-webview
+4. npm i expo-firebase-recaptcha

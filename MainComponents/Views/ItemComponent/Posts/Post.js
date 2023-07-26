@@ -54,7 +54,7 @@ const Post = (props) => {
                     </View>
                     <View style={PostCss.define2}>
                         <Text style={{fontSize: 25,paddingHorizontal: 4, fontWeight: 'bold', color:'#146C94'}}>{props.gia}</Text>
-                        <Text style={{fontSize: 15, alignSelf: "flex-end"}}>usd/ ngày</Text>
+                        <Text style={{fontSize: 15, alignSelf: "flex-end"}}>đ / ngày</Text>
                     </View>
                 </View>
             </View>

@@ -85,13 +85,6 @@ const Signup = () => {
           <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Đăng kí</Text>
           <Text style={{color:'gray'}}>Tạo cho bạn một tài khoản mới</Text>
         </View>
-        {/* <View style={SignupCss.inputView}>
-          <MaterialCommunityIcons name="account" size={24} color="#146C94" />
-          <TextInput
-            placeholder='Nhập tên...'
-            style={SignupCss.input}
-          />
-        </View> */}
           <View style={SignupCss.inputView}>
         <Feather name="mail" size={20} color="#146C94" />
         <TextInput
@@ -121,13 +114,13 @@ const Signup = () => {
         <View style={SignupCss.touchView}>
           <TouchableOpacity 
             style={SignupCss.dangki}
-            // onPress={() => setModalVisible(true)}
-            onPress={handleSignup}
+            onPress={() => setModalVisible(true)}
+            //onPress={handleSignup}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Kí</Text>
           </TouchableOpacity>
           <View style={SignupCss.dangnhapview}>
-            <Text style={[SignupCss.text,{fontSize: 13, right: 5}]}>Dã có tài khoản?</Text>
+            <Text style={[SignupCss.text,{fontSize: 13, right: 5}]}>Đã có tài khoản?</Text>
             <TouchableOpacity
               onPress={()=>{
                 nagivation.replace('Signin');

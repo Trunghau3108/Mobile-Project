@@ -120,7 +120,7 @@ const FindCarFilter = () => {
           buttonStyle={styles.ChonDiaDiem}
           data={DataTinh}
           onSelect={(selectItem, index) => {
-            setWhereCar(selectItem), console.log(whereCar);
+            setWhereCar(selectItem)
           }}
           buttonTextAfterSelection={(selectedItem, index) => {
             return selectedItem;

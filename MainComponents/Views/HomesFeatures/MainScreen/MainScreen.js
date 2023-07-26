@@ -16,7 +16,7 @@ const MainScreen = () => {
   
   useEffect(() => {
     // Lấy thông tin từ AsyncStorage khi component mount
-    retrieveUserInfo();
+    //retrieveUserInfo();
   }, []);
 
   const retrieveUserInfo = async () => {
