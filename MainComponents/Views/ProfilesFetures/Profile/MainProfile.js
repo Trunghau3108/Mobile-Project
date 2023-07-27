@@ -5,6 +5,8 @@ import MainProfileCss from './MainProfileCss';
 import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 import { useNavigation } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
+
 
 const MainProfile = () => {
     const navigation = useNavigation();
@@ -34,7 +36,12 @@ const MainProfile = () => {
                 <ChosenList
                     tenmuc="Đăng xuất"
                     icon1="sign-out"
-                    onPress={()=>{navigation.navigate("Signin")}}
+                    onPress={() => {
+        navigation.reset({
+            index: 0,
+            routes
+        });
+    }}
                 />
             </View>
             <BottomTabComp color5="#146C94"/>
