@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import FindCarFilter from '../../ItemComponent/FindCarFilter/FindCarFilter';
 import axios from 'axios';
 import url from '../../../../urlAPI';
+import { useIsFocused } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -16,26 +17,27 @@ const MainScreen = () => {
   const navigation = useNavigation();
 
   const [userInfo, setUserInfo] = useState(null);
+  const isFocused = useIsFocused();
   
-  const retrieveUserInfo = async () => {
-    try {
-      // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
-      const jsonString = await AsyncStorage.getItem('user');
-      
-      
-      if (jsonString) {
-        // Chuyển chuỗi JSON thành đối tượng
-        const userData = JSON.parse(jsonString);
-        // Cập nhật state để hiển thị lên view
-        setUserInfo(userData);
-      } else {
-        // Không tìm thấy dữ liệu trong AsynscStorage
-        console.log('User data not found in AsyncStorage');
+  useEffect(() => {
+    const retrieveUserInfo = async () => {
+      try {
+        const jsonString = await AsyncStorage.getItem('user');
+        if (jsonString) {
+          const userData = JSON.parse(jsonString);
+          setUserInfo(userData);
+          
+        }
+      } catch (error) {
+        console.error('Error retrieving user data from AsyncStorage:', error);
       }
-    } catch (error) {
-      console.error('Error retrieving user data from AsyncStorage:', error);
+    };
+
+    // Retrieve user data whenever the screen gains focus
+    if (isFocused) {
+      retrieveUserInfo();
     }
-  };
+  }, [isFocused]);
 
   
 
@@ -85,11 +87,7 @@ const MainScreen = () => {
   //     // />
 
   // }
-  useEffect(() => {
-    // Lấy thông tin từ AsyncStorage khi component mount
-    retrieveUserInfo();
-    
-  }, []);
+
 
   return (
     <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
@@ -104,7 +102,7 @@ const MainScreen = () => {
             <TouchableOpacity
               style={MainScreenCss.TextLogin}
               onPress={() => {
-                navigation.navigate('MainPro',  userInfo);
+                navigation.navigate('MainPro');
               }}
             >
               {/* Access user.Fullname directly */}
