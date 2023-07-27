@@ -12,11 +12,12 @@ const Signup = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullname, setFullname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   
   const handleSignup = async () => {
     // Perform signup validation here
-    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+    if (email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
       alert('Error', 'Please fill in all fields');
     } else if (password !== confirmPassword) {
       alert('Error', 'Passwords do not match');
@@ -26,6 +27,7 @@ const Signup = () => {
         const payload = {
           email: email,
           password: password,
+          fullname: fullname
         };
 
         // Make a POST request to your backend API
@@ -44,8 +46,6 @@ const Signup = () => {
       }
     }
   };
-
-  
 
   return (
     <SafeAreaView style={SignupCss.container}>
@@ -91,6 +91,14 @@ const Signup = () => {
           placeholder="Nhập Email..."
           style={SignupCss.input}
           onChangeText={(text) => setEmail(text)}
+        />
+      </View>
+      <View style={SignupCss.inputView}>
+        <Feather name="mail" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập FullName..."
+          style={SignupCss.input}
+          onChangeText={(text) => setFullname(text)}
         />
       </View>
       <View style={SignupCss.inputView}>

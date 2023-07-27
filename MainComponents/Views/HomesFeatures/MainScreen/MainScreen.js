@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions, SafeAreaView, FlatList } from 'react-native'
 import MainScreenCss from './MainScreenCss'
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
@@ -7,89 +7,150 @@ import DataPost from '../../../VisualData/DataPost';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FindCarFilter from '../../ItemComponent/FindCarFilter/FindCarFilter';
+import axios from 'axios';
+import url from '../../../../urlAPI';
+import { useIsFocused } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
 
 const MainScreen = () => {
   const navigation = useNavigation();
+
   const [userInfo, setUserInfo] = useState(null);
+  const isFocused = useIsFocused();
   
   useEffect(() => {
-    // Lấy thông tin từ AsyncStorage khi component mount
-    //retrieveUserInfo();
-  }, []);
-
-  const retrieveUserInfo = async () => {
-    try {
-      // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
-      const jsonString = await AsyncStorage.getItem('user');
-
-      if (jsonString) {
-        // Chuyển chuỗi JSON thành đối tượng
-        const userData = JSON.parse(jsonString);
-
-        // Cập nhật state để hiển thị lên view
-        setUserInfo(userData);
-      } else {
-        // Không tìm thấy dữ liệu trong AsyncStorage
-        console.log('User data not found in AsyncStorage');
+    const retrieveUserInfo = async () => {
+      try {
+        const jsonString = await AsyncStorage.getItem('user');
+        if (jsonString) {
+          const userData = JSON.parse(jsonString);
+          setUserInfo(userData);
+          
+        }
+      } catch (error) {
+        console.error('Error retrieving user data from AsyncStorage:', error);
       }
-    } catch (error) {
-      console.error('Error retrieving user data from AsyncStorage:', error);
+    };
+
+    // Retrieve user data whenever the screen gains focus
+    if (isFocused) {
+      retrieveUserInfo();
     }
-  };
+  }, [isFocused]);
+
+  
+
+
+
+
+  //lấy 5 post có view cao nhất
+  // const getData = async () => {
+  //   let res = await axios.post(url + "/api/products/GetListProduct");
+
+  //   // const itemsWithViewsGreaterThan5 = res.data.filter(element => element.views > 5);
+
+  //   // // Log giá trị views của các phần tử thỏa mãn điều kiện
+  //   // itemsWithViewsGreaterThan5.forEach(element => {
+  //   //   console.log(element);
+  //   // });
+  //   const data = res.data;
+
+  //   // Sắp xếp mảng theo giá trị views giảm dần
+  //   data.sort((a, b) => b.views - a.views);
+
+  //   // Lấy 5 phần tử đầu tiên của mảng (có views cao nhất)
+  //   const top5Items = data.slice(0, 5);
+  //   // Log giá trị views của các phần tử
+  //   top5Items.forEach(element => {    
+  //     setData(element);
+  //     // console.log(data);
+  //   });
+
+
+
+ 
+  // }
+
+
+  
+  // const renderItem = (data) => {
+
+  //   console.log(data.name)
+    
+  //     // <PostItem
+  //     // promote={data.discount}
+  //     // name={data.name}
+  //     // price={data.unitPrice}
+  //     // distance={"auto"}
+  //     // imguri={data.image}
+  //     // />
+
+  // }
 
 
   return (
     <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
-      
       <View style={MainScreenCss.Header}>
-      {userInfo ? (
+              {userInfo ? (
         <>
-        <Image
-          source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
-          style={{ height: '100%', width: '40%' }}
-        />
+            <Image
+              source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+              style={{ height: '100%', width: '40%' }}
+            />
+         
+            <TouchableOpacity
+              style={MainScreenCss.TextLogin}
+              onPress={() => {
+                navigation.navigate('MainPro');
+              }}
+            >
+              {/* Access user.Fullname directly */}
+              <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>
+                {userInfo.fullname}
+              </Text>
+              <FontAwesome name="user-circle-o" size={30} color="black" />
+            </TouchableOpacity>
+        
+      </>
+              ):(
+      <>
+            <Image
+              source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+              style={{ height: '100%', width: '40%' }}
+            />
 
-        <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('Signin') }}>
-          <Text style={{ fontSize: 20, alignSelf: "center", marginRight: 10 }}>Đăng nhập /  </Text>
+          <TouchableOpacity
+          style={MainScreenCss.TextLogin}
+          onPress={() => {
+            navigation.navigate('Signin');
+          }}
+        >
+          <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>Đăng nhập / </Text>
           <FontAwesome name="user-circle-o" size={30} color="black" />
         </TouchableOpacity>
-
-        </>
-      ) : (
-        <>
-        <Image
-          source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
-          style={{ height: '100%', width: '40%' }}
-        />
-
-              <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
-                <Text style={{fontSize: 20, alignSelf: "center", marginRight: 10}}>Đăng nhập / </Text>
-                <FontAwesome name="user-circle-o" size={30} color="black" />
-              </TouchableOpacity>
-
-        </>
-    )}
+     
+     </>
+            )}
       </View>
-      <FindCarFilter/>
+      <FindCarFilter />
       <ScrollView style={MainScreenCss.Body}>
         <View style={MainScreenCss.Popular}>
           <Text style={{ paddingBottom: 10, fontWeight: 700 }}>Các loại xe phổ biến tại CFA</Text>
-          <FlatList
+          {/* <FlatList
             horizontal
             style={{ cursor: 'pointer' }}
-            data={DataPost}
-            renderItem={({ item }) =>
-              <PostItem
-                promote={item.giamgia}
-                name={item.tenxe}
-                price={item.gia}
-                distance={item.khcach}
-                imguri={item.uri}
-              />
-            }
-          />
+            data={data}
+            renderItem={(item) => <View>{item.discount}</View>
+              // name={item.name}
+              // price={item.unitPrice}
+              // distance={"auto"}
+              // imguri={item.image}
+              
+          
+          }
+            keyExtractor={(item) => item.id} 
+          /> */}
         </View>
         <View style={MainScreenCss.BodyItem}>
           <View style={MainScreenCss.Rent}>
@@ -160,13 +221,17 @@ const MainScreen = () => {
 
 const PostItem = (props) => {
   const navigation = useNavigation();
+  
+  const promote =  props.promote *100;
+
+  console.log(promote)
   return (
     <TouchableOpacity
       style={MainScreenCss.PopularPost}
-      onPress={() => {navigation.navigate("CarDetail")}}
+      onPress={() => { navigation.navigate("CarDetail") }}
     >
       <View style={MainScreenCss.promotionView}>
-        <Text style={MainScreenCss.promotionText}>{props.promote}</Text>
+        <Text style={MainScreenCss.promotionText}>giảm giá : {promote}</Text>
       </View>
       <View style={MainScreenCss.PopularItem}>
         <View style={MainScreenCss.PopularViewInfo}>
@@ -175,9 +240,9 @@ const PostItem = (props) => {
             <Text style={MainScreenCss.priceText}>Giá:</Text>
             <Text style={[MainScreenCss.priceText, { fontSize: 18, color: 'gray' }]}>{props.price}</Text>
             <Text style={MainScreenCss.priceText}>đ / ngày</Text>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={MainScreenCss.distanceTouch}
-              onPress={() => {navigation.navigate("Map")}}
+              onPress={() => { navigation.navigate("Map") }}
             >
               <Text style={MainScreenCss.distanceText}>{props.distance}</Text>
             </TouchableOpacity>

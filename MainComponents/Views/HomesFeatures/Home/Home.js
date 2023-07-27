@@ -21,6 +21,7 @@ const Home = (props) => {
     setData(res.data);
     console.log(urlAPI);
     console.log(res.data);
+    
   };
   useEffect(() => {
     getDataAPI();
