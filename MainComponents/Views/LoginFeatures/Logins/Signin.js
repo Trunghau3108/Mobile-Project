@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -37,7 +36,7 @@ const Signin = ({ navigation }) => {
         const result = response.data;
         try {
           const jsonValue = JSON.stringify(result);
-          await AsyncStorage.setItem("user", jsonValue);
+          await AsyncStorage.setItem('user', jsonValue);
         } catch (e) {
           console.log(e);
         }
@@ -114,8 +113,7 @@ const Signin = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          onPress={() =>{nagivation.replace('Home')}}
-          // onPress={handleLogin}
+          onPress={handleLogin}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>
             Đăng Nhập

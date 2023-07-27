@@ -7,22 +7,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserInfo1 = (props) => {
     const navigation = useNavigation();
-
     const [userInfo, setUserInfo] = useState(null);
-    useEffect(() => {
-      // Lấy thông tin từ AsyncStorage khi component mount
-      retrieveUserInfo();
-    }, []);
-  
     const retrieveUserInfo = async () => {
       try {
         // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
         const jsonString = await AsyncStorage.getItem('user');
-  
         if (jsonString) {
           // Chuyển chuỗi JSON thành đối tượng
           const userData = JSON.parse(jsonString);
-  
           // Cập nhật state để hiển thị lên view
           setUserInfo(userData);
         } else {
@@ -34,6 +26,12 @@ const UserInfo1 = (props) => {
       }
     };
 
+
+    useEffect(() => {
+        // Lấy thông tin từ AsyncStorage khi component mount
+        retrieveUserInfo();
+
+      }, []);
 
     return (
         <View style={MainProfileCss.ViewProfile1}>
@@ -50,8 +48,8 @@ const UserInfo1 = (props) => {
             </View>
             <View style={MainProfileCss.ViewChuProfile}>
                 <View style={MainProfileCss.ViewChuProfile1}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, {userInfo.email}</Text>
-                    <Text style={{ alignSelf: 'flex-start' }}>0912345678</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, {userInfo.fullname}</Text>
+                    <Text style={{ alignSelf: 'flex-start' }}>{userInfo.email}</Text>
                 </View>
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>
@@ -77,8 +75,8 @@ const UserInfo1 = (props) => {
             </View>
             <View style={MainProfileCss.ViewChuProfile}>
                 <View style={MainProfileCss.ViewChuProfile1}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào</Text>
-                    <Text style={{ alignSelf: 'flex-start' }}>0912345678</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, User</Text>
+                    
                 </View>
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>

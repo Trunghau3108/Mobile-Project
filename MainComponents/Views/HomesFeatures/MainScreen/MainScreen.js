@@ -14,27 +14,22 @@ const { width, height } = Dimensions.get('screen');
 
 const MainScreen = () => {
   const navigation = useNavigation();
+
   const [userInfo, setUserInfo] = useState(null);
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    // Lấy thông tin từ AsyncStorage khi component mount
-    //retrieveUserInfo();
-  }, []);
-
+  
   const retrieveUserInfo = async () => {
     try {
       // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
       const jsonString = await AsyncStorage.getItem('user');
-
+      
+      
       if (jsonString) {
         // Chuyển chuỗi JSON thành đối tượng
         const userData = JSON.parse(jsonString);
-
         // Cập nhật state để hiển thị lên view
         setUserInfo(userData);
       } else {
-        // Không tìm thấy dữ liệu trong AsyncStorage
+        // Không tìm thấy dữ liệu trong AsynscStorage
         console.log('User data not found in AsyncStorage');
       }
     } catch (error) {
@@ -42,33 +37,38 @@ const MainScreen = () => {
     }
   };
 
+  
+
+
+
+
   //lấy 5 post có view cao nhất
-  const getData = async () => {
-    let res = await axios.post(url + "/api/products/GetListProduct");
+  // const getData = async () => {
+  //   let res = await axios.post(url + "/api/products/GetListProduct");
 
-    // const itemsWithViewsGreaterThan5 = res.data.filter(element => element.views > 5);
+  //   // const itemsWithViewsGreaterThan5 = res.data.filter(element => element.views > 5);
 
-    // // Log giá trị views của các phần tử thỏa mãn điều kiện
-    // itemsWithViewsGreaterThan5.forEach(element => {
-    //   console.log(element);
-    // });
-    const data = res.data;
+  //   // // Log giá trị views của các phần tử thỏa mãn điều kiện
+  //   // itemsWithViewsGreaterThan5.forEach(element => {
+  //   //   console.log(element);
+  //   // });
+  //   const data = res.data;
 
-    // Sắp xếp mảng theo giá trị views giảm dần
-    data.sort((a, b) => b.views - a.views);
+  //   // Sắp xếp mảng theo giá trị views giảm dần
+  //   data.sort((a, b) => b.views - a.views);
 
-    // Lấy 5 phần tử đầu tiên của mảng (có views cao nhất)
-    const top5Items = data.slice(0, 5);
-    // Log giá trị views của các phần tử
-    top5Items.forEach(element => {    
-      setData(element);
-      // console.log(data);
-    });
+  //   // Lấy 5 phần tử đầu tiên của mảng (có views cao nhất)
+  //   const top5Items = data.slice(0, 5);
+  //   // Log giá trị views của các phần tử
+  //   top5Items.forEach(element => {    
+  //     setData(element);
+  //     // console.log(data);
+  //   });
 
 
 
  
-  }
+  // }
 
 
   
@@ -85,48 +85,61 @@ const MainScreen = () => {
   //     // />
 
   // }
-
   useEffect(() => {
-    getData();
+    // Lấy thông tin từ AsyncStorage khi component mount
+    retrieveUserInfo();
+    
   }, []);
 
   return (
     <SafeAreaView style={MainScreenCss.FullScreen} showsHorizontalScrollIndicator={false}>
-
       <View style={MainScreenCss.Header}>
-        {userInfo ? (
-          <>
+              {userInfo ? (
+        <>
+            <Image
+              source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
+              style={{ height: '100%', width: '40%' }}
+            />
+         
+            <TouchableOpacity
+              style={MainScreenCss.TextLogin}
+              onPress={() => {
+                navigation.navigate('MainPro',  userInfo);
+              }}
+            >
+              {/* Access user.Fullname directly */}
+              <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>
+                {userInfo.fullname}
+              </Text>
+              <FontAwesome name="user-circle-o" size={30} color="black" />
+            </TouchableOpacity>
+        
+      </>
+              ):(
+      <>
             <Image
               source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
               style={{ height: '100%', width: '40%' }}
             />
 
-            <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('Signin') }}>
-              <Text style={{ fontSize: 20, alignSelf: "center", marginRight: 10 }}>Đăng nhập /  </Text>
-              <FontAwesome name="user-circle-o" size={30} color="black" />
-            </TouchableOpacity>
-
-          </>
-        ) : (
-          <>
-            <Image
-              source={require('../../../../assets/LoginFeaturesImg/logoApp.png')}
-              style={{ height: '100%', width: '40%' }}
-            />
-
-            <TouchableOpacity style={MainScreenCss.TextLogin} onPress={() => { navigation.navigate('MainPro') }}>
-              <Text style={{ fontSize: 20, alignSelf: "center", marginRight: 10 }}>Đăng nhập / </Text>
-              <FontAwesome name="user-circle-o" size={30} color="black" />
-            </TouchableOpacity>
-
-          </>
-        )}
+          <TouchableOpacity
+          style={MainScreenCss.TextLogin}
+          onPress={() => {
+            navigation.navigate('Signin');
+          }}
+        >
+          <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>Đăng nhập / </Text>
+          <FontAwesome name="user-circle-o" size={30} color="black" />
+        </TouchableOpacity>
+     
+     </>
+            )}
       </View>
       <FindCarFilter />
       <ScrollView style={MainScreenCss.Body}>
         <View style={MainScreenCss.Popular}>
           <Text style={{ paddingBottom: 10, fontWeight: 700 }}>Các loại xe phổ biến tại CFA</Text>
-          <FlatList
+          {/* <FlatList
             horizontal
             style={{ cursor: 'pointer' }}
             data={data}
@@ -139,7 +152,7 @@ const MainScreen = () => {
           
           }
             keyExtractor={(item) => item.id} 
-          />
+          /> */}
         </View>
         <View style={MainScreenCss.BodyItem}>
           <View style={MainScreenCss.Rent}>
