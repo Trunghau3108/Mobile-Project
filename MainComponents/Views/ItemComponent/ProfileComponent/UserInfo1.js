@@ -3,38 +3,34 @@ import React,{useEffect,useState} from 'react'
 import MainProfileCss from '../../ProfilesFetures/Profile/MainProfileCss';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { useIsFocused } from '@react-navigation/native';
 
 const UserInfo1 = (props) => {
     const navigation = useNavigation();
-
     const [userInfo, setUserInfo] = useState(null);
-    useEffect(() => {
-      // Lấy thông tin từ AsyncStorage khi component mount
-      retrieveUserInfo();
-    }, []);
-  
-    const retrieveUserInfo = async () => {
-      try {
-        // Lấy dữ liệu từ AsyncStorage dưới dạng chuỗi JSON
-        const jsonString = await AsyncStorage.getItem('user');
-  
-        if (jsonString) {
-          // Chuyển chuỗi JSON thành đối tượng
-          const userData = JSON.parse(jsonString);
-  
-          // Cập nhật state để hiển thị lên view
-          setUserInfo(userData);
-        } else {
-          // Không tìm thấy dữ liệu trong AsyncStorage
-          console.log('User data not found in AsyncStorage');
-        }
-      } catch (error) {
-        console.error('Error retrieving user data from AsyncStorage:', error);
-      }
-    };
+    const isFocused = useIsFocused();
 
-
+        useEffect(() => {
+            const retrieveUserInfo = async () => {
+              try {
+                const jsonString = await AsyncStorage.getItem('user');
+                if (jsonString) {
+                  const userData = JSON.parse(jsonString);
+                  setUserInfo(userData);
+                  
+                }
+              } catch (error) {
+                console.error('Error retrieving user data from AsyncStorage:', error);
+              }
+            };
+        
+            // Retrieve user data whenever the screen gains focus
+            if (isFocused) {
+              retrieveUserInfo();
+            }
+          }, [isFocused]);
+        
+          // Rest of your component logic...
     return (
         <View style={MainProfileCss.ViewProfile1}>
              {userInfo ? (
@@ -50,8 +46,8 @@ const UserInfo1 = (props) => {
             </View>
             <View style={MainProfileCss.ViewChuProfile}>
                 <View style={MainProfileCss.ViewChuProfile1}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, {userInfo.email}</Text>
-                    <Text style={{ alignSelf: 'flex-start' }}>0912345678</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, {userInfo.fullname}</Text>
+                    <Text style={{ alignSelf: 'flex-start' }}>{userInfo.email}</Text>
                 </View>
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>
@@ -77,8 +73,8 @@ const UserInfo1 = (props) => {
             </View>
             <View style={MainProfileCss.ViewChuProfile}>
                 <View style={MainProfileCss.ViewChuProfile1}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào</Text>
-                    <Text style={{ alignSelf: 'flex-start' }}>0912345678</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Xin chào, User</Text>
+                    
                 </View>
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>

@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -29,7 +28,7 @@ const Signin = ({ navigation }) => {
       };
 
       // Gửi yêu cầu POST đăng nhập đến API
-      const response = await axios.post(url + "/api/customers/Login", payload);
+      const response = await axios.post(url+"/api/customers/Login", payload);
 
       // Kiểm tra phản hồi từ API
       if (response.status === 200) {
@@ -37,18 +36,17 @@ const Signin = ({ navigation }) => {
         const result = response.data;
         try {
           const jsonValue = JSON.stringify(result);
-          await AsyncStorage.setItem("user", jsonValue);
+          await AsyncStorage.setItem('user', jsonValue);
         } catch (e) {
           console.log(e);
         }
-        alert("Login successful");
+        alert("Đăng nhập thành công");
         navigation.replace("TabHome");
-      } else {
+      }else {
         // Xử lý khi đăng nhập không thành công
-        console.log("Login failed:", response.status, response.statusText);
       }
     } catch (error) {
-      console.error("Error:", error);
+        alert("Đăng nhập thất bại: Sai email hoặc mật khẩu");
     }
   };
 
@@ -115,8 +113,7 @@ const Signin = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          onPress={() =>{nagivation.replace('Home')}}
-          // onPress={handleLogin}
+          onPress={handleLogin}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>
             Đăng Nhập
