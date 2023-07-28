@@ -102,7 +102,7 @@ const Signup = () => {
         />
       </View>
       <View style={SignupCss.inputView}>
-        <Feather name="lock" size={20} color="#146C94" />
+        <Feather name="lock" size={20} color="#146C94"/>
         <TextInput
           placeholder="Nhập mật khẩu..."
           secureTextEntry={true}
@@ -122,8 +122,7 @@ const Signup = () => {
         <View style={SignupCss.touchView}>
           <TouchableOpacity 
             style={SignupCss.dangki}
-            onPress={() => setModalVisible(true)}
-            //onPress={handleSignup}
+            onPress={handleSignup}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Kí</Text>
           </TouchableOpacity>

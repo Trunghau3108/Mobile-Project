@@ -1,12 +1,47 @@
 import { View, SafeAreaView, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import { Feather } from '@expo/vector-icons';
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import ForgetPassCss from '../ForgetPass/ForgetPassCss';
 import NewPasswordCss from './NewPasswordCss';
 import { useNavigation } from '@react-navigation/native';
+import url from '../../../../urlAPI';
+import axios from 'axios';
 
 const NewPassword = () => {
   const nagivation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleUpdate = async () => {
+    // Perform signup validation here
+    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+      alert('Error', 'Please fill in all fields');
+    } else if (password !== confirmPassword) {
+      alert('Error', 'Passwords do not match');
+    } else {
+      // Perform the signup process here
+      try {
+        const payload = {
+          email: email,
+          password: password,
+        };
+        // Make a POST request to your backend API
+        const response = await axios.post(url+'/api/customers/UpdateCustomer', payload);
+
+        if (response.status === 200) {
+          alert('Success', 'Change Password successful!');
+          nagivation.navigate("Signin")
+
+        } else {
+          alert('Error', 'Signup failed. Please try again later.');
+        }
+      } catch (error) {
+        alert('Error:', error);
+        alert('Error', 'Signup failed. Please try again later.');
+      }
+    }
+  };
   return (
     <SafeAreaView style={NewPasswordCss.container}>
       <View style={NewPasswordCss.imgView}>
@@ -23,7 +58,16 @@ const NewPassword = () => {
         <View style={NewPasswordCss.inputView}>
           <Feather name="lock" size={20} color="#146C94" />
           <TextInput 
+            placeholder='Nhập email'
+            onChangeText={(text) => setEmail(text)}
+            style={NewPasswordCss.input}
+          />
+        </View>
+        <View style={NewPasswordCss.inputView}>
+          <Feather name="lock" size={20} color="#146C94" />
+          <TextInput 
             placeholder='Nhập mật khẩu...'
+            onChangeText={(text) => setPassword(text)}
             style={NewPasswordCss.input}
           />
         </View>
@@ -31,15 +75,14 @@ const NewPassword = () => {
           <Feather name="lock" size={20} color="#146C94" />
           <TextInput 
             placeholder='Nhập lại mật khẩu...'
+            onChangeText={(text) => setConfirmPassword(text)}
             style={NewPasswordCss.input}
           />
         </View>
         <View style={NewPasswordCss.touchView}>
           <TouchableOpacity 
             style={NewPasswordCss.dangki}
-            onPress={() => {
-              nagivation.replace('Signin');
-            }}
+            onPress={handleUpdate}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Xác Nhận</Text>
           </TouchableOpacity>
