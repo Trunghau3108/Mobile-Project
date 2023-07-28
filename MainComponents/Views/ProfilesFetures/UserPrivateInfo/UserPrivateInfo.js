@@ -3,25 +3,64 @@ import React,{useState,useEffect} from 'react'
 import ImageOnly from '../../ItemComponent/ProfileComponent/ImageOnly';
 import { AntDesign,Entypo } from '@expo/vector-icons';
 import UserPrivateInfoCss from './UserPrivateInfoCss';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import url from '../../../../urlAPI';
+
+
 const UserPrivateInfo = () => {
+    const navigation = useNavigation();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [userInfo, setUserInfo] = useState(null);
     const [password, setPassword] = useState('');
+    // const [confirmPass, setconfirmPass] = useState('');
+    const [data,setData] = useState([]);
     // const [ten,email,pass, onChangeText] = React.useState('');
     // const [phone, onChangeNumber] = React.useState('');
     const [showPassword, setShowPassword] = useState(false);
     const isFocused = useIsFocused();
 
-    // const handleUpdateInfo = () => {
-    //     console.log("name" + name);
-    //     console.log("s đ t" + phone);
-    //     console.log("email cua m:" + email);
-    //     console.log("password" + password);
-    // }
+    const handleUpdateInfo = async() => {
+        // console.log('Email:',email);
+        // console.log('Fullname:',name);
+        // console.log('Password:',password);
+
+        // let res = await axios.post(url+"/api/Customers/UpdateCustomer",{
+        //     "email":email,
+        //     "name":name,
+        //     "password":password
+        // });
+        // setData(res.data);
+        // console.log(data);
+        try {
+                const payload = {
+                    email:email,
+                    password:password,
+                    fullname:name,
+                };
+                console.log("Payload:",payload);
+
+                const response =  await axios.post(url+'/api/customers/UpdateCustomer',payload);
+                console.log('Email:',email);
+        console.log('Fullname:',name);
+        console.log('Password:',password);
+        console.log(response)
+                if(response.status === 200){  
+                    alert("Update Thanh Cong");
+                    navigation.replace("MainPro");
+
+                }  else{
+                    alert('Error','Cap Nhat That Bai');
+                }
+            }catch (error){
+                console.error("Error:",error);
+                alert("Error","Cap Nhat That Bai");
+            };
+       
+    }
     useEffect(() => {
         const retrieveUserInfo = async () => {
           try {
@@ -41,7 +80,11 @@ const UserPrivateInfo = () => {
           retrieveUserInfo();
         }
       }, [isFocused]);
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> b563d85102c918399983bddadf2cf1bf9a6708fd
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {UserPrivateInfoCss.PrivateInfo}>
@@ -57,7 +100,7 @@ const UserPrivateInfo = () => {
                             style = {UserPrivateInfoCss.input1}
                             onChangeText={(name) => setName(name)}
                             value  = {name}
-                            placeholder={userInfo ? userInfo.fullname : ''}
+                            placeholder= {userInfo ? userInfo.fullname : ''}
                         />
                     </View>
                 </View>
@@ -109,7 +152,7 @@ const UserPrivateInfo = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <TouchableOpacity style ={UserPrivateInfoCss.ButtonXacNhan}>
+                <TouchableOpacity style ={UserPrivateInfoCss.ButtonXacNhan} onPress={handleUpdateInfo} >
                     <Text style = {{color:'white',fontWeight:'bold',fontSize:18}}>Xác nhận</Text>
                 </TouchableOpacity>
 

@@ -140,14 +140,10 @@ const FindCarFilter = () => {
 export default FindCarFilter;
 
 const styles = StyleSheet.create({
-  FilterList: {
-    display: "none",
-  },
-
   FindCarTong: {
-    paddingTop: 10,
-    height: "33%",
-    backgroundColor: "white",
+    marginTop: 20,
+    height: 270,
+
   },
   ChonXe: {
     height: 60,
