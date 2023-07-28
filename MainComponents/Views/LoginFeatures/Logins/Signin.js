@@ -101,7 +101,7 @@ const Signin = ({ navigation }) => {
           <TouchableOpacity
             style={SigninCss.linkTouch}
             onPress={() => {
-              nagivation.replace("Forget");
+              nagivation.replace("Email");
             }}
           >
             <Text

@@ -28,8 +28,8 @@ const Forget = () => {
         const phoneProvider = new firebase.auth.PhoneAuthProvider();
         phoneProvider
             .verifyPhoneNumber(phone, recaptchaVerifier.current)
-            .then(() => {
-                setVerificationId;
+            .then((verificationId) => {
+                setVerificationId(verificationId);
                 setHide(false);
             })
             .catch((error) => {
@@ -37,7 +37,7 @@ const Forget = () => {
                 setText("Có lỗi xảy ra khi gửi mã xác minh OTP.");
                 setModal(true);
             });
-        setPhoneNumber('');
+        // setPhoneNumber('');
         console.log(PhoneNumber);
 
     }
@@ -48,15 +48,15 @@ const Forget = () => {
             code
         );
         firebase.auth().signInWithCredential(credential)
-            .then(() => {
-                setCode('');
+            .then(() => {             
                 setIcon('checkmark-done-sharp');
                 setText(" Successfull !");
                 setModal(true);
                 nagivation.navigate('NewPass');
+                setCode('');
             })
             .catch((error) => {
-                setText('Sai mã OTP, vui lòng gọi dev để lấy lại pass, hết cứu !');
+                setText('Sai mã OTP !');
                 setModal(true);
             })
 
@@ -116,7 +116,7 @@ const Forget = () => {
                                             <TouchableOpacity
                                                 style={[ForgetPassCss.dangki, { marginTop: 10 }]}
                                                 onPress={() => {
-                                                    nagivation.navigate('Signin')
+                                                    nagivation.navigate('Email');
                                                 }}
                                             >
                                                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Quay lại</Text>

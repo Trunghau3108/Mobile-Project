@@ -15,13 +15,13 @@ const ForgetPass = () => {
       </View>
       <View style={ForgetPassCss.main}>
         <View style={ForgetPassCss.textView}>
-          <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#146C94' }}>Quên mật khẩu</Text>
-          <Text style={{ color: 'gray' }}>Vui lòng nhập số điện thoại để gửi mã xác nhận</Text>
+          <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#146C94' }}>Xác Nhận Email</Text>
+          <Text style={{ color: 'gray' }}>Vui lòng nhập email đã đăng ký</Text>
         </View>
         <View style={ForgetPassCss.inputView}>
-          <Feather name="phone" size={20} color="#146C94" />
+          <Feather name="mail" size={20} color="#146C94" />
           <TextInput
-            placeholder='Nhập số điện thoại...'
+            placeholder='Nhập email...'
             style={ForgetPassCss.input}
           />
         </View>
@@ -29,18 +29,10 @@ const ForgetPass = () => {
           <TouchableOpacity
             style={ForgetPassCss.dangki}
             onPress={() => {
-              nagivation.replace('Verify');
+              nagivation.replace('Forget');
             }}
           >
             <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Xác Nhận</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[ForgetPassCss.dangki,{marginTop: 10}]}
-            onPress={() => {
-              nagivation.replace('Signin');
-            }}
-          >
-            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Quay lại</Text>
           </TouchableOpacity>
           <View style={ForgetPassCss.dangnhapview}>
             <Text style={[ForgetPassCss.text, { fontSize: 13, right: 5 }]}>Đã có tài khoản ?</Text>
