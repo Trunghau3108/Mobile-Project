@@ -1,18 +1,31 @@
 import { FlatList, StyleSheet, View, Dimensions } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 //component import
 import Post from '../../ItemComponent/Posts/Post';
 import DataPost from '../../../VisualData/DataPost';
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
+import axios from 'axios';
+import url from '../../../../urlAPI';
 
 const { width, height } = Dimensions.get('screen');
 
 const History = () => {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const res = await axios.post(url + '/api/Oders/GetListOrder');
+    setData(res.data)
+  }
+
+  useEffect(()=>{
+    getData();
+  },[])
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={DataPost}
+        data={data}
         renderItem={({ item }) =>
           <Post
             giamgia={item.giamgia}
