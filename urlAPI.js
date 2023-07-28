@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const url = "https://22f7-203-205-32-58.ngrok.io"
+const url = "https://d484-103-249-23-168.ngrok.io"
   
 export default url;
