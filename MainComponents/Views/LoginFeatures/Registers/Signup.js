@@ -34,7 +34,7 @@ const Signup = () => {
         const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
 
         if (response.status === 200) {
-          alert('Success', 'Signup successful!');
+          setModalVisible(true);
           nagivation.navigate("Signin")
 
         } else {
@@ -94,7 +94,7 @@ const Signup = () => {
         />
       </View>
       <View style={SignupCss.inputView}>
-        <Feather name="mail" size={20} color="#146C94" />
+        <Feather name="user" size={20} color="#146C94" />
         <TextInput
           placeholder="Nhập FullName..."
           style={SignupCss.input}

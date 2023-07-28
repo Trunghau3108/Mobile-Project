@@ -41,6 +41,7 @@ const UserPrivateInfo = () => {
           retrieveUserInfo();
         }
       }, [isFocused]);
+      
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {UserPrivateInfoCss.PrivateInfo}>
