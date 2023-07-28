@@ -120,6 +120,12 @@ const MainScreen = () => {
                     price={formatUnitPrice(item.unitPrice)}
                     distance={item.automotives.length > 0 ? item.automotives[0]?.location : 'Không xa'}
                     imguri={item.image}
+                    onPress={()=>{navigation.navigate("CarDetail", {
+                      id: item.id,
+                      whereCar: "Vui lòng chọn",
+                      rentCar: "Vui lòng chọn",
+                      returnCar: "Vui lòng chọn",
+                    });}}
                   />
                 }
               />
@@ -186,7 +192,7 @@ const PostItem = (props) => {
   return (
     <TouchableOpacity
       style={MainScreenCss.PopularPost}
-      onPress={() => { navigation.navigate("CarDetail") }}
+      onPress={props.onPress}
     >
       <View style={MainScreenCss.promotionView}>
         <Text style={MainScreenCss.promotionText}>giảm giá {promotion} %</Text>

@@ -30,6 +30,7 @@ const MainProfile = () => {
                 <ChosenList
                     tenmuc="Điều khoản sử dụng"
                     icon1="question-circle-o"
+                    onPress={()=>{navigation.navigate("Support")}}
                 />
                 <ChosenList
                     tenmuc="Đăng xuất"
