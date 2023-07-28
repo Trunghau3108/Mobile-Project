@@ -75,6 +75,7 @@ const MainScreenCss = StyleSheet.create({
     marginTop: 20,
   },
   Partner: {
+    paddingHorizontal: 20,
   },
   logoCar: {
     backgroundColor: 'white',
@@ -98,11 +99,12 @@ const MainScreenCss = StyleSheet.create({
   PopularViewInfo: {
     width: width *35/100,
     height: height *21/100,
-    padding: 20,
+    padding: 10,
+    //backgroundColor: 'red',
     alignItems:'center',
   },
   PopularViewImg: {
-    width: width *53/100,
+    width: width *50/100,
     height: height *20/100,
     borderRadius: 10,
   },
@@ -118,6 +120,7 @@ const MainScreenCss = StyleSheet.create({
   },
   nameText: {
     fontSize: 18,
+    width: 70,
   },
   priceText: {
     fontSize: 15,

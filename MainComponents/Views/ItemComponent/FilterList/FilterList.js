@@ -17,16 +17,34 @@ import CarFil from "../CarListFilter/CarFil";
 import SortPrice from "../SortPrice/SortPrice";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
+import url from "../../../../urlAPI";
+import axios from "axios";
 
 const FilterList = (props) => {
   const route = useRoute();
   const navigation = useNavigation();
-
+  const [isLoaiXe, setIsLoaiXe] = useState('...');
+  const [isKieuXe, setIsKieuXe] = useState('...');
+  const [isHang, setIsHang] = useState('...');
   const [showCarFil, setShowCarFil] = useState(false);
   const [showSortPrice, setShowSortPrice] = useState(false);
 
-  const [price, setPrice] = useState("Giá từ cao đến thấp");
-  console.log(price);
+  const [price, setPrice] = useState("none...");
+
+  const handleLoaiXeChange = (loaixe) => {
+    setIsLoaiXe(loaixe);
+  };
+
+  const handleKieuXeChange = (kieuxe) => {
+    setIsKieuXe(kieuxe);
+  };
+
+  const handleHangChange = (hang) => {
+    setIsHang(hang);
+  };
+  useEffect(() => {
+    props.onFilterChange(isLoaiXe, isKieuXe, isHang);
+  }, [isLoaiXe, isKieuXe, isHang]);
 
   return (
     <>
@@ -53,7 +71,7 @@ const FilterList = (props) => {
           }}
         >
           <Entypo name="list" size={25} color="black" />
-          <Text>Ô tô, Kiểu xe, Hộp số, Chỗ ngồi...</Text>
+          <Text>{isLoaiXe},{isKieuXe},{isHang}</Text>
           <Entypo name="chevron-down" size={25} color="black" />
         </TouchableOpacity>
 
@@ -69,7 +87,7 @@ const FilterList = (props) => {
             <Entypo name="chevron-down" size={25} color="black" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={FilterListCss.prcbtnctn}>
+          <TouchableOpacity style={FilterListCss.prcbtnctn} onPress={props.onPressLoc}>
             <Text style={FilterListCss.prcbtntext}>Lọc</Text>
           </TouchableOpacity>
         </View>
@@ -82,10 +100,12 @@ const FilterList = (props) => {
               onPressUp={() => {
                 setShowSortPrice(false);
                 setPrice("Giá từ cao đến thấp");
+                props.funcUp();
               }}
               onPressDown={() => {
                 setShowSortPrice(false);
                 setPrice("Giá từ thấp đến cao");
+                props.funcDown();
               }}
               style={FilterListCss.SortPrice}
             />
@@ -101,6 +121,12 @@ const FilterList = (props) => {
             onPress={() => {
               setShowCarFil(false);
             }}
+            isLoaiXe={isLoaiXe}
+            isKieuXe={isKieuXe}
+            isHang={isHang}
+            onLoaiXeChange={handleLoaiXeChange}
+            onKieuXeChange={handleKieuXeChange}
+            onHangChange={handleHangChange}
           />
         </View>
       ) : (

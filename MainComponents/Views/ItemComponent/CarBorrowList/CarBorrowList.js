@@ -10,7 +10,7 @@ const CarBorrowList = () => {
     <View style={styles.ViewListTong}>
       <ImageOnly />
       <View style={styles.ViewList2}>
-        <ScrollView style={styles.ViewListXeMuon}>
+        <View style={styles.ViewListXeMuon}>
           <FlatList
             data = {DataPost}
             renderItem={({item}) =>
@@ -21,7 +21,7 @@ const CarBorrowList = () => {
             />
             }
           />
-        </ScrollView>
+        </View>
       </View>
     </View>
   );

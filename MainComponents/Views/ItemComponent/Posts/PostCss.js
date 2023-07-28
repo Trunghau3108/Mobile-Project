@@ -8,7 +8,7 @@ const PostCss = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         alignSelf: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
     },
     post: {
         width: '96%',

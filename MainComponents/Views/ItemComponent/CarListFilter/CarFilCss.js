@@ -90,10 +90,15 @@ const CarFilCss = StyleSheet.create({
         flexDirection:'row'
     },
     ChooseBrandButton1:{
-        alignSelf:'baseline',margin:15,width:'81%'
+        alignSelf:'baseline',
+        width:'100%',
+        backgroundColor: 'white',
     },
     ChooseBrandButton2:{
         width:'10%',
+        position:'absolute',
+        top:15,
+        left: '90%',
         alignItems:'center',
         justifyContent:'center',
     },

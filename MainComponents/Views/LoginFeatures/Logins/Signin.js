@@ -64,7 +64,7 @@ const Signin = ({ navigation }) => {
         </Text>
         <Text style={{ color: "gray" }}>Đăng nhập vào tài khoản của bạn</Text>
         <View style={[SigninCss.inputview, { marginTop: 50 }]}>
-          <Feather name="phone" size={20} color="#146C94" />
+          <Feather name="mail" size={20} color="#146C94" />
           <TextInput
             placeholder="Nhập Email..."
             style={SigninCss.input}
