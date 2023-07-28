@@ -12,20 +12,31 @@ import UserPrivateInfoCss from "../../ProfilesFetures/UserPrivateInfo/UserPrivat
 import Method1 from "./Method1";
 import styles from "./PaymentCss";
 import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Popup from "../../ItemComponent/Popup/Popup";
 
 const { width, height } = Dimensions.get("screen");
 
 const Payment = () => {
+  const route = useRoute();
   const [ten, email, pass, coupon, onChangeText] = React.useState("");
   const [phone, onChangeNumber] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [modal, setModal] = useState(false);
 
+  const whereCar = route.params.whereCar;
+  const rentCar = route.params.rentCar;
+  const returnCar = route.params.returnCar;
+  const id = route.params.id;
+
   const handleXacNhanThanhToan = () => {
     setModal(true)
-    console.log(modal)
+    console.log("Thông tin hóa đơn:");
+    console.log("IdProduct:", id);
+    console.log("ở Vùng:", whereCar);
+    console.log("ngày bắt đầu:", rentCar);
+    console.log("ngày kết thúc:", returnCar);
   }
 
   const nagivation = useNavigation();
@@ -35,7 +46,10 @@ const Payment = () => {
         visible={modal}
         icon="checkmark-done-sharp"
         text="Thanh toán thành công !"
-        onPress={() => { setModal(false) }}
+        onPress={() => { 
+          setModal(false);
+          nagivation.navigate('TabHome');
+         }}
       />
       <View style={{ width: width, height: 80, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: '#156791' }}> Thanh Toán</Text>

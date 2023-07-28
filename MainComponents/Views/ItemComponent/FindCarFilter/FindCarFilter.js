@@ -46,12 +46,10 @@ const FindCarFilter = () => {
   const [whereCar, setWhereCar] = useState("");
   const handleRentCarSelection = (selectedRentCar) => {
     setSelectedRentCar(selectedRentCar);
-    // storeData("rentcar", selectedRentCar);
   };
 
   const handleReturnCarSelection = (selectedReturnCar) => {
     setSelectedReturnCar(selectedReturnCar);
-    // storeData("return", selectedReturnCar);
   };
 
   const handleFilterPress = () => {
@@ -61,28 +59,6 @@ const FindCarFilter = () => {
       whereCar: whereCar,
     });
   };
-
-  // import { useNavigation } from "@react-navigation/native";
-
-  // const FindCarFilter = (props) => {
-  // const navigation = useNavigation();
-  // const [rentCar, setRentCar] = useState('A123');
-  // const [returnCar, setReturnCar] = useState('B');
-
-  // const [isCarSelected, setCarSelected] = useState(false);
-  // const [isMotorSelected, setMotorSelected] = useState(false);
-  // const handleCarPress = () => {
-  //   setCarSelected(!isCarSelected);
-  //   setMotorSelected(false);
-  // };
-  // const handleMotorPress = () => {
-  //   setMotorSelected(!isMotorSelected);
-  //   setCarSelected(false);
-  // };
-
-  // const handleFindCar = () => {
-  //   console.log(whereCar, rentCar, returnCar);
-  // }
 
   return (
     <>
@@ -118,6 +94,7 @@ const FindCarFilter = () => {
 
         <SelectDropdown
           buttonStyle={styles.ChonDiaDiem}
+          
           data={DataTinh}
           onSelect={(selectItem, index) => {
             setWhereCar(selectItem)
@@ -147,18 +124,9 @@ const FindCarFilter = () => {
             onReturnCarSelect={handleReturnCarSelection}
           />
         </View>
-        {/* <View style={styles.FilterList}>
-          <FilterList selectedRentCar={selectedRentCar} />
-        </View> */}
         <TouchableOpacity
           style={styles.FindCarButton}
           onPress={handleFilterPress}
-          //   onPress={() => {
-          //   navigation.navigate("Home", {
-
-          //   }),
-          //     handleFindCar();
-          // }}
         >
           <Text style={{ fontSize: 17, fontWeight: "bold", color: "white" }}>
             Tìm xe ngay

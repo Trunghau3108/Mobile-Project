@@ -1,6 +1,7 @@
 import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
+
 const Popup = (props) => {
     return (
             <Modal

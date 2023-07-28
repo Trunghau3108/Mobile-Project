@@ -1,31 +1,104 @@
-import { View, FlatList, StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
 import { useRoute } from "@react-navigation/native";
 import Post from "../../ItemComponent/Posts/Post";
+import { useNavigation } from '@react-navigation/native';
 import CarListFilter from "../../ItemComponent/CarListFilter/CarListFilter";
 import BottomTabComp from "../../ItemComponent/BottomtabComp/BottomTabComp";
 import FilterList from "../../ItemComponent/FilterList/FilterList";
 //thử data
-import urlAPI from "../../../../urlAPI";
+import url from "../../../../urlAPI";
 import axios from "axios";
 
 const Home = (props) => {
   const route = useRoute();
+  const isLoggingDoneRef = useRef(false);
+  const nagivation = useNavigation();
+  const [isLoaiXe, setIsLoaiXe] = useState(null);
+  const [isKieuXe, setIsKieuXe] = useState(null);
+  const [isHang, setIsHang] = useState(null);  
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [load, setLoad] = useState(false);
 
-  const email = props.email;
-  //thuc hien lay data
-  // chạy link backend trước, sau đó lấy link localhost backend để chạy public server ngrok
-  const getDataAPI = async () => {
-    let res = await axios.post(urlAPI + "/api/categories/GetListCategory");
+
+  const getData = async () => {
+    setLoad(true);
+    let res = await axios.post(url + "/api/products/GetListProduct");
     setData(res.data);
-    console.log(urlAPI);
-    console.log(res.data);
-    
+    setLoad(false);
+  }
+
+  //sếp giá từ cao tới thấp
+  const sortByUnitPriceDescending = () => {
+    setLoad(true);
+    const sortedData = data.slice().sort((a, b) => b.unitPrice - a.unitPrice);
+    setData(sortedData);
+    console.log('sếp giá từ cao tới thấp');
+    setLoad(false);
+  }
+
+  //sếp giá từ thấp tới cao
+  const sortByUnitPriceAscending = () => {
+    setLoad(true);
+    const sortedData = data.slice().sort((a, b) => a.unitPrice - b.unitPrice);
+    setData(sortedData);
+    console.log('sếp giá từ thấp tới cao');
+    setLoad(false);
+  }
+
+  const formatUnitPrice = (unitPrice) => {
+    const formatter = new Intl.NumberFormat('vi-VN', {
+      style: 'decimal',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+
+    return formatter.format(unitPrice).replace(/\B(?=(\d{3})+(?!\d))/g, "\n");
+  }
+  const handleLoc = async () => {
+    console.log('start');
+    setLoad(true);
+    let res = await axios.post(url + "/api/Products/SearchProduct",{
+      "seats": 5,
+      "typeCar": isKieuXe,
+      "id": isHang
+      });
+    setData(res.data);
+    console.log(data);
+    setLoad(false);
+  }
+  const handleFilterChange = (loaiXe, kieuXe, hang) => {
+    if (loaiXe !== undefined) {
+      setIsLoaiXe(loaiXe);
+    }
+    if (kieuXe !== undefined) {
+      setIsKieuXe(kieuXe);
+    }
+    if (hang !== undefined) {
+      setIsHang(hang);
+    }
+    if (!isLoggingDoneRef.current) {
+      console.log(isLoaiXe, isKieuXe, isHang);
+      isLoggingDoneRef.current = true;
+    }
   };
+
   useEffect(() => {
+<<<<<<< HEAD
     getDataAPI();
   }, []); 
+=======
+    getData();
+    handleFilterChange();
+  }, [isLoaiXe, isKieuXe, isHang]);
+
+  useEffect(() => {
+    const filtered = data.filter(item => item.automotives.length > 0);
+    setFilteredData(filtered);
+  }, [data]);
+
+>>>>>>> 7904a46dd1ff08f7a4e421954b8abdf75daccb00
   return (
     <View style={styles.container}>
       <FilterList
@@ -33,20 +106,49 @@ const Home = (props) => {
         where={route.params.whereCar }
         rentcar={route.params.selectedRentCar}
         returncar={route.params.selectedReturnCar}
+        funcUp={sortByUnitPriceDescending}
+        funcDown={sortByUnitPriceAscending}
+        isLoaiXe={isLoaiXe}
+        isKieuXe={isKieuXe}
+        isHang={isHang}
+        onFilterChange={handleFilterChange}
+        onPressLoc={()=>{handleLoc()}}
       />
       <View style={styles.scrollview1}>
         <View style={styles.view3}>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <Post
-                giamgia={item.discount}
-                tenxe={item.name}
-                gia={item.unitPrice}
-                map="Map"
+          {load ? (
+            <ActivityIndicator size="large" />
+          )
+            :
+            (
+              <FlatList
+                style={{ marginBottom: 70 }}
+                data={data}
+                renderItem={({ item }) => (
+                  <Post
+                    giamgia={item.discount}
+                    tenxe={item.name}
+                    gia={formatUnitPrice(item.unitPrice)}
+                    imguri={item.image}
+                    onPress={()=>{nagivation.navigate("CarDetail", {
+                      id: item.id,
+                      whereCar: route.params.whereCar,
+                      rentCar: route.params.selectedRentCar,
+                      returnCar: route.params.selectedReturnCar,
+                    });}}
+                    map="Map"
+                    kieuxe={item.automotives.length > 0 ? item.automotives[0]?.seats : 'Không hỗ trợ'}
+                    nhienlieu={item.automotives.length > 0 ? item.automotives[0]?.fuel : 'Không hỗ trợ'}
+                    hopso={item.automotives.length > 0 ? item.automotives[0]?.engine : 'Không hỗ trợ'}
+                    tienich1={item.automotives.length > 0 ? (item.automotives[0]?.ac ? 'Có hỗ trợ' : 'Không hỗ trợ') : 'Không hỗ trợ'}
+                    tienich2={item.automotives.length > 0 ? (item.automotives[0]?.gps ? 'Có hỗ trợ' : 'Không hỗ trợ') : 'Không hỗ trợ'}
+                    tienich3={item.automotives.length > 0 ? (item.automotives[0]?.bluetooth ? 'Có hỗ trợ' : 'Không hỗ trợ') : 'Không hỗ trợ'}
+                    khcach={item.automotives.length > 0 ? item.automotives[0]?.location : 'Không xa'}
+                  />
+                )}
               />
-            )}
-          />
+            )
+          }
         </View>
       </View>
       <BottomTabComp color3="#146C94" />
