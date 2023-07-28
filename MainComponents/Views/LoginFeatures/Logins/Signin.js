@@ -66,7 +66,7 @@ const Signin = ({ navigation }) => {
         </Text>
         <Text style={{ color: "gray" }}>Đăng nhập vào tài khoản của bạn</Text>
         <View style={[SigninCss.inputview, { marginTop: 50 }]}>
-          <Feather name="phone" size={20} color="#146C94" />
+          <Feather name="mail" size={20} color="#146C94" />
           <TextInput
             placeholder="Nhập Email..."
             style={SigninCss.input}
@@ -115,8 +115,7 @@ const Signin = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          onPress={() =>{nagivation.replace('Home')}}
-          // onPress={handleLogin}
+          onPress={() =>{nagivation.replace('TabHome')}}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>
             Đăng Nhập
