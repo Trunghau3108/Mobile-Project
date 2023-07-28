@@ -132,8 +132,9 @@ const UserPrivateInfo = () => {
                         <TextInput
                             style = {UserPrivateInfoCss.input4}
                             onChangeText={(password) => setPassword(password)}
+                            secureTextEntry ={!showPassword}
                             value  = {password}
-                            placeholder={userInfo ? userInfo.password : ''}
+                            // placeholder={ userInfo ? userInfo.password : ''}
                             
                         />
                         <TouchableOpacity
