@@ -85,10 +85,6 @@ const Home = (props) => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    getDataAPI();
-  }, []); 
-=======
     getData();
     handleFilterChange();
   }, [isLoaiXe, isKieuXe, isHang]);
@@ -98,11 +94,9 @@ const Home = (props) => {
     setFilteredData(filtered);
   }, [data]);
 
->>>>>>> 7904a46dd1ff08f7a4e421954b8abdf75daccb00
   return (
     <View style={styles.container}>
       <FilterList
-      
         where={route.params.whereCar }
         rentcar={route.params.selectedRentCar}
         returncar={route.params.selectedReturnCar}

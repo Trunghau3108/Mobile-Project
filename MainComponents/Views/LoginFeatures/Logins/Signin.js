@@ -15,21 +15,33 @@ import url from "../../../../urlAPI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Signin = ({ navigation }) => {
-  const [userPhone, setUserPhone] = useState("");
+  const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState("");
   const [isSelected, setSelection] = useState(false);
-
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const checkGmailFormat = (email) => {
+    // Biểu thức chính quy kiểm tra định dạng email Gmail
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail.com$/;
+    return gmailRegex.test(email);
+  };
+  const handleInputChange = (email) => {
+    setUserEmail(email);
+    setIsValidEmail(checkGmailFormat(email));
+  };
   const handleLogin = async () => {
+    if (!isValidEmail) {
+      alert("Email không hợp lệ !!! ");
+    }
+    else{
     try {
       // Tạo đối tượng payload từ thông tin đăng nhập
       const payload = {
-        email: userPhone,
+        email: userEmail,
         password: userPassword,
       };
 
       // Gửi yêu cầu POST đăng nhập đến API
       const response = await axios.post(url+"/api/customers/Login", payload);
-
       // Kiểm tra phản hồi từ API
       if (response.status === 200) {
         // Xử lý khi đăng nhập thành công
@@ -40,7 +52,6 @@ const Signin = ({ navigation }) => {
         } catch (e) {
           console.log(e);
         }
-        alert("Đăng nhập thành công");
         navigation.replace("TabHome");
       }else {
         // Xử lý khi đăng nhập không thành công
@@ -48,6 +59,7 @@ const Signin = ({ navigation }) => {
     } catch (error) {
         alert("Đăng nhập thất bại: Sai email hoặc mật khẩu");
     }
+  }
   };
 
   const nagivation = useNavigation();
@@ -68,7 +80,7 @@ const Signin = ({ navigation }) => {
           <TextInput
             placeholder="Nhập Email..."
             style={SigninCss.input}
-            onChangeText={(userPhone) => setUserPhone(userPhone)}
+            onChangeText={handleInputChange}
           />
         </View>
         <View style={SigninCss.inputview}>

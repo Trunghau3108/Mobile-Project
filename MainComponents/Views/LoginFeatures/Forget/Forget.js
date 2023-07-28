@@ -28,8 +28,8 @@ const Forget = () => {
         const phoneProvider = new firebase.auth.PhoneAuthProvider();
         phoneProvider
             .verifyPhoneNumber(phone, recaptchaVerifier.current)
-            .then(() => {
-                setVerificationId;
+            .then((verificationId) => {
+                setVerificationId(verificationId);
                 setHide(false);
             })
             .catch((error) => {
@@ -37,7 +37,7 @@ const Forget = () => {
                 setText("Có lỗi xảy ra khi gửi mã xác minh OTP.");
                 setModal(true);
             });
-        setPhoneNumber('');
+        // setPhoneNumber('');
         console.log(PhoneNumber);
 
     }
@@ -48,15 +48,16 @@ const Forget = () => {
             code
         );
         firebase.auth().signInWithCredential(credential)
-            .then(() => {
-                setCode('');
+            .then(() => { 
                 setIcon('checkmark-done-sharp');
                 setText(" Successfull !");
                 setModal(true);
+                setCode('');
                 nagivation.navigate('NewPass');
             })
             .catch((error) => {
-                setText('Sai mã OTP, vui lòng gọi dev để lấy lại pass, hết cứu !');
+                setText('Sai mã OTP !',error);
+                console.log(error)
                 setModal(true);
             })
 
