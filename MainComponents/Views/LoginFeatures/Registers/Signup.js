@@ -12,11 +12,12 @@ const Signup = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullname, setFullname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   
   const handleSignup = async () => {
     // Perform signup validation here
-    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+    if (email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
       alert('Error', 'Please fill in all fields');
     } else if (password !== confirmPassword) {
       alert('Error', 'Passwords do not match');
@@ -26,13 +27,14 @@ const Signup = () => {
         const payload = {
           email: email,
           password: password,
+          fullname: fullname
         };
 
         // Make a POST request to your backend API
         const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
 
         if (response.status === 200) {
-          alert('Success', 'Signup successful!');
+          setModalVisible(true);
           nagivation.navigate("Signin")
 
         } else {
@@ -44,8 +46,6 @@ const Signup = () => {
       }
     }
   };
-
-  
 
   return (
     <SafeAreaView style={SignupCss.container}>
@@ -94,6 +94,14 @@ const Signup = () => {
         />
       </View>
       <View style={SignupCss.inputView}>
+        <Feather name="user" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập FullName..."
+          style={SignupCss.input}
+          onChangeText={(text) => setFullname(text)}
+        />
+      </View>
+      <View style={SignupCss.inputView}>
         <Feather name="lock" size={20} color="#146C94" />
         <TextInput
           placeholder="Nhập mật khẩu..."
@@ -114,8 +122,7 @@ const Signup = () => {
         <View style={SignupCss.touchView}>
           <TouchableOpacity 
             style={SignupCss.dangki}
-            onPress={() => setModalVisible(true)}
-            //onPress={handleSignup}
+            onPress={handleSignup}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Kí</Text>
           </TouchableOpacity>

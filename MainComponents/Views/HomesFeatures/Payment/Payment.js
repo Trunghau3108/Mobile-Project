@@ -37,7 +37,6 @@ const Payment = () => {
     console.log("ở Vùng:", whereCar);
     console.log("ngày bắt đầu:", rentCar);
     console.log("ngày kết thúc:", returnCar);
-    console.log(modal)
   }
 
   const nagivation = useNavigation();

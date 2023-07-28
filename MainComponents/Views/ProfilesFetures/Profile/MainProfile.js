@@ -5,12 +5,32 @@ import MainProfileCss from './MainProfileCss';
 import UserInfo1 from '../../ItemComponent/ProfileComponent/UserInfo1';
 import BottomTabComp from '../../ItemComponent/BottomtabComp/BottomTabComp';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MainProfile = () => {
-    const navigation = useNavigation();
+    const clearUserData = async () => {
+        try {
+         await AsyncStorage.removeItem('user');
+        } catch (e) {
+          console.error('Error removing user data from AsyncStorage:', e);
+        }
+      };
+      
+      const removeValue =  () => {
+        try {
+          clearUserData();
+          navigation.navigate('Signin');
+        } catch (e) {
+          console.error('Error during logout:', e);
+        }
+      };
+
+      const navigation = useNavigation();
+
+    
     return (
         <View style={MainProfileCss.ViewProfile}>
-            <UserInfo1 navig="UserPrivate" />
+            <UserInfo1 navig="UserPrivate"/>
             <View style={MainProfileCss.ViewProfile2}>
                 <ChosenList
                     tenmuc="Cập nhật giấy phép lái xe"
@@ -35,7 +55,7 @@ const MainProfile = () => {
                 <ChosenList
                     tenmuc="Đăng xuất"
                     icon1="sign-out"
-                    onPress={()=>{navigation.navigate("Signin")}}
+                    onPress={()=>{removeValue()}}
                 />
             </View>
             <BottomTabComp color5="#146C94"/>

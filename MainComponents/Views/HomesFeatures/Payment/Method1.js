@@ -8,12 +8,14 @@ import {
   Image
 } from "react-native";
 import React, { useState } from "react";
-
+import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 const { width, height } = Dimensions.get("screen");
+
 const Method1 = () => {
-
-
+  const route= useRoute();
+  const nagivation = useNavigation();
   const [isSelected1, setSelection1] = useState(false);
   const [isSelected2, setSelection2] = useState(false);
   const [showScrollView, setShowScrollView] = useState(false);
