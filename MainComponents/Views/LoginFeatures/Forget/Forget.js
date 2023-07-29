@@ -48,16 +48,16 @@ const Forget = () => {
             code
         );
         firebase.auth().signInWithCredential(credential)
-            .then(() => { 
+            .then(() => {             
                 setIcon('checkmark-done-sharp');
                 setText(" Successfull !");
                 setModal(true);
                 setCode('');
                 nagivation.navigate('NewPass');
+                setCode('');
             })
             .catch((error) => {
-                setText('Sai mã OTP !',error);
-                console.log(error)
+                setText('Sai mã OTP !');
                 setModal(true);
             })
 
@@ -117,7 +117,7 @@ const Forget = () => {
                                             <TouchableOpacity
                                                 style={[ForgetPassCss.dangki, { marginTop: 10 }]}
                                                 onPress={() => {
-                                                    nagivation.navigate('Signin')
+                                                    nagivation.navigate('Email');
                                                 }}
                                             >
                                                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Quay lại</Text>

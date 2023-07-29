@@ -111,9 +111,10 @@ const UserPrivateInfo = () => {
                         <TextInput
                             style = {UserPrivateInfoCss.input4}
                             onChangeText={(password) => setPassword(password)}
+                            secureTextEntry ={!showPassword}
                             value  = {password}
-                            placeholder={userInfo ? userInfo.password : ''}
-                            
+                            // placeholder={ userInfo ? userInfo.password : ''}
+                            //zz
                         />
                         <TouchableOpacity
                             onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
