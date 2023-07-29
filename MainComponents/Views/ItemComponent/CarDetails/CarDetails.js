@@ -154,6 +154,7 @@ const CarDetails = (props) => {
                                 whereCar: route.params.whereCar ,
                                 rentCar: route.params.rentCar ,
                                 returnCar: route.params.returnCar ,
+                                coupon: data[0].discount,
                                 id: route.params.id ,
                             });}}>
                                 <Text style={{ marginRight: 180, color: 'white', fontWeight: 'bold' }}>Thuê Ngay</Text>

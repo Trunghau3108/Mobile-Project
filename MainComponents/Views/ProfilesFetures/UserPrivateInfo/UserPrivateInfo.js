@@ -16,38 +16,17 @@ const UserPrivateInfo = () => {
     const [email, setEmail] = useState('');
     const [userInfo, setUserInfo] = useState(null);
     const [password, setPassword] = useState('');
-    // const [confirmPass, setconfirmPass] = useState('');
-    const [data,setData] = useState([]);
-    // const [ten,email,pass, onChangeText] = React.useState('');
-    // const [phone, onChangeNumber] = React.useState('');
     const [showPassword, setShowPassword] = useState(false);
     const isFocused = useIsFocused();
 
     const handleUpdateInfo = async() => {
-        // console.log('Email:',email);
-        // console.log('Fullname:',name);
-        // console.log('Password:',password);
-
-        // let res = await axios.post(url+"/api/Customers/UpdateCustomer",{
-        //     "email":email,
-        //     "name":name,
-        //     "password":password
-        // });
-        // setData(res.data);
-        // console.log(data);
-        try {
+            try {
                 const payload = {
                     email:email,
                     password:password,
                     fullname:name,
                 };
-                console.log("Payload:",payload);
-
                 const response =  await axios.post(url+'/api/customers/UpdateCustomer',payload);
-                console.log('Email:',email);
-        console.log('Fullname:',name);
-        console.log('Password:',password);
-        console.log(response)
                 if(response.status === 200){  
                     alert("Update Thanh Cong");
                     navigation.replace("MainPro");
@@ -135,7 +114,7 @@ const UserPrivateInfo = () => {
                             secureTextEntry ={!showPassword}
                             value  = {password}
                             // placeholder={ userInfo ? userInfo.password : ''}
-                            
+                            //zz
                         />
                         <TouchableOpacity
                             onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword

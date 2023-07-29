@@ -52,6 +52,7 @@ const Forget = () => {
                 setIcon('checkmark-done-sharp');
                 setText(" Successfull !");
                 setModal(true);
+                setCode('');
                 nagivation.navigate('NewPass');
                 setCode('');
             })
