@@ -14,13 +14,15 @@ const Home = (props) => {
   const route = useRoute();
   const isLoggingDoneRef = useRef(false);
   const nagivation = useNavigation();
-  const [isLoaiXe, setIsLoaiXe] = useState("Ô tô");
-  const [isChoNgoi, setIsChoNgoi] = useState();
+
+  const [isLoaiXe, setIsLoaiXe] = useState("");
+  const [isChoNgoi, setIsChoNgoi] = useState(null);
+
   const [isHang, setIsHang] = useState("");   
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [load, setLoad] = useState(false);
-
+  //daj
 
   const getData = async () => {
     setLoad(true);
@@ -56,31 +58,25 @@ const Home = (props) => {
 
     return formatter.format(unitPrice).replace(/\B(?=(\d{3})+(?!\d))/g, "\n");
   }
-  const handleLoc = async () => {
-    console.log('start');
-    setLoad(true);
 
-    try {
-      let res = await axios.post(url + "/api/Products/SearchProduct", {
-        "seats": isChoNgoi,
-        "typeCar": isLoaiXe,
-        "id": isHang
-      });
-  
-      if (res && res.data) {
-        setData(res.data);
-      } else {
-        alert("Không tìm thấy xe");
+  const handleLoc = async () => {
+    setLoad(true);
+    try{
+     let payload = {
+        Seats: isChoNgoi,
+        TypeCar: isLoaiXe,
+        Id: isHang
       }
-    } catch (error) {
-      console.error("Lỗi kết nối hoặc lỗi từ server:", error);
-      alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+      let res = await axios.post(url + "/api/products/SearchProduct",payload);
+      if(res.status === 200){
+        setData(res.data);
+      }
+      setLoad(false);
+    }catch(error){
+      console.log("Lỗi hệ thống" +error)
+      alert("Không tìm thấy xe trong hệ thống");
+      getData();
     }
-    setIsHang('');
-    setIsLoaiXe('Ô tô');
-    setIsChoNgoi(null);
-  
-    setLoad(false);
   }
 
   
@@ -102,7 +98,8 @@ const Home = (props) => {
   useEffect(() => {
     getData();
     handleFilterChange();
-  }, [isLoaiXe, isChoNgoi, isHang]);
+  }, [isChoNgoi, isLoaiXe, isHang]);
+
 
   useEffect(() => {
     const filtered = data.filter(item => item.automotives.length > 0);
@@ -112,16 +109,16 @@ const Home = (props) => {
   return (
     <View style={styles.container}>
       <FilterList
-        where={route.params.whereCar }
+        where={route.params.whereCar}
         rentcar={route.params.selectedRentCar}
         returncar={route.params.selectedReturnCar}
         funcUp={sortByUnitPriceDescending}
         funcDown={sortByUnitPriceAscending}
         isLoaiXe={isLoaiXe}
-        isKieuXe={isChoNgoi}
+        isChoNgoi={isChoNgoi}
         isHang={isHang}
         onFilterChange={handleFilterChange}
-        onPressLoc={()=>{handleLoc()}}
+        onPressLoc={handleLoc}
       />
       <View style={styles.scrollview1}>
         <View style={styles.view3}>
@@ -141,6 +138,7 @@ const Home = (props) => {
                     imguri={item.image}
                     onPress={()=>{nagivation.navigate("CarDetail", {
                       id: item.id,
+                      coupon: item.discount,
                       whereCar: route.params.whereCar,
                       rentCar: route.params.selectedRentCar,
                       returnCar: route.params.selectedReturnCar,
