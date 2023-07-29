@@ -20,6 +20,7 @@ const Home = (props) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [load, setLoad] = useState(false);
+  //daj
 
 
   const getData = async () => {
