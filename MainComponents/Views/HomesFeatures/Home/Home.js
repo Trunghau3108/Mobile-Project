@@ -14,9 +14,9 @@ const Home = (props) => {
   const route = useRoute();
   const isLoggingDoneRef = useRef(false);
   const nagivation = useNavigation();
-  const [isLoaiXe, setIsLoaiXe] = useState(null);
-  const [isKieuXe, setIsKieuXe] = useState(null);
-  const [isHang, setIsHang] = useState(null);  
+  const [isLoaiXe, setIsLoaiXe] = useState("Ô tô");
+  const [isChoNgoi, setIsChoNgoi] = useState();
+  const [isHang, setIsHang] = useState("");   
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [load, setLoad] = useState(false);
@@ -59,27 +59,42 @@ const Home = (props) => {
   const handleLoc = async () => {
     console.log('start');
     setLoad(true);
-    let res = await axios.post(url + "/api/Products/SearchProduct",{
-      "seats": 5,
-      "typeCar": isKieuXe,
-      "id": isHang
+
+    try {
+      let res = await axios.post(url + "/api/Products/SearchProduct", {
+        "seats": isChoNgoi,
+        "typeCar": isLoaiXe,
+        "id": isHang
       });
-    setData(res.data);
-    console.log(data);
+  
+      if (res && res.data) {
+        setData(res.data);
+      } else {
+        alert("Không tìm thấy xe");
+      }
+    } catch (error) {
+      console.error("Lỗi kết nối hoặc lỗi từ server:", error);
+      alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+    }
+    setIsHang('');
+    setIsLoaiXe('Ô tô');
+    setIsChoNgoi(null);
+  
     setLoad(false);
   }
+
+  
   const handleFilterChange = (loaiXe, kieuXe, hang) => {
     if (loaiXe !== undefined) {
       setIsLoaiXe(loaiXe);
     }
     if (kieuXe !== undefined) {
-      setIsKieuXe(kieuXe);
+      setIsChoNgoi(kieuXe);
     }
     if (hang !== undefined) {
       setIsHang(hang);
     }
     if (!isLoggingDoneRef.current) {
-      console.log(isLoaiXe, isKieuXe, isHang);
       isLoggingDoneRef.current = true;
     }
   };
@@ -87,7 +102,7 @@ const Home = (props) => {
   useEffect(() => {
     getData();
     handleFilterChange();
-  }, [isLoaiXe, isKieuXe, isHang]);
+  }, [isLoaiXe, isChoNgoi, isHang]);
 
   useEffect(() => {
     const filtered = data.filter(item => item.automotives.length > 0);
@@ -103,7 +118,7 @@ const Home = (props) => {
         funcUp={sortByUnitPriceDescending}
         funcDown={sortByUnitPriceAscending}
         isLoaiXe={isLoaiXe}
-        isKieuXe={isKieuXe}
+        isKieuXe={isChoNgoi}
         isHang={isHang}
         onFilterChange={handleFilterChange}
         onPressLoc={()=>{handleLoc()}}
