@@ -36,61 +36,11 @@ const MainScreen = () => {
         console.error('Error retrieving user data from AsyncStorage:', error);
       }
     };
-
-    // Retrieve user data whenever the screen gains focus
+    
     if (isFocused) {
       retrieveUserInfo();
     }
   }, [isFocused]);
-
-  
-
-
-
-
-  //lấy 5 post có view cao nhất
-  // const getData = async () => {
-  //   let res = await axios.post(url + "/api/products/GetListProduct");
-
-  //   // const itemsWithViewsGreaterThan5 = res.data.filter(element => element.views > 5);
-
-  //   // // Log giá trị views của các phần tử thỏa mãn điều kiện
-  //   // itemsWithViewsGreaterThan5.forEach(element => {
-  //   //   console.log(element);
-  //   // });
-  //   const data = res.data;
-
-  //   // Sắp xếp mảng theo giá trị views giảm dần
-  //   data.sort((a, b) => b.views - a.views);
-
-  //   // Lấy 5 phần tử đầu tiên của mảng (có views cao nhất)
-  //   const top5Items = data.slice(0, 5);
-  //   // Log giá trị views của các phần tử
-  //   top5Items.forEach(element => {    
-  //     setData(element);
-  //     // console.log(data);
-  //   });
-
-
-
- 
-  // }
-
-
-  
-  // const renderItem = (data) => {
-
-  //   console.log(data.name)
-    
-  //     // <PostItem
-  //     // promote={data.discount}
-  //     // name={data.name}
-  //     // price={data.unitPrice}
-  //     // distance={"auto"}
-  //     // imguri={data.image}
-  //     // />
-
-  // }
 
   const getData = async () => {
     let res = await axios.post(url + "/api/products/GetListProduct");
