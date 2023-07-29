@@ -26,19 +26,22 @@ const { width, height } = Dimensions.get("screen");
 
 const Payment = () => {
   const route = useRoute();
-  const [ten, email, pass, onChangeText] = React.useState("");
-  const [phone, onChangeNumber] = React.useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  
   const [modal, setModal] = useState(false);
-  const [pay,setPay] = useState('');
   const isFocused = useIsFocused();
   const [userInfo, setUserInfo] = useState(null);
+  const [textCoupon, settextCoupon] = useState();
+  const [decription, setDecription] = useState('');
 
+    
+  
+  
   const whereCar = route.params.whereCar;
   const rentCar = route.params.rentCar;
   const returnCar = route.params.returnCar;
-  const coupon = route.params.coupon;
+  const {coupon} = route.params;
   const id = route.params.id;
+
 
   const inputFormat = "YYYY-MM-DD HH:mm";
   const outputFormat = "YYYY-MM-DDTHH:mm:ss";
@@ -46,9 +49,40 @@ const Payment = () => {
   const rentCarDate = moment(rentCar, inputFormat).format(outputFormat);
   const returnCarDate = moment(returnCar, inputFormat).format(outputFormat);
 
+  const handlePayment = async () => {
+      try {
+        const payload = {
+          ProductId: id,
+          CustomerId: userInfo.id,
+          OrderDate: rentCarDate,
+          ReturnDate: returnCarDate,
+          Receipt: "BL2003",
+          Address: whereCar,
+          Description: decription,
+          Amount: 1,
+          PaymentMethod: "Ngân hàng"
+        };
+        console.log(payload)
+
+        // Make a POST request to your backend API
+        const response = await axios.post(url+'/api/oders/CreateOrder', payload);
+
+        if (response.status === 200) {
+          alert("Thanh toán thành công")
+          nagivation.navigate("TabHome")
+
+        } else {
+          alert('Bạn chưa điền đủ thông tin để thanh toán hoặc chưa chọn ngày,giờ, tỉnh thành !!! ');
+        }
+      } catch (error) {
+        alert('Bạn chưa điền đủ thông tin để thanh toán hoặc chưa chọn ngày,giờ, tỉnh thành !!! ', error);
+      }
+  };
 
 
   useEffect(() => {
+    let format = coupon * 100;
+    settextCoupon(format.toString() + "%");
     const retrieveUserInfo = async () => {
       try {
         const jsonString = await AsyncStorage.getItem('user');
@@ -67,40 +101,6 @@ const Payment = () => {
       retrieveUserInfo();
     }
   }, [isFocused]);
-
-
-  const handleXacNhanThanhToan = async ()  => {
-    setModal(true)
-    if (email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
-      alert('Error', 'Please fill in all fields');
-    } else if (password !== confirmPassword) {
-      alert('Error', 'Passwords do not match');
-    } else {
-      // Perform the signup process here
-      try {
-        const payload = {
-          email: email,
-          password: password,
-          fullname: fullname
-        };
-
-        // Make a POST request to your backend API
-        const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
-
-        if (response.status === 200) {
-          setModalVisible(true);
-          nagivation.navigate("Signin")
-
-        } else {
-          alert('Error', 'Signup failed. Please try again later.');
-        }
-      } catch (error) {
-        alert('Error:', error);
-        alert('Error', 'Signup failed. Please try again later.');
-      }
-    }
-  };
-  
 
   const nagivation = useNavigation();
   return (
@@ -146,7 +146,6 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input1}
-                  onChangeText={onChangeText}
                   value={userInfo ? userInfo.fullname : ''}
                   placeholder="Nhập Tên"
                 />
@@ -167,7 +166,6 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input2}
-                  onChangeText={onChangeNumber}
                   value="012345678"
                   keyboardType="numeric"
                   placeholder="Nhập Số điện thoại "
@@ -189,7 +187,6 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input3}
-                  onChangeText={onChangeText}
                   value={userInfo ? userInfo.email : ''}
                   placeholder="Nhập Email"
                 />
@@ -210,10 +207,9 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input4}
-                  onChangeText={onChangeText}
-                  value={pass}
                   placeholder="Nhập Decription"
-                  secureTextEntry={!showPassword}
+                  onChangeText={(text) => setDecription(text)}
+                  
                 />
               </View>
             </View>
@@ -241,13 +237,14 @@ const Payment = () => {
               marginLeft: 15,
             }}
           >
-            3. Nhập mã giảm giá
+            3. Giảm giá Coupon
           </Text>
           <View style={styles.CouponInput}>
             <TextInput
               style={styles.inputCoupon}
-              onChangeText={onChangeText}
-              placeholder="Nhập mã giảm giá"
+              value={textCoupon}
+              
+              
             />
           </View>
         </View>
@@ -259,7 +256,7 @@ const Payment = () => {
         style={styles.buttonConfirm}
       >
         <TouchableOpacity
-          onPress={handleXacNhanThanhToan}
+          onPress={handlePayment}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
             Xác Nhận Thanh Toán

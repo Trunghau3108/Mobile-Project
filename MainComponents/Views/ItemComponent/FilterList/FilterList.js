@@ -23,13 +23,13 @@ import axios from "axios";
 const FilterList = (props) => {
   const route = useRoute();
   const navigation = useNavigation();
-  const [isLoaiXe, setIsLoaiXe] = useState('...');
-  const [isKieuXe, setIsKieuXe] = useState('...');
-  const [isHang, setIsHang] = useState('...');
+  const [isLoaiXe, setIsLoaiXe] = useState('');
+  const [isKieuXe, setIsKieuXe] = useState(null);
+  const [isHang, setIsHang] = useState('');
   const [showCarFil, setShowCarFil] = useState(false);
   const [showSortPrice, setShowSortPrice] = useState(false);
 
-  const [price, setPrice] = useState("none...");
+  const [price, setPrice] = useState("Lọc xe theo giá ");
 
   const handleLoaiXeChange = (loaixe) => {
     setIsLoaiXe(loaixe);

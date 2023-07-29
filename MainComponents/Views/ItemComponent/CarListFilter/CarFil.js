@@ -98,17 +98,17 @@ const CarFil = (props) => {
           <Box
             icon='car'
             loaiXe="4 chỗ"
-            onPress={()=>{props.onKieuXeChange('4 chỗ')}}
+            onPress={()=>{props.onKieuXeChange(4) + 'Chỗ'}}
           />
           <Box
             icon='car'
             loaiXe="5 chỗ"
-            onPress={()=>{props.onKieuXeChange('5 chỗ')}}
+            onPress={()=>{props.onKieuXeChange(5) + 'Chỗ'}}
           />
           <Box
             icon='car'
             loaiXe="7 chỗ"
-            onPress={()=>{props.onKieuXeChange('7 chỗ')}}
+            onPress={()=>{props.onKieuXeChange(7) + 'Chỗ'}}
           />
         </View>
       </View>
