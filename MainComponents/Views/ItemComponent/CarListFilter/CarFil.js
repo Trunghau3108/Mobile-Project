@@ -92,23 +92,23 @@ const CarFil = (props) => {
         </Text>
         <Box
           loaiXe="Tất cả kiểu xe"
-          onPress={()=>{props.onKieuXeChange(null)}}
+          onPress={()=>{props.onKieuXeChange()}}
         />
         <View style={CarFilCss.CarStyleChoose}>
           <Box
             icon='car'
             loaiXe="4 chỗ"
-            onPress={()=>{props.onKieuXeChange(4) + 'Chỗ'}}
+            onPress={()=>{props.onKieuXeChange(4)}}
           />
           <Box
             icon='car'
             loaiXe="5 chỗ"
-            onPress={()=>{props.onKieuXeChange(5) + 'Chỗ'}}
+            onPress={()=>{props.onKieuXeChange(5)}}
           />
           <Box
             icon='car'
             loaiXe="7 chỗ"
-            onPress={()=>{props.onKieuXeChange(7) + 'Chỗ'}}
+            onPress={()=>{props.onKieuXeChange(7)}}
           />
         </View>
       </View>
