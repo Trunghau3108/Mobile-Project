@@ -112,7 +112,7 @@ const Home = (props) => {
   return (
     <View style={styles.container}>
       <FilterList
-        where={route.params.whereCar}
+        where={route.params.whereCar }
         rentcar={route.params.selectedRentCar}
         returncar={route.params.selectedReturnCar}
         funcUp={sortByUnitPriceDescending}

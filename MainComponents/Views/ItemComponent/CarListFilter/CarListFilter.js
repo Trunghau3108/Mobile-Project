@@ -24,8 +24,7 @@ import CarFilCss from "./CarFilCss";
 import LocateFilCss from "./LocateFilCss";
 const CarListFilter = () => {
   return (
-    // <FilterLocation />
-    <FilterCars />
+    <FilterLocation />
   );
 };
 const FilterLocation = () => {

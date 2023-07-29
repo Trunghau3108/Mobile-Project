@@ -14,14 +14,28 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [fullname, setFullname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const checkGmailFormat = (email) => {
+    // Biểu thức chính quy kiểm tra định dạng email Gmail
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail.com$/;
+    return gmailRegex.test(email);
+  };
+  const handleInputChange = (email) => {
+    setEmail(email);
+    setIsValidEmail(checkGmailFormat(email));
+  };
+
   const handleSignup = async () => {
-    // Perform signup validation here
-    if (email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
-      alert('Error', 'Please fill in all fields');
+    if(email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
+      alert("Hãy điền đầy đủ thông tin");
     } else if (password !== confirmPassword) {
-      alert('Error', 'Passwords do not match');
-    } else {
+      alert('Password không khớp');
+    } 
+    else if (!isValidEmail) {
+      alert("Email không hợp lệ !!! ");
+    }
+    else {
       // Perform the signup process here
       try {
         const payload = {
@@ -34,7 +48,6 @@ const Signup = () => {
         const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
 
         if (response.status === 200) {
-          setModalVisible(true);
           nagivation.navigate("Signin")
 
         } else {
@@ -90,7 +103,7 @@ const Signup = () => {
         <TextInput
           placeholder="Nhập Email..."
           style={SignupCss.input}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={handleInputChange}
         />
       </View>
       <View style={SignupCss.inputView}>
@@ -102,13 +115,14 @@ const Signup = () => {
         />
       </View>
       <View style={SignupCss.inputView}>
-        <Feather name="lock" size={20} color="#146C94" />
+        <Feather name="lock" size={20} color="#146C94"/>
         <TextInput
           placeholder="Nhập mật khẩu..."
           secureTextEntry={true}
           style={SignupCss.input}
           onChangeText={(text) => setPassword(text)}
         />
+        
       </View>
       <View style={SignupCss.inputView}>
         <Feather name="lock" size={20} color="#146C94" />

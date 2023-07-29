@@ -6,7 +6,7 @@ import {
   TextInput,
   Dimensions
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import UserPrivateInfoCss from "../../ProfilesFetures/UserPrivateInfo/UserPrivateInfoCss";
 import Method1 from "./Method1";
@@ -15,29 +15,92 @@ import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Popup from "../../ItemComponent/Popup/Popup";
+import moment from 'moment';
+import axios from "axios";
+import url from "../../../../urlAPI";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/native';
+
 
 const { width, height } = Dimensions.get("screen");
 
 const Payment = () => {
   const route = useRoute();
-  const [ten, email, pass, coupon, onChangeText] = React.useState("");
+  const [ten, email, pass, onChangeText] = React.useState("");
   const [phone, onChangeNumber] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [modal, setModal] = useState(false);
+  const [pay,setPay] = useState('');
+  const isFocused = useIsFocused();
+  const [userInfo, setUserInfo] = useState(null);
 
   const whereCar = route.params.whereCar;
   const rentCar = route.params.rentCar;
   const returnCar = route.params.returnCar;
+  const coupon = route.params.coupon;
   const id = route.params.id;
 
-  const handleXacNhanThanhToan = () => {
+  const inputFormat = "YYYY-MM-DD HH:mm";
+  const outputFormat = "YYYY-MM-DDTHH:mm:ss";
+
+  const rentCarDate = moment(rentCar, inputFormat).format(outputFormat);
+  const returnCarDate = moment(returnCar, inputFormat).format(outputFormat);
+
+
+
+  useEffect(() => {
+    const retrieveUserInfo = async () => {
+      try {
+        const jsonString = await AsyncStorage.getItem('user');
+        if (jsonString) {
+          const userData = JSON.parse(jsonString);
+          setUserInfo(userData);
+          
+        }
+      } catch (error) {
+        console.error('Error retrieving user data from AsyncStorage:', error);
+      }
+    };
+
+    // Retrieve user data whenever the screen gains focus
+    if (isFocused) {
+      retrieveUserInfo();
+    }
+  }, [isFocused]);
+
+
+  const handleXacNhanThanhToan = async ()  => {
     setModal(true)
-    console.log("Thông tin hóa đơn:");
-    console.log("IdProduct:", id);
-    console.log("ở Vùng:", whereCar);
-    console.log("ngày bắt đầu:", rentCar);
-    console.log("ngày kết thúc:", returnCar);
-  }
+    if (email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
+      alert('Error', 'Please fill in all fields');
+    } else if (password !== confirmPassword) {
+      alert('Error', 'Passwords do not match');
+    } else {
+      // Perform the signup process here
+      try {
+        const payload = {
+          email: email,
+          password: password,
+          fullname: fullname
+        };
+
+        // Make a POST request to your backend API
+        const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
+
+        if (response.status === 200) {
+          setModalVisible(true);
+          nagivation.navigate("Signin")
+
+        } else {
+          alert('Error', 'Signup failed. Please try again later.');
+        }
+      } catch (error) {
+        alert('Error:', error);
+        alert('Error', 'Signup failed. Please try again later.');
+      }
+    }
+  };
+  
 
   const nagivation = useNavigation();
   return (
@@ -84,7 +147,7 @@ const Payment = () => {
                 <TextInput
                   style={UserPrivateInfoCss.input1}
                   onChangeText={onChangeText}
-                  value={ten}
+                  value={userInfo ? userInfo.fullname : ''}
                   placeholder="Nhập Tên"
                 />
               </View>
@@ -105,7 +168,7 @@ const Payment = () => {
                 <TextInput
                   style={UserPrivateInfoCss.input2}
                   onChangeText={onChangeNumber}
-                  value={phone}
+                  value="012345678"
                   keyboardType="numeric"
                   placeholder="Nhập Số điện thoại "
                 />
@@ -127,7 +190,7 @@ const Payment = () => {
                 <TextInput
                   style={UserPrivateInfoCss.input3}
                   onChangeText={onChangeText}
-                  value={email}
+                  value={userInfo ? userInfo.email : ''}
                   placeholder="Nhập Email"
                 />
               </View>
@@ -136,11 +199,11 @@ const Payment = () => {
               <Text
                 style={{ fontSize: 15, fontWeight: "bold", color: "#146C94" }}
               >
-                Password
+                Decription
               </Text>
               <View style={UserPrivateInfoCss.PasswordInput1}>
                 <Entypo
-                  name="lock"
+                  name="plus"
                   size={24}
                   color="#146C94"
                   style={{ marginLeft: 10 }}
@@ -149,19 +212,9 @@ const Payment = () => {
                   style={UserPrivateInfoCss.input4}
                   onChangeText={onChangeText}
                   value={pass}
-                  placeholder="Nhập Password"
+                  placeholder="Nhập Decription"
                   secureTextEntry={!showPassword}
                 />
-                <TouchableOpacity
-                  onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
-                  style={{ marginLeft: 195 }}
-                >
-                  {showPassword ? (
-                    <Entypo name="eye" size={24} color="#146C94" />
-                  ) : (
-                    <Entypo name="eye-with-line" size={24} color="#146C94" />
-                  )}
-                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -194,7 +247,6 @@ const Payment = () => {
             <TextInput
               style={styles.inputCoupon}
               onChangeText={onChangeText}
-              value={coupon}
               placeholder="Nhập mã giảm giá"
             />
           </View>
