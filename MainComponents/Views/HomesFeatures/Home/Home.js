@@ -14,8 +14,10 @@ const Home = (props) => {
   const route = useRoute();
   const isLoggingDoneRef = useRef(false);
   const nagivation = useNavigation();
+
   const [isLoaiXe, setIsLoaiXe] = useState("");
   const [isChoNgoi, setIsChoNgoi] = useState(null);
+
   const [isHang, setIsHang] = useState("");   
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -73,7 +75,6 @@ const Home = (props) => {
     }catch(error){
       console.log("Lỗi hệ thống" +error)
       alert("Không tìm thấy xe trong hệ thống");
-
       getData();
     }
   }
@@ -98,6 +99,7 @@ const Home = (props) => {
     getData();
     handleFilterChange();
   }, [isChoNgoi, isLoaiXe, isHang]);
+
 
   useEffect(() => {
     const filtered = data.filter(item => item.automotives.length > 0);
