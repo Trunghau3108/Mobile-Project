@@ -29,7 +29,7 @@ import CarDetails from "./MainComponents/Views/ItemComponent/CarDetails/CarDetai
 import Map from "./MainComponents/Views/HomesFeatures/Maps/Map";
 import MainScreen from "./MainComponents/Views/HomesFeatures/MainScreen/MainScreen";
 import Status from "./MainComponents/Views/ItemComponent/Popup/Popup";
-
+import FilterCar from "./MainComponents/Views/HomesFeatures/Home/FilterCar";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +37,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    // <FilterCar/>
     <Main/>
   );
 };
@@ -57,7 +58,7 @@ const Main = () => {
         <Stack.Screen name="NewPass" component={NewPassword} />
         <Stack.Screen name="TabHome" component={MainScreen} />
         <Stack.Screen name="Forget" component={Forget}/>
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={FilterCar} />
         <Stack.Screen name="History" component={History} options={{ headerShown: true, headerTitleAlign: "center" }} />
         <Stack.Screen name="Support" component={Support} options={{ headerShown: true, headerTitleAlign: "center" }} />
         <Stack.Screen
