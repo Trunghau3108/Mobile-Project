@@ -26,7 +26,7 @@ const OrderCarList = (props) => {
                         <Text style={{ fontSize: 14 }}>{props.ngaygiomuon}</Text>
                     </View>
                     <View style={styles.CarBorrowDetail2}>
-                        <TouchableOpacity style={styles.ReturnCarButton}>
+                        <TouchableOpacity style={styles.ReturnCarButton} onPress={props.onPress}>
                             <Text style={{ alignSelf: 'center', color: 'white' }}>Trả xe</Text>
                         </TouchableOpacity>
                     </View>
