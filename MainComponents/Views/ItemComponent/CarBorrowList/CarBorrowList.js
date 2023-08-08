@@ -13,9 +13,10 @@ const CarBorrowList = () => {
   const [data, setData] = useState([]);
   const isFocused = useIsFocused();
   const [userInfo, setUserInfo] = useState(null);
-
+  const [load, setLoad] = useState(false);
 
   const getData = async () => {
+    setLoad(true);
     if (userInfo !== null) {
         try {
             const payload = {
@@ -23,6 +24,8 @@ const CarBorrowList = () => {
             }
             const res = await axios.post(url + '/api/Oders/OrderPayment',payload);
             setData(res.data);
+            console.log(res.data);
+            setLoad(false);
         } catch (error) {
             alert("lỗi data"+ error);
         }
@@ -55,7 +58,6 @@ const updateStatus = async () => {
       }
     };
 
-    // Retrieve user data whenever the screen gains focus
     if (isFocused) {
       retrieveUserInfo();
     }
@@ -82,9 +84,10 @@ const updateStatus = async () => {
               data={data}
               renderItem={({ item }) => (
                 <OrderCarList
-                  tenxemuon={item.tenxe}
-                  ngaygiomuon={item.gioihan}
-                  imgava={item.uri}
+                  tenxemuon={item.name}
+                  ngaygiomuon={item.ngaygio}
+                  imgava={item.image}
+                  onPress={()=>{updateStatus()}}
                 />
               )}
             />

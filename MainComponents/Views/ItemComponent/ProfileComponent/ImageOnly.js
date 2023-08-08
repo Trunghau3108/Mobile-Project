@@ -7,7 +7,7 @@ const ImageOnly = () => {
         <View style ={styles.ImageOnly2}>
             <View>
                 <Image
-                    source={{uri:'https://images.teamtalk.com/content/uploads/2023/03/28151251/man-utd-striker-marcus-rashford.jpg'}}
+                    source={{uri:'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt07d62336ee8ed926/6214ab2690aa357658b8e4cc/18-maguire.jpg?auto=webp&format=pjpg&width=3840&quality=60'}}
                     style = {styles.avatar}                
                 />
             </View>
