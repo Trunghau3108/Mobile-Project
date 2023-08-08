@@ -50,6 +50,7 @@ const History = () => {
       retrieveUserInfo();
     }
   }, [isFocused]);
+  
 
   useEffect(() => {
     getData();
