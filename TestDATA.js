@@ -19,6 +19,7 @@ const TestDATA = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ Email: 'React updates ', Password: '' })
     };
+    
 
     useEffect(() => { getDataAPI() }, [])
 
