@@ -89,7 +89,6 @@ const Payment = () => {
         if (jsonString) {
           const userData = JSON.parse(jsonString);
           setUserInfo(userData);
-          
         }
       } catch (error) {
         console.error('Error retrieving user data from AsyncStorage:', error);
