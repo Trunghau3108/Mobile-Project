@@ -7,7 +7,7 @@ const ImageOnly = () => {
         <View style ={styles.ImageOnly2}>
             <View>
                 <Image
-                    source={{uri:'https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg'}}
+                    source={{uri:'https://images.teamtalk.com/content/uploads/2023/03/28151251/man-utd-striker-marcus-rashford.jpg'}}
                     style = {styles.avatar}                
                 />
             </View>
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     ImageOnly1:{
         flex:2,
         flexDirection:'row',
-        //backgroundColor:'red'
+        backgroundColor:'white', 
         borderBottomWidth:1,
         borderColor:'#ECECEC'
     },

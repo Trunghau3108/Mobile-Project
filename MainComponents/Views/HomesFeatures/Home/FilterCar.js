@@ -349,7 +349,7 @@ const FilterCar = () => {
                         style={[styles.headerLocation, { height: '20%', marginVertical: 20 }]}
                         onPress={() => { setModalVisible(true) }}
                     >
-                        <FontAwesome5 name="clipboard-list" size={24} color="black" />
+                        <FontAwesome5 name="clipboard-list" size={24} color="black"/>
                         <Text style={styles.headerBoxText}>{isLoaiXe}, {isChoNgoi}, {isHang}</Text>
                         <AntDesign name="caretdown" size={24} color="black" />
                     </TouchableOpacity>

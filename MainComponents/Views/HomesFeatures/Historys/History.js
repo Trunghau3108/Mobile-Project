@@ -12,21 +12,22 @@ const { width, height } = Dimensions.get('screen');
 
 const History = () => {
   const [data, setData] = useState([]);
+  const [load, setLoad] = useState(false);
 
   const getData = async () => {
     const res = await axios.post(url + '/api/Oders/GetListOrder');
-    setData(res.data)
+    setData(res.data);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getData();
-  },[])
+  }, [])
 
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) =>
+        renderItem={({ item }) => (
           <Post
             giamgia={item.giamgia}
             khcach={item.khcach}
@@ -40,9 +41,9 @@ const History = () => {
             gia={item.gia}
             imguri={item.uri}
           />
-        }
+        )}
       />
-      <BottomTabComp color2="#146C94"/>
+      <BottomTabComp color2="#146C94" />
     </View>
   )
 }
