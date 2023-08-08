@@ -1,5 +1,5 @@
-import {ScrollView, StyleSheet, View, FlatList } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { ScrollView, StyleSheet, View, FlatList, ActivityIndicator } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import ImageOnly from '../ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../../VisualData/DataBorrowCar'
 import OrderCarList from '../ProfileComponent/OrderCarList'
@@ -13,9 +13,10 @@ const CarBorrowList = () => {
   const [data, setData] = useState([]);
   const isFocused = useIsFocused();
   const [userInfo, setUserInfo] = useState(null);
-
+  const [load, setLoad] = useState(false);
 
   const getData = async () => {
+    setLoad(true);
     if (userInfo !== null) {
         try {
             const payload = {
@@ -23,6 +24,8 @@ const CarBorrowList = () => {
             }
             const res = await axios.post(url + '/api/Oders/OrderPayment',payload);
             setData(res.data);
+            console.log(res.data);
+            setLoad(false);
         } catch (error) {
             alert("lỗi data"+ error);
         }
@@ -55,7 +58,6 @@ const updateStatus = async () => {
       }
     };
 
-    // Retrieve user data whenever the screen gains focus
     if (isFocused) {
       retrieveUserInfo();
     }
@@ -71,16 +73,26 @@ const updateStatus = async () => {
       <ImageOnly />
       <View style={styles.ViewList2}>
         <View style={styles.ViewListXeMuon}>
-          <FlatList
-            data = {data}
-            renderItem={({item}) =>
-            <OrderCarList
-                tenxemuon = {item.name}
-                ngaygiomuon = {item.gioihan}
-                imgava = {item.image}
+          {
+            load? 
+            (
+              <ActivityIndicator size = "large" />
+            )
+            :
+            (
+              <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <OrderCarList
+                  tenxemuon={item.name}
+                  ngaygiomuon={item.ngaygio}
+                  imgava={item.image}
+                  onPress={()=>{updateStatus()}}
+                />
+              )}
             />
-            }
-          />
+            )
+          }
         </View>
       </View>
     </View>
@@ -90,19 +102,21 @@ const updateStatus = async () => {
 export default CarBorrowList;
 
 const styles = StyleSheet.create({
-    ViewListTong:{
-        flex:1
-    },
-    ViewList1:{
-        flex:2,
-        backgroundColor:'blue'
-    },
-    ViewList2: {
-        flex:8,
-    },
-    ViewListXeMuon:{
-      flex:1,
-      height:1000,
-      marginBottom: 20,
-    },  
+  ViewListTong: {
+    flex: 1
+  },
+  ViewList1: {
+    flex: 2,
+    backgroundColor: 'blue'
+  },
+  ViewList2: {
+    flex: 8,
+  },
+  ViewListXeMuon: {
+    flex: 1,
+    height: 1000,
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })
