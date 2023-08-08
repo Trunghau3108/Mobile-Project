@@ -7,7 +7,7 @@ const ImageOnly = () => {
         <View style ={styles.ImageOnly2}>
             <View>
                 <Image
-                    source={{uri:'https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg'}}
+                    source={{uri:'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt07d62336ee8ed926/6214ab2690aa357658b8e4cc/18-maguire.jpg?auto=webp&format=pjpg&width=3840&quality=60'}}
                     style = {styles.avatar}                
                 />
             </View>
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     ImageOnly1:{
         flex:2,
         flexDirection:'row',
-        //backgroundColor:'red'
+        backgroundColor:'white', 
         borderBottomWidth:1,
         borderColor:'#ECECEC'
     },

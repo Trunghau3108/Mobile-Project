@@ -12,27 +12,42 @@ const Signup = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullname, setFullname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const checkGmailFormat = (email) => {
+    // Biểu thức chính quy kiểm tra định dạng email Gmail
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail.com$/;
+    return gmailRegex.test(email);
+  };
+  const handleInputChange = (email) => {
+    setEmail(email);
+    setIsValidEmail(checkGmailFormat(email));
+  };
+
   const handleSignup = async () => {
-    // Perform signup validation here
-    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
-      alert('Error', 'Please fill in all fields');
+    if(email.trim() === '' || password.trim() === '' || fullname.trim() === '' || confirmPassword.trim() === '') {
+      alert("Hãy điền đầy đủ thông tin");
     } else if (password !== confirmPassword) {
-      alert('Error', 'Passwords do not match');
-    } else {
+      alert('Password không khớp');
+    } 
+    else if (!isValidEmail) {
+      alert("Email không hợp lệ !!! ");
+    }
+    else {
       // Perform the signup process here
       try {
         const payload = {
           email: email,
           password: password,
+          fullname: fullname
         };
 
         // Make a POST request to your backend API
         const response = await axios.post(url+'/api/customers/CreateCustomer', payload);
 
         if (response.status === 200) {
-          alert('Success', 'Signup successful!');
           nagivation.navigate("Signin")
 
         } else {
@@ -44,8 +59,6 @@ const Signup = () => {
       }
     }
   };
-
-  
 
   return (
     <SafeAreaView style={SignupCss.container}>
@@ -85,29 +98,31 @@ const Signup = () => {
           <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Đăng kí</Text>
           <Text style={{color:'gray'}}>Tạo cho bạn một tài khoản mới</Text>
         </View>
-        {/* <View style={SignupCss.inputView}>
-          <MaterialCommunityIcons name="account" size={24} color="#146C94" />
-          <TextInput
-            placeholder='Nhập tên...'
-            style={SignupCss.input}
-          />
-        </View> */}
           <View style={SignupCss.inputView}>
         <Feather name="mail" size={20} color="#146C94" />
         <TextInput
           placeholder="Nhập Email..."
           style={SignupCss.input}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={handleInputChange}
         />
       </View>
       <View style={SignupCss.inputView}>
-        <Feather name="lock" size={20} color="#146C94" />
+        <Feather name="user" size={20} color="#146C94" />
+        <TextInput
+          placeholder="Nhập FullName..."
+          style={SignupCss.input}
+          onChangeText={(text) => setFullname(text)}
+        />
+      </View>
+      <View style={SignupCss.inputView}>
+        <Feather name="lock" size={20} color="#146C94"/>
         <TextInput
           placeholder="Nhập mật khẩu..."
           secureTextEntry={true}
           style={SignupCss.input}
           onChangeText={(text) => setPassword(text)}
         />
+        
       </View>
       <View style={SignupCss.inputView}>
         <Feather name="lock" size={20} color="#146C94" />
@@ -121,13 +136,12 @@ const Signup = () => {
         <View style={SignupCss.touchView}>
           <TouchableOpacity 
             style={SignupCss.dangki}
-            // onPress={() => setModalVisible(true)}
             onPress={handleSignup}
           >
             <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Đăng Kí</Text>
           </TouchableOpacity>
           <View style={SignupCss.dangnhapview}>
-            <Text style={[SignupCss.text,{fontSize: 13, right: 5}]}>Dã có tài khoản?</Text>
+            <Text style={[SignupCss.text,{fontSize: 13, right: 5}]}>Đã có tài khoản?</Text>
             <TouchableOpacity
               onPress={()=>{
                 nagivation.replace('Signin');

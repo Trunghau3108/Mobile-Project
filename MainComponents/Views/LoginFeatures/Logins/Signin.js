@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -16,40 +15,51 @@ import url from "../../../../urlAPI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Signin = ({ navigation }) => {
-  const [userPhone, setUserPhone] = useState("");
+  const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState("");
   const [isSelected, setSelection] = useState(false);
-
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const checkGmailFormat = (email) => {
+    // Biểu thức chính quy kiểm tra định dạng email Gmail
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail.com$/;
+    return gmailRegex.test(email);
+  };
+  const handleInputChange = (email) => {
+    setUserEmail(email);
+    setIsValidEmail(checkGmailFormat(email));
+  };
   const handleLogin = async () => {
+    if (!isValidEmail) {
+      alert("Email không hợp lệ !!! ");
+    }
+    else{
     try {
       // Tạo đối tượng payload từ thông tin đăng nhập
       const payload = {
-        email: userPhone,
+        email: userEmail,
         password: userPassword,
       };
 
       // Gửi yêu cầu POST đăng nhập đến API
-      const response = await axios.post(url + "/api/customers/Login", payload);
-
+      const response = await axios.post(url+"/api/customers/Login", payload);
       // Kiểm tra phản hồi từ API
       if (response.status === 200) {
         // Xử lý khi đăng nhập thành công
         const result = response.data;
         try {
           const jsonValue = JSON.stringify(result);
-          await AsyncStorage.setItem("user", jsonValue);
+          await AsyncStorage.setItem('user', jsonValue);
         } catch (e) {
           console.log(e);
         }
-        alert("Login successful");
         navigation.replace("TabHome");
-      } else {
+      }else {
         // Xử lý khi đăng nhập không thành công
-        console.log("Login failed:", response.status, response.statusText);
       }
     } catch (error) {
-      console.error("Error:", error);
+        alert("Đăng nhập thất bại: Sai email hoặc mật khẩu");
     }
+  }
   };
 
   const nagivation = useNavigation();
@@ -66,11 +76,11 @@ const Signin = ({ navigation }) => {
         </Text>
         <Text style={{ color: "gray" }}>Đăng nhập vào tài khoản của bạn</Text>
         <View style={[SigninCss.inputview, { marginTop: 50 }]}>
-          <Feather name="phone" size={20} color="#146C94" />
+          <Feather name="mail" size={20} color="#146C94" />
           <TextInput
             placeholder="Nhập Email..."
             style={SigninCss.input}
-            onChangeText={(userPhone) => setUserPhone(userPhone)}
+            onChangeText={handleInputChange}
           />
         </View>
         <View style={SigninCss.inputview}>
@@ -103,7 +113,7 @@ const Signin = ({ navigation }) => {
           <TouchableOpacity
             style={SigninCss.linkTouch}
             onPress={() => {
-              nagivation.replace("ForgetPass");
+              nagivation.replace("Email");
             }}
           >
             <Text
@@ -115,7 +125,6 @@ const Signin = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={SigninCss.dangnhap}
-          // onPress={() =>{nagivation.replace('Home')}}
           onPress={handleLogin}
         >
           <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>

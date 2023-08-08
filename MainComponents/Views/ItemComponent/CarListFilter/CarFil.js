@@ -12,7 +12,7 @@ import {
   SectionList,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Ionicons,
   MaterialIcons,
@@ -21,40 +21,32 @@ import {
   Fontisto,
 } from "@expo/vector-icons";
 import CarFilCss from "./CarFilCss";
-const CarFil = (props) => {
-  const [isPressed1, setIsPressed1] = useState(false);
-  const [isPressed2, setIsPressed2] = useState(false);
-  const [isPressed3, setIsPressed3] = useState(false);
-  const [isPressed4, setIsPressed4] = useState(false);
-  const [isPressed5, setIsPressed5] = useState(false);
-  const [isPressed6, setIsPressed6] = useState(false);
+import SelectDropdown from "react-native-select-dropdown";
+import url from "../../../../urlAPI";
+import axios from "axios";
 
-  const handlePress1 = () => {
-    setIsPressed1(!isPressed1);
-    setIsPressed4(true);
-    setIsPressed3(true);
-    setIsPressed2(true);
-  };
-  const handlePress2 = () => {
-    setIsPressed2(!isPressed2);
-    setIsPressed1(false);
-  };
-  const handlePress3 = () => {
-    setIsPressed3(!isPressed3);
-    setIsPressed1(false);
-  };
-  const handlePress4 = () => {
-    setIsPressed4(!isPressed4);
-    setIsPressed1(false);
-  };
-  const handlePress5 = () => {
-    setIsPressed6(false);
-    setIsPressed5(!isPressed5);
-  };
-  const handlePress6 = () => {
-    setIsPressed5(false);
-    setIsPressed6(!isPressed6);
-  };
+const CarFil = (props) => {
+  const [isLoaiXe, setIsLoaiXe] = useState('');
+  const [isKieuXe, setIsKieuXe] = useState('');
+  const [isHang, setIsHang] = useState('');
+  const [listOfId, setListOfId] = useState([]);
+
+  const getSupplier = async () => {
+    let res = await axios.post(url + "/api/Supplier/GetListSuppliers");
+    const listOfIds = res.data.map(item => item.id);
+    setListOfId(listOfIds);
+
+  }
+
+  useEffect(() => {
+    getSupplier();
+  }, []);
+
+  useEffect(() => {
+    if (props.onFilterChange) {
+      props.onFilterChange(isLoaiXe, isKieuXe, isHang);
+    }
+  }, [isLoaiXe, isKieuXe, isHang]);
 
   return (
     <View style={CarFilCss.CarFil}>
@@ -74,46 +66,16 @@ const CarFil = (props) => {
           Loại xe
         </Text>
         <View style={CarFilCss.CarTypeChoose}>
-          <TouchableOpacity
-            style={[
-              CarFilCss.TypeCar,
-              {
-                backgroundColor: isPressed5 ? "#146C94" : "#ECECEC",
-              },
-            ]}
-            onPress={handlePress5}
-          >
-            <FontAwesome5
-              name="car"
-              size={24}
-              color={isPressed5 ? "white" : "black"}
-            />
-            <Text
-              style={{ marginTop: 5, color: isPressed5 ? "white" : "black" }}
-            >
-              Ô tô
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              CarFilCss.TypeMotor,
-              {
-                backgroundColor: isPressed6 ? "#146C94" : "#ECECEC",
-              },
-            ]}
-            onPress={handlePress6}
-          >
-            <Fontisto
-              name="motorcycle"
-              size={24}
-              color={isPressed6 ? "white" : "black"}
-            />
-            <Text
-              style={{ marginTop: 5, color: isPressed6 ? "white" : "black" }}
-            >
-              Mô tô
-            </Text>
-          </TouchableOpacity>
+          <Box
+            icon='car'
+            loaiXe="Ô tô"
+            onPress={()=>{props.onLoaiXeChange('Ô tô');}}
+          />
+          <Box
+            icon='car'
+            loaiXe="Mô tô"
+            onPress={()=>{props.onLoaiXeChange('Mô tô');}}
+          />
         </View>
       </View>
       <View style={CarFilCss.CarStyle}>
@@ -128,87 +90,26 @@ const CarFil = (props) => {
         >
           Kiểu xe
         </Text>
-        <TouchableOpacity
-          style={[
-            CarFilCss.CarStyleAll,
-            {
-              backgroundColor: isPressed1 ? "#146C94" : "#ECECEC",
-            },
-          ]}
-          onPress={handlePress1}
-        >
-          <Text
-            style={{
-              alignSelf: "center",
-              margin: 10,
-              color: isPressed1 ? "white" : "black",
-            }}
-          >
-            {" "}
-            Tất cả kiểu xe
-          </Text>
-        </TouchableOpacity>
+        <Box
+          loaiXe="Tất cả kiểu xe"
+          onPress={()=>{props.onKieuXeChange()}}
+        />
         <View style={CarFilCss.CarStyleChoose}>
-          <TouchableOpacity
-            style={[
-              CarFilCss.SeatStyle1,
-              {
-                backgroundColor: isPressed2 ? "#146C94" : "#ECECEC",
-              },
-            ]}
-            onPress={handlePress2}
-          >
-            <FontAwesome5
-              name="car"
-              size={24}
-              color={isPressed2 ? "white" : "black"}
-            />
-            <Text
-              style={{ marginTop: 5, color: isPressed2 ? "white" : "black" }}
-            >
-              4 chỗ
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              CarFilCss.SeatStyle2,
-              {
-                backgroundColor: isPressed3 ? "#146C94" : "#ECECEC",
-              },
-            ]}
-            onPress={handlePress3}
-          >
-            <FontAwesome5
-              name="car"
-              size={24}
-              color={isPressed3 ? "white" : "black"}
-            />
-            <Text
-              style={{ marginTop: 5, color: isPressed3 ? "white" : "black" }}
-            >
-              5 chỗ
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              CarFilCss.SeatStyle3,
-              {
-                backgroundColor: isPressed4 ? "#146C94" : "#ECECEC",
-              },
-            ]}
-            onPress={handlePress4}
-          >
-            <FontAwesome5
-              name="car"
-              size={24}
-              color={isPressed4 ? "white" : "black"}
-            />
-            <Text
-              style={{ marginTop: 5, color: isPressed4 ? "white" : "black" }}
-            >
-              7 chỗ
-            </Text>
-          </TouchableOpacity>
+          <Box
+            icon='car'
+            loaiXe="4 chỗ"
+            onPress={()=>{props.onKieuXeChange(4)}}
+          />
+          <Box
+            icon='car'
+            loaiXe="5 chỗ"
+            onPress={()=>{props.onKieuXeChange(5)}}
+          />
+          <Box
+            icon='car'
+            loaiXe="7 chỗ"
+            onPress={()=>{props.onKieuXeChange(7)}}
+          />
         </View>
       </View>
       <View style={CarFilCss.CarBrand}>
@@ -225,9 +126,20 @@ const CarFil = (props) => {
         </Text>
         <View style={CarFilCss.CarBrandChoose}>
           <View style={CarFilCss.ChooseBrand}>
-            <TouchableOpacity style={CarFilCss.ChooseBrandButton1}>
-              <Text>Chọn hãng xe</Text>
-            </TouchableOpacity>
+            <SelectDropdown
+              buttonStyle={CarFilCss.ChooseBrandButton1}
+
+              data={listOfId}
+              onSelect={(selectItem, index) => {
+                props.onHangChange(selectItem);
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+            />
             <TouchableOpacity style={CarFilCss.ChooseBrandButton2}>
               <Entypo name="chevron-down" size={24} color="black" />
             </TouchableOpacity>
@@ -236,13 +148,40 @@ const CarFil = (props) => {
       </View>
       <TouchableOpacity
         style={CarFilCss.CarFilCloseButton}
-        onPress={props.onPress}
+        onPress={() => {
+          props.onPress();
+        }}
       >
         <Text style={{ color: "#fff" }}>Đóng</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
+const Box = (props) => {
+  const [isColor, setIsColor] = useState(false);
+  return (
+    <TouchableOpacity
+      style={[CarFilCss.TypeCar, { backgroundColor: isColor ? "#146C94" : "#ECECEC" }]}
+      onPress={()=>{
+        setIsColor(!isColor);
+        props.onPress();
+      }}
+    >
+      <FontAwesome5
+        // name="car"
+        name={props.icon}
+        size={24}
+        color={isColor ? "white" : "black"}
+      />
+      <Text
+        style={{ marginTop: 5, color: isColor ? "white" : "black" }}
+      >
+        {props.loaiXe}
+      </Text>
+    </TouchableOpacity>
+  );
+}
 
 export default CarFil;
 

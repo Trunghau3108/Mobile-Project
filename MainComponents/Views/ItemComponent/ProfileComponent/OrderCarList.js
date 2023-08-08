@@ -7,7 +7,8 @@ const {width, height} = Dimensions.get("screen");
 const OrderCarList = (props) => {
     const navigation = useNavigation();
     return (
-        <TouchableOpacity style={styles.OrderTong} onPress={()=>{navigation.navigate('CarDetail')}}>
+        <TouchableOpacity style={styles.OrderTong}>
+            {/* onPress={()=>{navigation.navigate('CarDetail')}} */}
             <View style={styles.OrderHinh}>
                 <Image
                     source={{ uri: props.imgava }}
@@ -24,7 +25,7 @@ const OrderCarList = (props) => {
                         <Text style={{ fontSize: 14 }}>{props.ngaygiomuon}</Text>
                     </View>
                     <View style={styles.CarBorrowDetail2}>
-                        <TouchableOpacity style={styles.ReturnCarButton}>
+                        <TouchableOpacity style={styles.ReturnCarButton} onPress={props.onPress}>
                             <Text style={{ alignSelf: 'center', color: 'white' }}>Trả xe</Text>
                         </TouchableOpacity>
                     </View>

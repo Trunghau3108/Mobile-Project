@@ -1,26 +1,70 @@
 import {  SafeAreaView, ScrollView, StatusBar,keyboardVerticalOffset,Keyboard, StyleSheet, Text, View, Image, Button, Alert, TouchableOpacity, SectionList, FlatList, TextInput,TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import ImageOnly from '../../ItemComponent/ProfileComponent/ImageOnly';
 import { AntDesign,Entypo } from '@expo/vector-icons';
 import UserPrivateInfoCss from './UserPrivateInfoCss';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import url from '../../../../urlAPI';
+
+
 const UserPrivateInfo = () => {
+    const navigation = useNavigation();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [userInfo, setUserInfo] = useState(null);
     const [password, setPassword] = useState('');
-    // const [ten,email,pass, onChangeText] = React.useState('');
-    // const [phone, onChangeNumber] = React.useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const isFocused = useIsFocused();
 
-    const handleUpdateInfo = () => {
-        console.log("name" + name);
-        console.log("s đ t" + phone);
-        console.log("email cua m:" + email);
-        console.log("password" + password);
+    const handleUpdateInfo = async() => {
+            try {
+                const payload = {
+                    email:email,
+                    password:password,
+                    fullname:name,
+                };
+                const response =  await axios.post(url+'/api/customers/UpdateCustomer',payload);
+                if(response.status === 200){  
+                    alert("Update Thanh Cong");
+                    navigation.replace("MainPro");
+
+                }  else{
+                    alert('Error','Cap Nhat That Bai');
+                }
+            }catch (error){
+                console.error("Error:",error);
+                alert("Error","Cap Nhat That Bai");
+            };
+       
     }
+    useEffect(() => {
+        const retrieveUserInfo = async () => {
+          try {
+            const jsonString = await AsyncStorage.getItem('user');
+            if (jsonString) {
+              const userData = JSON.parse(jsonString);
+              setUserInfo(userData);
+              
+            }
+          } catch (error) {
+            console.error('Error retrieving user data from AsyncStorage:', error);
+          }
+        };
+    
+        // Retrieve user data whenever the screen gains focus
+        if (isFocused) {
+          retrieveUserInfo();
+        }
+      }, [isFocused]);
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style = {UserPrivateInfoCss.PrivateInfo}>
+        
+           
             <ImageOnly/>
             <View style = {UserPrivateInfoCss.InputInfo}>
                 <View style = {UserPrivateInfoCss.NameInput}>
@@ -31,7 +75,7 @@ const UserPrivateInfo = () => {
                             style = {UserPrivateInfoCss.input1}
                             onChangeText={(name) => setName(name)}
                             value  = {name}
-                            placeholder="Nhập Tên"
+                            placeholder= {userInfo ? userInfo.fullname : ''}
                         />
                     </View>
                 </View>
@@ -44,7 +88,7 @@ const UserPrivateInfo = () => {
                             onChangeText={(phone) => setPhone(phone)}
                             value  = {phone}
                             keyboardType="numeric"
-                            placeholder="Nhập Số điện thoại "
+                            placeholder= {userInfo ? userInfo.photo : ''}
                         />
                     </View>
                 </View>
@@ -56,7 +100,7 @@ const UserPrivateInfo = () => {
                             style = {UserPrivateInfoCss.input3}
                             onChangeText={(email) => setEmail(email)}
                             value  = {email}
-                            placeholder="Nhập Email"
+                            placeholder={userInfo ? userInfo.email : ''}
                         />
                     </View>
                 </View>
@@ -67,9 +111,10 @@ const UserPrivateInfo = () => {
                         <TextInput
                             style = {UserPrivateInfoCss.input4}
                             onChangeText={(password) => setPassword(password)}
+                            secureTextEntry ={!showPassword}
                             value  = {password}
-                            placeholder="Nhập Password"
-                            secureTextEntry={!showPassword}
+                            // placeholder={ userInfo ? userInfo.password : ''}
+                            //zz
                         />
                         <TouchableOpacity
                             onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
@@ -83,11 +128,12 @@ const UserPrivateInfo = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <TouchableOpacity style ={UserPrivateInfoCss.ButtonXacNhan} onPress={handleUpdateInfo}>
+                <TouchableOpacity style ={UserPrivateInfoCss.ButtonXacNhan} onPress={handleUpdateInfo} >
                     <Text style = {{color:'white',fontWeight:'bold',fontSize:18}}>Xác nhận</Text>
                 </TouchableOpacity>
 
             </View>
+          
         </View>
     </TouchableWithoutFeedback>
     

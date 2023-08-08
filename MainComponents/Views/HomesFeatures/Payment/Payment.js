@@ -6,25 +6,113 @@ import {
   TextInput,
   Dimensions
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import UserPrivateInfoCss from "../../ProfilesFetures/UserPrivateInfo/UserPrivateInfoCss";
 import Method1 from "./Method1";
 import styles from "./PaymentCss";
 import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import Popup from "../../ItemComponent/Popup/Popup";
+import moment from 'moment';
+import axios from "axios";
+import url from "../../../../urlAPI";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/native';
+
 
 const { width, height } = Dimensions.get("screen");
 
 const Payment = () => {
-  const [ten, email, pass, coupon, onChangeText] = React.useState("");
-  const [phone, onChangeNumber] = React.useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [isSelected, setSelection] = useState(false);
+  const route = useRoute();
+  
+  const [modal, setModal] = useState(false);
+  const isFocused = useIsFocused();
+  const [userInfo, setUserInfo] = useState(null);
+  const [textCoupon, settextCoupon] = useState();
+  const [decription, setDecription] = useState('');
+
+    
+  
+  
+  const whereCar = route.params.whereCar;
+  const rentCar = route.params.rentCar;
+  const returnCar = route.params.returnCar;
+  const {coupon} = route.params;
+  const id = route.params.id;
+
+
+  const inputFormat = "YYYY-MM-DD HH:mm";
+  const outputFormat = "YYYY-MM-DDTHH:mm:ss";
+
+  const rentCarDate = moment(rentCar, inputFormat).format(outputFormat);
+  const returnCarDate = moment(returnCar, inputFormat).format(outputFormat);
+
+  const handlePayment = async () => {
+      try {
+        const payload = {
+          ProductId: id,
+          CustomerId: userInfo.id,
+          OrderDate: rentCarDate,
+          ReturnDate: returnCarDate,
+          Receipt: "BL2003",
+          Address: whereCar,
+          Description: decription,
+          Amount: 1,
+          PaymentMethod: "Ngân hàng"
+        };
+        console.log(payload)
+
+        // Make a POST request to your backend API
+        const response = await axios.post(url+'/api/oders/CreateOrder', payload);
+
+    
+          alert("Thanh toán thành công")
+
+          nagivation.navigate("TabHome")
+
+       
+       
+      } catch (error) {
+        alert('Bạn chưa điền đủ thông tin để thanh toán hoặc chưa chọn ngày,giờ, tỉnh thành !!! ', error);
+      }
+  };
+
+
+  useEffect(() => {
+    let format = coupon * 100;
+    settextCoupon(format.toString() + "%");
+    const retrieveUserInfo = async () => {
+      try {
+        const jsonString = await AsyncStorage.getItem('user');
+        if (jsonString) {
+          const userData = JSON.parse(jsonString);
+          setUserInfo(userData);
+        }
+      } catch (error) {
+        console.error('Error retrieving user data from AsyncStorage:', error);
+      }
+    };
+
+    // Retrieve user data whenever the screen gains focus
+    if (isFocused) {
+      retrieveUserInfo();
+    }
+  }, [isFocused]);
 
   const nagivation = useNavigation();
   return (
     <View>
+      <Popup
+        visible={modal}
+        icon="checkmark-done-sharp"
+        text="Thanh toán thành công !"
+        onPress={() => { 
+          setModal(false);
+          nagivation.navigate('TabHome');
+         }}
+      />
       <View style={{ width: width, height: 80, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: '#156791' }}> Thanh Toán</Text>
       </View>
@@ -57,8 +145,7 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input1}
-                  onChangeText={onChangeText}
-                  value={ten}
+                  value={userInfo ? userInfo.fullname : ''}
                   placeholder="Nhập Tên"
                 />
               </View>
@@ -78,8 +165,7 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input2}
-                  onChangeText={onChangeNumber}
-                  value={phone}
+                  value="012345678"
                   keyboardType="numeric"
                   placeholder="Nhập Số điện thoại "
                 />
@@ -100,8 +186,7 @@ const Payment = () => {
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input3}
-                  onChangeText={onChangeText}
-                  value={email}
+                  value={userInfo ? userInfo.email : ''}
                   placeholder="Nhập Email"
                 />
               </View>
@@ -110,32 +195,21 @@ const Payment = () => {
               <Text
                 style={{ fontSize: 15, fontWeight: "bold", color: "#146C94" }}
               >
-                Password
+                Decription
               </Text>
               <View style={UserPrivateInfoCss.PasswordInput1}>
                 <Entypo
-                  name="lock"
+                  name="plus"
                   size={24}
                   color="#146C94"
                   style={{ marginLeft: 10 }}
                 />
                 <TextInput
                   style={UserPrivateInfoCss.input4}
-                  onChangeText={onChangeText}
-                  value={pass}
-                  placeholder="Nhập Password"
-                  secureTextEntry={!showPassword}
+                  placeholder="Nhập Decription"
+                  onChangeText={(text) => setDecription(text)}
+                  
                 />
-                <TouchableOpacity
-                  onPress={() => setShowPassword(!showPassword)} // Khi nhấn vào, đảo ngược giá trị của showPassword
-                  style={{ marginLeft: 195 }}
-                >
-                  {showPassword ? (
-                    <Entypo name="eye" size={24} color="#146C94" />
-                  ) : (
-                    <Entypo name="eye-with-line" size={24} color="#146C94" />
-                  )}
-                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -162,14 +236,14 @@ const Payment = () => {
               marginLeft: 15,
             }}
           >
-            3. Nhập mã giảm giá
+            3. Giảm giá Coupon
           </Text>
           <View style={styles.CouponInput}>
             <TextInput
               style={styles.inputCoupon}
-              onChangeText={onChangeText}
-              value={coupon}
-              placeholder="Nhập mã giảm giá"
+              value={textCoupon}
+              
+              
             />
           </View>
         </View>
@@ -181,10 +255,7 @@ const Payment = () => {
         style={styles.buttonConfirm}
       >
         <TouchableOpacity
-          onPress={() => {
-            alert('Đặt xe thành công !');
-            nagivation.navigate('Home')
-          }}
+          onPress={handlePayment}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
             Xác Nhận Thanh Toán
