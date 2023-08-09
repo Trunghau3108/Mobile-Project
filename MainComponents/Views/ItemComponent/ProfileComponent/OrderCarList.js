@@ -22,7 +22,7 @@ const OrderCarList = (props) => {
                 <View style={styles.CarBorrowDetail}>
                     <View style={styles.CarBorrowDetail1}>
                         <Text style={{ marginRight: 25, fontSize: 14, fontWeight: 'bold' }}>Còn lại:</Text>
-                        <Text style={{ fontSize: 14 }}>{props.ngaygiomuon}</Text>
+                        <Text style={{ fontSize: 13 }}>{props.ngaygioconlai}</Text>
                     </View>
                     <View style={styles.CarBorrowDetail2}>
                         <TouchableOpacity style={styles.ReturnCarButton} onPress={props.onPress}>
@@ -67,15 +67,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     CarBorrowDetail: {
-        flex: 1,
-        flexDirection: 'row',
+        flex: 2,
     },
     CarBorrowDetail1: {
-        alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
-        marginBottom: 10
-
+        padding: 10,
     },
     CarBorrowDetail2: {
         flex: 1,
