@@ -110,13 +110,13 @@ const FindCarFilter = () => {
           name="map-pin"
           size={24}
           color="black"
-          style={{ position: "absolute", top: "36%", left: "5%" }}
+          style={{ position: "absolute", top: "30%", left: "5%" }}
         />
         <AntDesign
           name="down"
           size={20}
           color="black"
-          style={{ position: "absolute", top: "37%", right: "5%" }}
+          style={{ position: "absolute", top: "32%", right: "5%" }}
         />
         <View>
           <CalendarItem
