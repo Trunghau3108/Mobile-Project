@@ -92,10 +92,11 @@ const MainScreen = () => {
                 {userInfo.fullname}
               </Text>
               <Image
-                    source={{uri: userInfo.photo}}
+                    source={{uri: userInfo.photo != null ? userInfo.photo : 'https://gd-workshop.com/style/site/assets/img/placeholder.png'}}
                     style={{ width: width * 13 / 100, height: height * 7 / 100 , borderRadius: 80}}
                 />
             </TouchableOpacity>
+            
         
       </>
               ):(

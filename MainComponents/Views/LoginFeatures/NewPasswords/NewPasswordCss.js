@@ -59,6 +59,11 @@ const NewPasswordCss = StyleSheet.create({
         top: 50,
         justifyContent: 'flex-end',
     },
+    eye: {
+        position: 'absolute',
+        top: 10,
+        right: 20,
+    },
     
 });
 

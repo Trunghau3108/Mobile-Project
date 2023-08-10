@@ -40,7 +40,7 @@ const UserInfo1 = (props) => {
                 <View>
                     
                     <Image
-                        source={{uri: userInfo.photo}}
+                        source={{uri: userInfo.photo != null ? userInfo.photo : 'https://gd-workshop.com/style/site/assets/img/placeholder.png'}}
                         style={{ width: 150, height: 150, marginLeft: 20,borderRadius:100}}
                     />
                 </View>
@@ -53,7 +53,7 @@ const UserInfo1 = (props) => {
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>
                         <TouchableOpacity
-                            onPress={() => { navigation.navigate(props.navig); }}
+                            onPress={() => { navigation.navigate('UserPrivate'); }}
                         >
                             <Text style={{ color: '#fff', fontWeight: 'bold', alignSelf: 'center' }}>Chỉnh sửa</Text>
                         </TouchableOpacity>

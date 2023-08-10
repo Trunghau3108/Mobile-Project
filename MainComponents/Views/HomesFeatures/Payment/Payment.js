@@ -68,14 +68,9 @@ const Payment = () => {
         };
         // Make a POST request to your backend API
         const response = await axios.post(url+'/api/oders/CreateOrder', payload);
-
-    
           alert("Thanh toán thành công")
-
           nagivation.navigate("TabHome")
 
-       
-       
       } catch (error) {
         alert('Bạn chưa điền đủ thông tin để thanh toán hoặc chưa chọn ngày,giờ, tỉnh thành !!! ', error);
       }

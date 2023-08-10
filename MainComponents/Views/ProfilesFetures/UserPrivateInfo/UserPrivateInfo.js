@@ -114,7 +114,7 @@ const UserPrivateInfo = () => {
                             onChangeText={(password) => setPassword(password)}
                             secureTextEntry ={!showPassword}
                             value  = {password}
-                            placeholder={ userInfo ? userInfo.password : ''}
+                            placeholder={ "***"}
                             //zz
                         />
                         <TouchableOpacity
