@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Popup from "../../ItemComponent/Popup/Popup";
-import moment from 'moment';
+import moment from 'moment-timezone';
 import axios from "axios";
 import url from "../../../../urlAPI";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -43,11 +43,15 @@ const Payment = () => {
   const id = route.params.id;
 
 
-  const inputFormat = "YYYY-MM-DD HH:mm";
+  const inputFormat = "DD/MM/YYYY HH:mm";
   const outputFormat = "YYYY-MM-DDTHH:mm:ss";
 
-  const rentCarDate = moment(rentCar, inputFormat).format(outputFormat);
-  const returnCarDate = moment(returnCar, inputFormat).format(outputFormat);
+  const timezone = "Asia/Ho_Chi_Minh"; // Múi giờ Việt Nam
+
+  const rentCarDate = moment.tz(rentCar, inputFormat, timezone).format(outputFormat);
+  const returnCarDate = moment.tz(returnCar, inputFormat, timezone).format(outputFormat);
+
+
 
   const handlePayment = async () => {
       try {
@@ -62,18 +66,11 @@ const Payment = () => {
           Amount: 1,
           PaymentMethod: "Ngân hàng"
         };
-        console.log(payload)
-
         // Make a POST request to your backend API
         const response = await axios.post(url+'/api/oders/CreateOrder', payload);
-
-    
           alert("Thanh toán thành công")
-
           nagivation.navigate("TabHome")
 
-       
-       
       } catch (error) {
         alert('Bạn chưa điền đủ thông tin để thanh toán hoặc chưa chọn ngày,giờ, tỉnh thành !!! ', error);
       }

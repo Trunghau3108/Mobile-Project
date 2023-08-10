@@ -10,24 +10,25 @@ const UserInfo1 = (props) => {
     const [userInfo, setUserInfo] = useState(null);
     const isFocused = useIsFocused();
 
+
+    const retrieveUserInfo = async () => {
+        try {
+          const jsonString = await AsyncStorage.getItem('user');
+          if (jsonString) {
+            const userData = JSON.parse(jsonString);
+            setUserInfo(userData);
+            
+          }
+        } catch (error) {
+          console.error('Error retrieving user data from AsyncStorage:', error);
+        }
+      };
+
         useEffect(() => {
-            const retrieveUserInfo = async () => {
-              try {
-                const jsonString = await AsyncStorage.getItem('user');
-                if (jsonString) {
-                  const userData = JSON.parse(jsonString);
-                  setUserInfo(userData);
-                  
-                }
-              } catch (error) {
-                console.error('Error retrieving user data from AsyncStorage:', error);
-              }
-            };
+           
         
             // Retrieve user data whenever the screen gains focus
-            if (isFocused) {
-              retrieveUserInfo();
-            }
+              retrieveUserInfo(isFocused);
           }, [isFocused]);
         
           // Rest of your component logic...
@@ -39,8 +40,8 @@ const UserInfo1 = (props) => {
                 <View>
                     
                     <Image
-                        source={{ uri: 'https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt07d62336ee8ed926/6214ab2690aa357658b8e4cc/18-maguire.jpg?auto=webp&format=pjpg&width=3840&quality=60' }}
-                        style={MainProfileCss.img}
+                        source={{uri: userInfo.photo != null ? userInfo.photo : 'https://gd-workshop.com/style/site/assets/img/placeholder.png'}}
+                        style={{ width: 150, height: 150, marginLeft: 20,borderRadius:100}}
                     />
                 </View>
             </View>
@@ -52,7 +53,7 @@ const UserInfo1 = (props) => {
                 <View style={MainProfileCss.ViewChuProfile2}>
                     <View style={MainProfileCss.ViewChuProfileButton}>
                         <TouchableOpacity
-                            onPress={() => { navigation.navigate(props.navig); }}
+                            onPress={() => { navigation.navigate('UserPrivate'); }}
                         >
                             <Text style={{ color: '#fff', fontWeight: 'bold', alignSelf: 'center' }}>Chỉnh sửa</Text>
                         </TouchableOpacity>

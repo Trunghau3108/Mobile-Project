@@ -22,14 +22,15 @@ const UserPrivateInfo = () => {
     const handleUpdateInfo = async() => {
             try {
                 const payload = {
-                    email:email,
+                    email:userInfo.email,
                     password:password,
                     fullname:name,
                 };
+                console.log(payload)
                 const response =  await axios.post(url+'/api/customers/UpdateCustomer',payload);
                 if(response.status === 200){  
                     alert("Update Thanh Cong");
-                    navigation.replace("MainPro");
+                    navigation.navigate("MainPro");
 
                 }  else{
                     alert('Error','Cap Nhat That Bai');
@@ -79,7 +80,7 @@ const UserPrivateInfo = () => {
                         />
                     </View>
                 </View>
-                <View style = {UserPrivateInfoCss.PhoneInput}>
+                {/* <View style = {UserPrivateInfoCss.PhoneInput}>
                     <Text style = {{fontSize:18,fontWeight:'bold',color:'#146C94'}}>Số điện thoại</Text>
                     <View style = {UserPrivateInfoCss.PhoneInput1}>
                         <AntDesign name="phone" size={24} color="#146C94" style = {{marginLeft:10,transform: [{rotateY: '180deg'}]}} />
@@ -88,10 +89,10 @@ const UserPrivateInfo = () => {
                             onChangeText={(phone) => setPhone(phone)}
                             value  = {phone}
                             keyboardType="numeric"
-                            placeholder= {userInfo ? userInfo.photo : ''}
+                            // placeholder= {userInfo ? userInfo.photo : ''}
                         />
                     </View>
-                </View>
+                </View> */}
                 <View style = {UserPrivateInfoCss.EmailInput}>
                     <Text style = {{fontSize:18,fontWeight:'bold',color:'#146C94'}}>Email</Text>
                     <View style = {UserPrivateInfoCss.EmailInput1}>
@@ -113,7 +114,7 @@ const UserPrivateInfo = () => {
                             onChangeText={(password) => setPassword(password)}
                             secureTextEntry ={!showPassword}
                             value  = {password}
-                            // placeholder={ userInfo ? userInfo.password : ''}
+                            placeholder={ "***"}
                             //zz
                         />
                         <TouchableOpacity

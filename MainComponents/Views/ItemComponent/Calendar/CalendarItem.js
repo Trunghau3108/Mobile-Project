@@ -69,7 +69,6 @@ const CalendarItem = ({ onRentCarSelect, onReturnCarSelect }) => {
     hideReturnDatePicker();
     onReturnCarSelect(formattedDateTimeReturn);
   };
-
   return (
     <>
       <View style={CalendarItemCss.container}>

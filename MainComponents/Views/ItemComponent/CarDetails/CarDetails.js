@@ -20,7 +20,7 @@ const CarDetails = (props) => {
     const returnCar= route.params.returnCar;
     const id = route.params.id;
 
-     console.log(id);
+    //  console.log(id);
 
     const getDataDetail = async (id) => {
         setLoad(true);
@@ -28,7 +28,7 @@ const CarDetails = (props) => {
             "searchIdProduct": id
           });
         setData(res.data);
-        console.log(data);
+        // console.log(data);
         setLoad(false);
     }
 

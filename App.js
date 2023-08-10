@@ -38,7 +38,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     // <FilterCar/>
-    <NewPassword/>
+    <Main/>
   );
 };
 
@@ -55,7 +55,7 @@ const Main = () => {
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Email" component={ForgetPass} />
-        {/* <Stack.Screen name="NewPass" component={NewPassword} /> */}
+        <Stack.Screen name="NewPass" component={NewPassword} />
         <Stack.Screen name="TabHome" component={MainScreen} />
         <Stack.Screen name="Forget" component={Forget}/>
         <Stack.Screen name="Home" component={FilterCar} />
