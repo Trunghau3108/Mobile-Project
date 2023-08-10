@@ -1,6 +1,6 @@
 import { View, SafeAreaView, Text, TextInput, TouchableOpacity, Image } from 'react-native'
-import { Feather } from '@expo/vector-icons';
-import React, {useState,useEffect} from 'react'
+import { Feather, Ionicons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react'
 import ForgetPassCss from '../ForgetPass/ForgetPassCss';
 import NewPasswordCss from './NewPasswordCss';
 import { useNavigation } from '@react-navigation/native';
@@ -8,10 +8,12 @@ import url from '../../../../urlAPI';
 import axios from 'axios';
 
 const NewPassword = () => {
-  const nagivation = useNavigation();
+  // const nagivation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [hide1, setHide1] = useState(true);
+  const [hide2, setHide2 ] = useState(true)
 
   const handleUpdate = async () => {
     // Perform signup validation here
@@ -27,7 +29,7 @@ const NewPassword = () => {
           password: password,
         };
         // Make a POST request to your backend API
-        const response = await axios.post(url+'/api/customers/UpdateCustomer', payload);
+        const response = await axios.post(url + '/api/customers/UpdateCustomer', payload);
 
         if (response.status === 200) {
           alert('Success', 'Change Password successful!');
@@ -52,56 +54,72 @@ const NewPassword = () => {
       </View>
       <View style={NewPasswordCss.main}>
         <View style={NewPasswordCss.textView}>
-          <Text style={{fontSize: 40, fontWeight:'bold', color:'#146C94'}}>Nhập mật khẩu mới</Text>
-          <Text style={{color:'gray'}}>Vui lòng nhập mật khẩu mới</Text>
+          <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#146C94' }}>Nhập mật khẩu mới</Text>
+          <Text style={{ color: 'gray' }}>Vui lòng nhập mật khẩu mới</Text>
         </View>
         <View style={NewPasswordCss.inputView}>
           <Feather name="lock" size={20} color="#146C94" />
-          <TextInput 
-            placeholder='Nhập email'
-            onChangeText={(text) => setEmail(text)}
-            style={NewPasswordCss.input}
-          />
-        </View>
-        <View style={NewPasswordCss.inputView}>
-          <Feather name="lock" size={20} color="#146C94" />
-          <TextInput 
+          <TextInput
             placeholder='Nhập mật khẩu...'
             onChangeText={(text) => setPassword(text)}
+            secureTextEntry={hide1}
             style={NewPasswordCss.input}
           />
+          <TouchableOpacity onPress={()=>{setHide1(!hide1)}} style={NewPasswordCss.eye}>
+            {hide1 ?
+              (
+                <Ionicons name="eye-off" size={24} color="#146C94" />
+              )
+              :
+              (
+                <Ionicons name="eye" size={24} color="#146C94" />
+              )
+            }
+          </TouchableOpacity>
         </View>
         <View style={NewPasswordCss.inputView}>
           <Feather name="lock" size={20} color="#146C94" />
-          <TextInput 
+          <TextInput
             placeholder='Nhập lại mật khẩu...'
+            secureTextEntry={hide2}
             onChangeText={(text) => setConfirmPassword(text)}
             style={NewPasswordCss.input}
           />
+          <TouchableOpacity onPress={()=>{setHide2(!hide2)}} style={NewPasswordCss.eye}>
+            {hide2 ?
+              (
+                <Ionicons name="eye-off" size={24} color="#146C94" />
+              )
+              :
+              (
+                <Ionicons name="eye" size={24} color="#146C94" />
+              )
+            }
+          </TouchableOpacity>
         </View>
         <View style={NewPasswordCss.touchView}>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={NewPasswordCss.dangki}
             onPress={handleUpdate}
           >
-            <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Xác Nhận</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Xác Nhận</Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-            style={[NewPasswordCss.dangki,{ marginTop: 10}]}
+          <TouchableOpacity
+            style={[NewPasswordCss.dangki, { marginTop: 10 }]}
             onPress={() => {
               nagivation.goBack
             }}
           >
-            <Text style={{color:'white', fontWeight:'bold', fontSize:15,}}>Quay lại</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, }}>Quay lại</Text>
           </TouchableOpacity>
           <View style={NewPasswordCss.dangnhapview}>
-            <Text style={[NewPasswordCss.text,{fontSize: 13, right: 5}]}>Đã có tài khoản ?</Text>
+            <Text style={[NewPasswordCss.text, { fontSize: 13, right: 5 }]}>Đã có tài khoản ?</Text>
             <TouchableOpacity
-              onPress={()=>{
+              onPress={() => {
                 nagivation.replace('Signin');
               }}
             >
-              <Text style={[NewPasswordCss.text,{fontSize: 13, textDecorationLine:'underline', fontWeight:'bold'}]}>Đăng nhập</Text>
+              <Text style={[NewPasswordCss.text, { fontSize: 13, textDecorationLine: 'underline', fontWeight: 'bold' }]}>Đăng nhập</Text>
             </TouchableOpacity>
           </View>
         </View>
