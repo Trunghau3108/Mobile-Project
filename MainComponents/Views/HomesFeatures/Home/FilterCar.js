@@ -39,7 +39,7 @@ const FilterCar = () => {
         setLoad(true);
         const sortedData = data.slice().sort((a, b) => b.unitPrice - a.unitPrice);
         setData(sortedData);
-        console.log('sếp giá từ cao tới thấp');
+        // console.log('sếp giá từ cao tới thấp');
         setPriceCar('Giá từ cao tới thấp');
         setModalPriceVisible(false);
         setLoad(false);
@@ -50,7 +50,7 @@ const FilterCar = () => {
         setLoad(true);
         const sortedData = data.slice().sort((a, b) => a.unitPrice - b.unitPrice);
         setData(sortedData);
-        console.log('sếp giá từ thấp tới cao');
+        // console.log('sếp giá từ thấp tới cao');
         setPriceCar('Giá từ thấp tới cao');
         setModalPriceVisible(false);
         setLoad(false);
@@ -104,7 +104,7 @@ const FilterCar = () => {
             }
             setLoad(false);
         } catch (error) {
-            console.log("Lỗi hệ thống" + error)
+            // console.log("Lỗi hệ thống" + error)
             alert("Không tìm thấy xe trong hệ thống");
         }
     }

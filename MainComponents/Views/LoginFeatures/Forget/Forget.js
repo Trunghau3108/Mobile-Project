@@ -23,6 +23,8 @@ const Forget = () => {
     const [text, setText] = useState('');
     const [icon, setIcon] = useState('warning');
 
+
+
     const sendVerification = () => {
         const phone = '+84' + PhoneNumber;
         const phoneProvider = new firebase.auth.PhoneAuthProvider();
@@ -33,12 +35,12 @@ const Forget = () => {
                 setHide(false);
             })
             .catch((error) => {
-                console.log('Lỗi xác minh số điện thoại:', error);
+                // console.log('Lỗi xác minh số điện thoại:', error);
                 setText("Có lỗi xảy ra khi gửi mã xác minh OTP.");
                 setModal(true);
             });
         // setPhoneNumber('');
-        console.log(PhoneNumber);
+        // console.log(PhoneNumber);
 
     }
 

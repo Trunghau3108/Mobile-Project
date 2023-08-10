@@ -45,7 +45,7 @@ const FilterList = (props) => {
   useEffect(() => {
     props.onFilterChange(isLoaiXe, isKieuXe, isHang);
   }, [isLoaiXe, isKieuXe, isHang]);
-
+  
   return (
     <>
       <SafeAreaView />

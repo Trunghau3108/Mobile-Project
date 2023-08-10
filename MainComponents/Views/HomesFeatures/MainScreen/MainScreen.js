@@ -91,7 +91,10 @@ const MainScreen = () => {
               <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>
                 {userInfo.fullname}
               </Text>
-              <FontAwesome name="user-circle-o" size={30} color="black" />
+              <Image
+                    source={{uri: userInfo.photo}}
+                    style={{ width: width * 13 / 100, height: height * 7 / 100 , borderRadius: 80}}
+                />
             </TouchableOpacity>
         
       </>
@@ -109,7 +112,7 @@ const MainScreen = () => {
           }}
         >
           <Text style={{ fontSize: 20, alignSelf: 'center', marginRight: 10 }}>Đăng nhập / </Text>
-          <FontAwesome name="user-circle-o" size={30} color="black" />
+            <FontAwesome name="user-circle-o" size={30} color="black" />
         </TouchableOpacity>
      
      </>

@@ -24,12 +24,14 @@ const History = () => {
             const payload = {
                 id: userInfo.id
             }
-            const res = await axios.post(url + '/api/Oders/OrderHistory',payload);
+            const res = await axios.post(url + '/api/oders/OrderHistory',payload);
             setData(res.data);
-            setLoad(false);
+           
+            setLoad(!load);
             
         } catch (error) {
-            alert("lỗi data"+ error);
+          alert("Hiện tại chưa có xe bạn đã thuê, vui lòng thuê xe ngay ạ");
+          setLoad(false);
         }
     }
 };
@@ -65,7 +67,9 @@ const formatUnitPrice = (unitPrice) => {
   
 
   useEffect(() => {
-    getData();
+ 
+      getData();
+    
   },[userInfo]);
 
 

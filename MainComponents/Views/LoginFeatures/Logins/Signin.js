@@ -50,7 +50,7 @@ const Signin = ({ navigation }) => {
           const jsonValue = JSON.stringify(result);
           await AsyncStorage.setItem('user', jsonValue);
         } catch (e) {
-          console.log(e);
+          // console.log(e);
         }
         navigation.replace("TabHome");
       }else {

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View, Text, FlatList, ActivityIndicator } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, FlatList, ActivityIndicator,DevSettings } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ImageOnly from '../ProfileComponent/ImageOnly'
 import DataBorrowCar from '../../../VisualData/DataBorrowCar'
@@ -9,65 +9,74 @@ import url from '../../../../urlAPI';
 import moment from 'moment';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const CarBorrowList = () => {
+  const navigation = useNavigation();
+
   const [data, setData] = useState([]);
   const isFocused = useIsFocused();
   const [userInfo, setUserInfo] = useState(null);
   const [load, setLoad] = useState(false);
 
+  
+
   const getData = async () => {
-    setLoad(true);
     if (userInfo !== null) {
       try {
         const payload = {
           id: userInfo.id
         }
-        const res = await axios.post(url + '/api/Oders/OrderPayment', payload);
+        const res = await axios.post(url + '/api/oders/OrderPayment', payload);
         setData(res.data);
-        console.log(res.data);
         setLoad(false);
       } catch (error) {
-        alert("lỗi data" + error);
+        alert("Hiện tại chưa có xe bạn đang thuê, vui lòng thuê xe ngay ạ");
+        setLoad(false);
       }
     }
   };
-
+  
   const updateStatus = async () => {
     try {
       const payload = {
         customerId: userInfo.id,
-        productId: data[0].id
+        productId: data[0].products[0].id
       }
-      const res = await axios.post(url + '/api/Oders/UpdateStatusRent', payload);
-
-    } catch (error) {
-      alert("lỗi data" + error);
+      const res = await axios.post(url + '/api/oders/UpdateStatusRent', payload);
+      alert("Trả xe thành công !");
+      // getData()
+      setData([]);
+     } catch (error) {
+      alert("lỗi data  " + error);
     }
   }
+  
+  const retrieveUserInfo = async () => {
+    try {
+      const jsonString = await AsyncStorage.getItem('user');
+      if (jsonString) {
+        const userData = JSON.parse(jsonString);
+        setUserInfo(userData);
+      }
+    } catch (error) {
+      console.error('Error retrieving user data from AsyncStorage:', error);
+    }
+  };
+  useEffect(() => {
+
+      retrieveUserInfo();
+
+  }, []);
+
 
   useEffect(() => {
-    const retrieveUserInfo = async () => {
-      try {
-        const jsonString = await AsyncStorage.getItem('user');
-        if (jsonString) {
-          const userData = JSON.parse(jsonString);
-          setUserInfo(userData);
-        }
-      } catch (error) {
-        console.error('Error retrieving user data from AsyncStorage:', error);
-      }
-    };
 
     if (isFocused) {
-      retrieveUserInfo();
+      getData()
     }
-  }, [isFocused]);
-
-
-  useEffect(() => {
-    getData();
-  }, [userInfo]);
+    setLoad(true);
+  }, [userInfo, isFocused]);
 
   return (
     <View style={styles.ViewListTong}>

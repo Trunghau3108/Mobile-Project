@@ -36,7 +36,7 @@ const Home = (props) => {
     setLoad(true);
     const sortedData = data.slice().sort((a, b) => b.unitPrice - a.unitPrice);
     setData(sortedData);
-    console.log('sếp giá từ cao tới thấp');
+    // console.log('sếp giá từ cao tới thấp');
     setLoad(false);
   }
 
@@ -45,7 +45,7 @@ const Home = (props) => {
     setLoad(true);
     const sortedData = data.slice().sort((a, b) => a.unitPrice - b.unitPrice);
     setData(sortedData);
-    console.log('sếp giá từ thấp tới cao');
+    // console.log('sếp giá từ thấp tới cao');
     setLoad(false);
   }
 
@@ -73,7 +73,7 @@ const Home = (props) => {
       }
       setLoad(false);
     }catch(error){
-      console.log("Lỗi hệ thống" +error)
+      // console.log("Lỗi hệ thống" +error)
       alert("Không tìm thấy xe trong hệ thống");
       getData();
     }
